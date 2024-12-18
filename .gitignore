@@ -1,0 +1,10 @@
+*.iml
+.idea
+.tscache
+.dist
+.DS_Store
+node_modules/
+coverage/
+temp/
+.npmrc
+.env

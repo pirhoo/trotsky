@@ -1,0 +1,16 @@
+{
+  "name": "trotsky",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild lib/index.ts --bundle --outfile=.dist/trotsky.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "🐎",
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  } 
+}
