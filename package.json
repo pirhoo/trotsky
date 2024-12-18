@@ -1,16 +1,26 @@
 {
   "name": "trotsky",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": ".dist/trotsky.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "esbuild lib/index.ts --bundle --outfile=.dist/trotsky.js"
+    "test": "tap run",
+    "lint": "eslint",
+    "build": "esbuild lib/trotsky.ts --bundle --outfile=.dist/trotsky.js"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "🐎",
   "devDependencies": {
-    "esbuild": "^0.24.0"
-  } 
+    "@eslint/js": "^9.17.0",
+    "esbuild": "^0.24.0",
+    "eslint": "^9.17.0",
+    "tap": "^21.0.1",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
+  },
+  "dependencies": {
+    "@atproto/api": "^0.13.21"
+  }
 }

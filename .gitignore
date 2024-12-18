@@ -1,6 +1,7 @@
 *.iml
 .idea
 .tscache
+.tap
 .dist
 .DS_Store
 node_modules/

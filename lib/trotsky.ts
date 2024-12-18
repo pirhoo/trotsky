@@ -1,0 +1,1 @@
+export { default as Trotsky } from './core/Trotsky.ts'
