@@ -48,10 +48,10 @@
   resolved "https://registry.yarnpkg.com/@atproto-labs/simple-store/-/simple-store-0.1.1.tgz#e743a2722b5d8732166f0a72aca8bd10e9bff106"
   integrity sha512-WKILW2b3QbAYKh+w5U2x6p5FqqLl0nAeLwGeDY+KjX01K4Dq3vQTR9b/qNp0jZm48CabPQVrqCv0PPU9LgRRRg==
 
-"@atproto/api@^0.13.23":
-  version "0.13.23"
-  resolved "https://registry.yarnpkg.com/@atproto/api/-/api-0.13.23.tgz#f65d0d7946afa4ca467b7763b056f0824432bcf6"
-  integrity sha512-V1Z5kgfSsqlFaC14sjnZL1Psv/9Lq/YKW1w7TIBq948Rtq8l+c6BpGrOH2Ssdcphpqi4OSeSYRsmJJlD6GGJ5w==
+"@atproto/api@^0.13.23", "@atproto/api@^0.13.24":
+  version "0.13.24"
+  resolved "https://registry.yarnpkg.com/@atproto/api/-/api-0.13.24.tgz#3fff2421a9d1db0e416155e378022a328d477b62"
+  integrity sha512-q9GHjaypnEyeag4plsWzP2eWaUfJWy9PHviBsJu5GauwMrGSU/4ijIqWwbFYzyXeWg85ErQxx6FqIne7HDbaVQ==
   dependencies:
     "@atproto/common-web" "^0.3.1"
     "@atproto/lexicon" "^0.4.4"
@@ -79,12 +79,12 @@
     multiformats "^9.9.0"
     uint8arrays "3.0.0"
 
-"@atproto/bsky@^0.0.101":
-  version "0.0.101"
-  resolved "https://registry.yarnpkg.com/@atproto/bsky/-/bsky-0.0.101.tgz#a87dc4ac909e1e6e7d647c3a90c4727f627397a9"
-  integrity sha512-lAbtiwDA63LdB4ZwOVRjbKKOTUKj9mel5S7R5RTpLPdNjdFRILCdZCEz1Us5NcxYBIGGeIncxbVieU9yRn6J3A==
+"@atproto/bsky@^0.0.102":
+  version "0.0.102"
+  resolved "https://registry.yarnpkg.com/@atproto/bsky/-/bsky-0.0.102.tgz#9485d8da62362fd980ae813d42952bc611a8f661"
+  integrity sha512-9De+37F2YZa20+EBDiK7gZR9cQqBBjO0EgJutSnpj5YaXizwNsGQCajPtCTByyh7yBTFuB9XELV4MD/+0IlMxg==
   dependencies:
-    "@atproto/api" "^0.13.23"
+    "@atproto/api" "^0.13.24"
     "@atproto/common" "^0.4.5"
     "@atproto/crypto" "^0.4.2"
     "@atproto/identity" "^0.4.3"
@@ -198,19 +198,19 @@
     uint8arrays "3.0.0"
 
 "@atproto/dev-env@^0.3.71":
-  version "0.3.71"
-  resolved "https://registry.yarnpkg.com/@atproto/dev-env/-/dev-env-0.3.71.tgz#de8da13706dbacb75914eacace9e4dc7ac10ec8c"
-  integrity sha512-5yAAdyJ+c/aPUfH2AYV8wQBmHqkwbyzcHTV9IYPzUBniCKkRJl74cJocsF+ByeXZbOctZ4WpToWcJWHpf7/0dQ==
+  version "0.3.72"
+  resolved "https://registry.yarnpkg.com/@atproto/dev-env/-/dev-env-0.3.72.tgz#09bacce1a47968e14aa92b8ca1cbfcb40e43f066"
+  integrity sha512-+G92uCsg/i9RDDJ2ypFzud7SfyTIeK5LXd90P20s9F3cedMISU7h0sjbTEUHgPEg+MyzUiO3tFYzQ42TcBtauQ==
   dependencies:
-    "@atproto/api" "^0.13.23"
-    "@atproto/bsky" "^0.0.101"
+    "@atproto/api" "^0.13.24"
+    "@atproto/bsky" "^0.0.102"
     "@atproto/bsync" "^0.0.10"
     "@atproto/common-web" "^0.3.1"
     "@atproto/crypto" "^0.4.2"
     "@atproto/identity" "^0.4.3"
     "@atproto/lexicon" "^0.4.4"
-    "@atproto/ozone" "^0.1.62"
-    "@atproto/pds" "^0.4.79"
+    "@atproto/ozone" "^0.1.63"
+    "@atproto/pds" "^0.4.80"
     "@atproto/sync" "^0.1.7"
     "@atproto/syntax" "^0.3.1"
     "@atproto/xrpc-server" "^0.7.4"
@@ -292,12 +292,12 @@
     "@atproto/jwk" "0.1.1"
     zod "^3.23.8"
 
-"@atproto/ozone@^0.1.62":
-  version "0.1.62"
-  resolved "https://registry.yarnpkg.com/@atproto/ozone/-/ozone-0.1.62.tgz#53974547a89edfd2884c05343c2fe06b12c0888f"
-  integrity sha512-xM/y3elUsjXRWCoffNf5A9BNM2GsodsuvJgLzSTjm4vTsuGz/J821ZMq/09+bGAFq3swB/OCQwXx0h+SkY0CFQ==
+"@atproto/ozone@^0.1.63":
+  version "0.1.63"
+  resolved "https://registry.yarnpkg.com/@atproto/ozone/-/ozone-0.1.63.tgz#0952519a310fd2071879ea72b5a67b5c891bc881"
+  integrity sha512-/YTunTH5Z8r5nNHCg10je6l0FI3hGxSmsmEfZ+gRdiNt9eU8Wtm8CVVB37PhRYRzJ9FyTRvLhA/WXlokcgOw+Q==
   dependencies:
-    "@atproto/api" "^0.13.23"
+    "@atproto/api" "^0.13.24"
     "@atproto/common" "^0.4.5"
     "@atproto/crypto" "^0.4.2"
     "@atproto/identity" "^0.4.3"
@@ -321,13 +321,13 @@
     typed-emitter "^2.1.0"
     uint8arrays "3.0.0"
 
-"@atproto/pds@^0.4.79":
-  version "0.4.79"
-  resolved "https://registry.yarnpkg.com/@atproto/pds/-/pds-0.4.79.tgz#70d3b6ec7dc74c4bfcc58f4471fa5765d7cfa679"
-  integrity sha512-rfjQD2zXfiCgaUOj48X6/dpBk/YjunFmVtAGa5Q9p+wnGNHNASlTskhXAAp3gAeGcogQ1vknwiPW+zOW1oeraQ==
+"@atproto/pds@^0.4.80":
+  version "0.4.80"
+  resolved "https://registry.yarnpkg.com/@atproto/pds/-/pds-0.4.80.tgz#2dad15581817a0336f6f01d8274e1929b1c768f2"
+  integrity sha512-hQgj1gq9CZiduB/XgsFmxtQD77mLxcKDvevXMxJSDgzY3wQcjnLl73HYCNuOuVtS6PvpMY9AXA857rhfWNXc9A==
   dependencies:
     "@atproto-labs/fetch-node" "0.1.4"
-    "@atproto/api" "^0.13.23"
+    "@atproto/api" "^0.13.24"
     "@atproto/aws" "^0.2.10"
     "@atproto/common" "^0.4.5"
     "@atproto/crypto" "^0.4.2"
@@ -2945,11 +2945,6 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-ansi-styles@^6.1.0:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-6.2.1.tgz#0e62320cf99c21afff3b3012192546aacbfb05c5"
-  integrity sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==
-
 anymatch@^3.0.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.3.tgz#790c58b19ba1720a84205b57c618d5ad8524973e"
@@ -3591,11 +3586,6 @@ dunder-proto@^1.0.0:
     es-errors "^1.3.0"
     gopd "^1.2.0"
 
-eastasianwidth@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
-  integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
-
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -3628,11 +3618,6 @@ emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
   integrity sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==
-
-emoji-regex@^9.2.2:
-  version "9.2.2"
-  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"
-  integrity sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==
 
 encodeurl@~1.0.2:
   version "1.0.2"
@@ -6067,7 +6052,7 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3, string-width@^5.1.2:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -6075,15 +6060,6 @@ string-length@^4.0.1:
     emoji-regex "^8.0.0"
     is-fullwidth-code-point "^3.0.0"
     strip-ansi "^6.0.1"
-
-string-width@^5.0.1, string-width@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/string-width/-/string-width-5.1.2.tgz#14f8daec6d81e7221d2a357e668cab73bdbca794"
-  integrity sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==
-  dependencies:
-    eastasianwidth "^0.2.0"
-    emoji-regex "^9.2.2"
-    strip-ansi "^7.0.1"
 
 string_decoder@^1.1.1, string_decoder@^1.3.0:
   version "1.3.0"
@@ -6443,7 +6419,7 @@ wordwrap@^1.0.0:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0, wrap-ansi@^8.1.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -6451,15 +6427,6 @@ wordwrap@^1.0.0:
     ansi-styles "^4.0.0"
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
-
-wrap-ansi@^8.1.0:
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-8.1.0.tgz#56dc22368ee570face1b49819975d9b9a5ead214"
-  integrity sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==
-  dependencies:
-    ansi-styles "^6.1.0"
-    string-width "^5.0.1"
-    strip-ansi "^7.0.1"
 
 wrappy@1:
   version "1.0.2"
