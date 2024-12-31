@@ -21,8 +21,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 5432:5432
 
       redis:
         image: redis
@@ -31,8 +29,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-        ports:
-          - 6379:6379
 
     steps:
       - name: Checkout repository
@@ -52,5 +48,5 @@ jobs:
       - name: Run tests
         run: yarn test
         env:
-          DB_POSTGRES_URL: postgresql://postgres:postgres@postgres:5432/postgres"
+          DB_POSTGRES_URL: postgresql://postgres:postgres@postgres/postgres
           REDIS_HOST: redis
