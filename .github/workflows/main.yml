@@ -10,12 +10,18 @@ jobs:
     strategy:
       matrix:
         node-version: ['20.x', '22.x']
+        
+    env:
+      DB_POSTGRES_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
+      REDIS_HOST: "redis"
     
     services:
       postgres:
         image: postgres
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -47,6 +53,3 @@ jobs:
 
       - name: Run tests
         run: yarn test
-        env:
-          DB_POSTGRES_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
-          REDIS_HOST: "redis"
