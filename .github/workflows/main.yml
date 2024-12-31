@@ -12,8 +12,8 @@ jobs:
         node-version: ['20.x', '22.x']
         
     env:
-      DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      REDIS_HOST: "localhost"
+      DB_POSTGRES_URL: "postgresql://postgres:postgres@postgres:5432/postgres"
+      REDIS_HOST: "redis"
     
     services:
       postgres:
