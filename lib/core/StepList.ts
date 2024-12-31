@@ -3,16 +3,12 @@ import { Step, StepListEach } from '../trotsky'
 
 
 type ListOutputSchemaCursor = string | undefined
-type ListOutputSchema = { cursor?: ListOutputSchemaCursor, hitsTotal?: number, [k: string]: unknown }
-type ListResponse = { success: boolean, headers: HeadersMap, data: ListOutputSchema }
+interface ListOutputSchema { cursor?: ListOutputSchemaCursor, hitsTotal?: number, [k: string]: unknown }
+interface ListResponse { success: boolean, headers: HeadersMap, data: ListOutputSchema }
 
 export class StepList extends Step { 
-  protected _take: number = Infinity
-  protected _skip: number = 0
-
-  constructor(agent, parent) {
-    super(agent, parent)
-  }
+  protected _take = Infinity
+  protected _skip = 0
 
   take(take: number) {
     this._take = take
