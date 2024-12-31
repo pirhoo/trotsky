@@ -1,0 +1,47 @@
+import { AtpAgent } from '@atproto/api'
+import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
+
+import { Trotsky } from '../../lib/trotsky'
+
+describe('StepActor', () => {
+  let network: TestNetwork
+  let agent: AtpAgent
+  let sc: SeedClient
+  let alice: { did: string, handle: string, password: string }
+  let bob: { did: string, handle: string, password: string }
+  
+  beforeAll(async () => {
+    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor' })
+    agent = network.pds.getClient()
+    
+    sc = network.getSeedClient()
+    await usersSeed(sc)
+
+    bob = sc.accounts[sc.dids.bob]
+    alice = sc.accounts[sc.dids.alice]
+
+    await network.processAll()
+    await agent.login({ identifier: bob.handle, password: bob.password })
+  })
+
+  afterAll(async () => {
+    await network.close()
+  })
+
+  test('get Alice\'s profile', async () => {
+    const trotsky = await Trotsky.init(agent)
+    const actor = trotsky.actor(alice.handle)
+    expect(await trotsky.run()).toBeInstanceOf(Trotsky)
+    expect(actor.context).toHaveProperty('handle', alice.handle)
+  })
+  
+  test('get Alice\'s followers', async () => {
+    const trotsky = Trotsky.init(agent).actor(alice.handle).followers()
+    expect(await trotsky.run()).toBeInstanceOf(Trotsky)
+  })
+  
+  test('get Alice\'s followings', async () => {
+    const trotsky = Trotsky.init(agent).actor(alice.handle).followings()
+    expect(await trotsky.run()).toBeInstanceOf(Trotsky)
+  })
+})
