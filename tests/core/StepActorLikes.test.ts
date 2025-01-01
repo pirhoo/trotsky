@@ -12,16 +12,14 @@ describe.skip('StepActorLikes', () => {
   beforeAll(async () => {
     network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor_likes' })
     agent = network.pds.getClient()
-    
-    sc = network.getSeedClient()
+    sc = network.getSeedClient()    
     await usersSeed(sc)
-
-    bob = sc.accounts[sc.dids.bob]
     // Create a post as Alice and like it as Bob
     await sc.post(sc.dids.alice, 'Dan Dan Noodle is my favorite meal')
     await sc.like(sc.dids.bob, sc.posts[sc.dids.alice][0].ref)
-
     await network.processAll()
+    
+    bob = sc.accounts[sc.dids.bob]
     await agent.login({ identifier: bob.handle, password: bob.password })
   })
 

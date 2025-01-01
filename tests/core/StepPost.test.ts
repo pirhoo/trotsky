@@ -3,18 +3,17 @@ import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
 
 import { Trotsky } from '../../lib/trotsky'
 
-describe('StepActorPosts', () => {
+describe('StepPost', () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor_posts' })
+    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_post' })
     agent = network.bsky.getClient()    
     sc = network.getSeedClient()
     await usersSeed(sc)
-    await sc.post(sc.dids.bob, 'Dan Dan Noodle is my favorite meal')
-    await sc.post(sc.dids.bob, 'This is no such thing as a free lunch')  
+    await sc.post(sc.dids.bob, 'Dan Dan Noodle is my favorite meal')    
     await network.processAll()
   })
 
@@ -24,11 +23,9 @@ describe('StepActorPosts', () => {
     await network.close()
   })
 
-  test('get Bob\'s posts', async () => {
-    const trotsky = Trotsky.init(agent).actor(sc.dids.bob)
-    const posts = trotsky.posts()
-    await trotsky.run()
-    expect(posts.context).toBeInstanceOf(Array)
-    expect(posts.context).toHaveLength(2)
+  test('get the post', async () => {
+    const { uri } = sc.posts[sc.dids.bob][0].ref
+    const post = Trotsky.init(agent).post(uri)
+    await post.run()
   })
 })

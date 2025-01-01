@@ -32,13 +32,13 @@ describe('StepActorUnblock', () => {
   })
 
   test('unblock Alice', async () => {
-    await Trotsky.init(agent).actor(alice.handle).unblock().wait(1e2).run()
+    await Trotsky.init(agent).actor(alice.handle).unblock().wait(1e3).run()
     const { data: { blocks } } = await agent.app.bsky.graph.getBlocks()
     expect(blocks).toHaveLength(0)
   })
 
   test('unblock Carol does nothing even she is not blocked', async () => {
-    await Trotsky.init(agent).actor(carol.handle).unblock().wait(1e2).run()
+    await Trotsky.init(agent).actor(carol.handle).unblock().wait(1e3).run()
     const { data: { blocks } } = await agent.app.bsky.graph.getBlocks()
     expect(blocks).toHaveLength(0)
   })

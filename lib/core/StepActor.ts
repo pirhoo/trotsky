@@ -4,19 +4,19 @@ import type { Resolvable } from './utils/resolvable'
 import { ActorMixins } from "./mixins/ActorMixins"
 import { resolveValue } from './utils/resolvable'
 
-type Actor = Did | string
+export type StepActorParam = Did | string
 
 export class StepActor extends ActorMixins {
-  _actor: Resolvable<Actor>
+  _param: Resolvable<StepActorParam>
   _context: AppBskyActorGetProfile.OutputSchema | null = null
 
-  constructor(agent, parent, actor: Resolvable<Actor>) {
+  constructor(agent, parent, param: Resolvable<StepActorParam>) {
     super(agent, parent)
-    this._actor = actor
+    this._param = param
   }
 
   async apply() {
-    const actor = await resolveValue<Actor>(this, this._actor)
+    const actor = await resolveValue<StepActorParam>(this, this._param)
     const { data } = await this.agent.getProfile({ actor })
     this._context = data
   }

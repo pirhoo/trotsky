@@ -1,8 +1,12 @@
 import type { AtpAgent } from '@atproto/api'
 import type { QueryParams } from '@atproto/api/src/client/types/app/bsky/feed/searchPosts'
-import type { Step } from '../trotsky'
 
-import { StepActor, StepWait, StepSearchPosts } from '../trotsky'
+import type { Step } from '../trotsky'
+import type { StepActorParam } from './StepActor'
+import type { StepPostUri } from './StepPost'
+import type { Resolvable } from './utils/resolvable'
+
+import { StepActor, StepWait, StepPost, StepSearchPosts } from '../trotsky'
 
 export type ParentConstraint = Trotsky | null
 
@@ -17,8 +21,14 @@ export class Trotsky {
     this._parent = parent
   }
 
-  actor(actor) {
-    const step = new StepActor(this.agent, this, actor)
+  actor(param: Resolvable<StepActorParam>) {
+    const step = new StepActor(this.agent, this, param)
+    this._steps.push(step)
+    return step
+  }
+
+  post(uri: Resolvable<StepPostUri>) {
+    const step = new StepPost(this.agent, this, uri)
     this._steps.push(step)
     return step
   }
