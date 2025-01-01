@@ -24,6 +24,8 @@ describe.skip('StepActorLikes', () => {
   })
 
   afterAll(async () => {
+    // For some reasong the AppView schema is not being dropped
+    await network.bsky.db.db.schema.dropSchema('appview_trotsky_step_actor_likes').cascade().execute()
     await network.close()
   })
 
