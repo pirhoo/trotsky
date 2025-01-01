@@ -1,21 +1,23 @@
 import type { HeadersMap } from '@atproto/xrpc'
-import { Step, StepListEach } from '../trotsky'
 
+import type { Resolvable } from './utils/resolvable'
+import { resolveValue } from './utils/resolvable'
+import { Step, StepListEach } from '../trotsky'
 
 type ListOutputSchemaCursor = string | undefined
 interface ListOutputSchema { cursor?: ListOutputSchemaCursor, hitsTotal?: number, [k: string]: unknown }
 interface ListResponse { success: boolean, headers: HeadersMap, data: ListOutputSchema }
 
 export class StepList extends Step { 
-  protected _take = Infinity
-  protected _skip = 0
+  protected _take: Resolvable<number> = Infinity
+  protected _skip: Resolvable<number> = 0
 
-  take(take: number) {
+  take(take: Resolvable<number>) {
     this._take = take
     return this
   }
 
-  skip(skip: number) {
+  skip(skip: Resolvable<number>) {
     this._skip = skip
     return this
   }
@@ -28,12 +30,16 @@ export class StepList extends Step {
     let records = []
     let cursor: ListOutputSchemaCursor
 
+    const skip = await resolveValue<number>(this, this._skip)
+    const take = await resolveValue<number>(this, this._take)
+    const size = skip + take
+
     do {
       const { data } = await fn(cursor)
       cursor = data.cursor
       records = [...records, ...data[attribute] as []]
-    } while(cursor && records.length < this._skip + this._take)
+    } while(cursor && records.length < size)
 
-    return records.slice(this._skip, this._skip + this._take) as T
+    return records.slice(skip, size) as T
   }
 }

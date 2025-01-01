@@ -53,4 +53,20 @@ describe('StepActorFollowings', () => {
     expect(followings.context).toHaveLength(2)
   })
 
+
+  test('get Alice\'s 2 last followings with a function', async () => {
+    const trotsky = Trotsky.init(agent).actor(alice.handle)
+    const followings = trotsky.followings().skip(() => 2)
+    await trotsky.run()
+    expect(followings.context).toBeInstanceOf(Array)
+    expect(followings.context).toHaveLength(2)
+  })
+
+  test('get Alice\'s 2 last followings with a promise', async () => {
+    const trotsky = Trotsky.init(agent).actor(alice.handle)
+    const followings = trotsky.followings().skip(Promise.resolve(2))
+    await trotsky.run()
+    expect(followings.context).toBeInstanceOf(Array)
+    expect(followings.context).toHaveLength(2)
+  })
 })
