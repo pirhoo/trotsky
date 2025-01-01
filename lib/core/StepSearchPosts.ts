@@ -19,7 +19,7 @@ export class StepSearchPosts extends StepPosts {
   }
 
   async apply() {
-    this._context = await this.iterator<StepSearchPostsContext, AppBskyFeedSearchPosts.Response>('posts', (cursor) => {
+    this._context = await this.paginate<StepSearchPostsContext, AppBskyFeedSearchPosts.Response>('posts', (cursor) => {
       return this
         .agent
         .app.bsky.feed

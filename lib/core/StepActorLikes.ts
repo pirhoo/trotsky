@@ -14,7 +14,7 @@ export class StepActorLikes extends StepList {
   }
   
   async apply() {
-    this._context = await this.iterator<StepActorLikesContext, AppBskyFeedGetActorLikes.Response>('feed', (cursor) => {
+    this._context = await this.paginate<StepActorLikesContext, AppBskyFeedGetActorLikes.Response>('feed', (cursor) => {
       return this.agent.app.bsky.feed.getActorLikes(this.queryParams(cursor))
     })
   }

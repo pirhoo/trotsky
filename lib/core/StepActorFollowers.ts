@@ -13,7 +13,7 @@ export class StepActorFollowers extends StepActors {
   }
 
   async apply() {
-    this._context = await this.iterator<StepActorFollowersContext, AppBskyGraphGetFollowers.Response>('followers', (cursor) => {
+    this._context = await this.paginate<StepActorFollowersContext, AppBskyGraphGetFollowers.Response>('followers', (cursor) => {
       return this.agent.app.bsky.graph.getFollowers(this.queryParams(cursor))
     })
   }

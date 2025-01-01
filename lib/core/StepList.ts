@@ -26,7 +26,7 @@ export class StepList extends Step {
     return this.append(StepListEach<this>)
   }
 
-  async iterator<T, R extends ListResponse>(attribute: string, fn: (cursor: ListOutputSchemaCursor) => Promise<R>): Promise<T> {
+  async paginate<T, R extends ListResponse>(attribute: string, fn: (cursor: ListOutputSchemaCursor) => Promise<R>): Promise<T> {
     let records = []
     let cursor: ListOutputSchemaCursor
 
