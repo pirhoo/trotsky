@@ -3,7 +3,7 @@ import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
 
 import { Trotsky } from '../../lib/trotsky'
 
-describe.skip('StepActorFollowers', () => {
+describe.skip('StepActorLikes', () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
@@ -31,9 +31,9 @@ describe.skip('StepActorFollowers', () => {
 
   test('get user\'s likes', async () => {
     const trotsky = Trotsky.init(agent).actor(bob.handle)
-    const followers = trotsky.likes()
+    const likes = trotsky.likes()
     await trotsky.run()
-    expect(followers.context).toBeInstanceOf(Array)
-    expect(followers.context).toHaveLength(1)
+    expect(likes.context).toBeInstanceOf(Array)
+    expect(likes.context).toHaveLength(1)
   })
 })
