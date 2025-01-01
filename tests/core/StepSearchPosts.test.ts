@@ -9,7 +9,7 @@ describe('StepSearchPosts', () => {
   let sc: SeedClient
 
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_search_posts' })
+    network = await TestNetwork.create({ dbPostgresSchema: 'step_search_posts' })
     agent = network.bsky.getClient()  
     sc = network.getSeedClient()
     await usersSeed(sc)
@@ -19,8 +19,8 @@ describe('StepSearchPosts', () => {
   })
 
   afterAll(async () => {
-    // For some reasong the AppView schema is not being dropped
-    await network.bsky.db.db.schema.dropSchema('appview_trotsky_step_search_posts').cascade().execute()
+    // For some reasonthe AppView schema is not being dropped
+    await network.bsky.db.db.schema.dropSchema('appview_step_search_posts').cascade().execute()
     await network.close()
   })
 

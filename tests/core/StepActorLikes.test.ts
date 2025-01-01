@@ -10,7 +10,7 @@ describe.skip('StepActorLikes', () => {
   let bob: { did: string,  handle: string, password: string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor_likes' })
+    network = await TestNetwork.create({ dbPostgresSchema: 'step_actor_likes' })
     agent = network.pds.getClient()
     sc = network.getSeedClient()    
     await usersSeed(sc)
@@ -24,8 +24,8 @@ describe.skip('StepActorLikes', () => {
   })
 
   afterAll(async () => {
-    // For some reasong the AppView schema is not being dropped
-    await network.bsky.db.db.schema.dropSchema('appview_trotsky_step_actor_likes').cascade().execute()
+    // For some reasonthe AppView schema is not being dropped
+    await network.bsky.db.db.schema.dropSchema('appview_step_actor_likes').cascade().execute()
     await network.close()
   })
 
