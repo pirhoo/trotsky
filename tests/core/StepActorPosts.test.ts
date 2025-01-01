@@ -10,7 +10,7 @@ describe.skip('StepActorFollowers', () => {
   let bob: { did: string,  handle: string, password: string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor_likes' })
+    network = await TestNetwork.create({ dbPostgresSchema: 'trotsky_step_actor_posts' })
     agent = network.pds.getClient()
     
     sc = network.getSeedClient()
