@@ -37,4 +37,8 @@ export class ActorMixins extends Step {
     this.append(StepActorUnfollow)
     return this
   }
+
+  async apply() {
+    throw new Error('`apply` method not implemented.')
+  }
 }

@@ -12,7 +12,7 @@ export class StepActorFollowings extends StepActors {
     return super.back() as StepActor
   }
 
-  async apply() {
+  async applyPagination() {
     this._context = await this.paginate<StepActorFollowingsContext, AppBskyGraphGetFollows.Response>('follows', (cursor) => {
       return this.agent.app.bsky.graph.getFollows(this.queryParams(cursor))
     })

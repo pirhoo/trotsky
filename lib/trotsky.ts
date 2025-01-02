@@ -4,12 +4,16 @@ export * from './core/Trotsky'
 // Abstract classes
 export * from './core/Step'
 export * from './core/StepList'
-export * from './core/StepListEach'
-export * from './core/StepListEachEntry'
+export * from './core/StepListEntry'
 
 // List of actors
 export * from './core/StepActors'
 export * from './core/StepActorsEntry'
+
+// List of posts
+export * from './core/StepPosts'
+export * from './core/StepPostsEntry'
+export * from './core/StepSearchPosts'
 
 // Single actor
 export * from './core/StepActor'
@@ -21,11 +25,6 @@ export * from './core/StepActorLikes'
 export * from './core/StepActorPosts'
 export * from './core/StepActorUnblock'
 export * from './core/StepActorUnfollow'
-
-// List of posts
-export * from './core/StepPosts'
-export * from './core/StepPostsEntry'
-export * from './core/StepSearchPosts'
 
 // Single post
 export * from './core/StepPost'

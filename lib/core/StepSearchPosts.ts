@@ -1,8 +1,6 @@
 import type { AppBskyFeedSearchPosts } from '@atproto/api'
 
-import type { StepPostsEntry } from '../trotsky'
 import { StepPosts } from '../trotsky'
-
 
 type StepSearchPostsContext = AppBskyFeedSearchPosts.OutputSchema['posts']
 type StepSearchPostsContextQueryParams = AppBskyFeedSearchPosts.QueryParams
@@ -10,7 +8,6 @@ type StepSearchPostsContextQueryParamsCursor = StepSearchPostsContextQueryParams
 
 export class StepSearchPosts extends StepPosts {
   _queryParams: StepSearchPostsContextQueryParams
-  _steps: StepPostsEntry<this>[] = []
   _context: StepSearchPostsContext = []
 
   constructor(agent, parent, queryParams: StepSearchPostsContextQueryParams) {
@@ -18,7 +15,7 @@ export class StepSearchPosts extends StepPosts {
     this._queryParams = queryParams
   }
 
-  async apply() {
+  async applyPagination() {
     this._context = await this.paginate<StepSearchPostsContext, AppBskyFeedSearchPosts.Response>('posts', (cursor) => {
       return this
         .agent

@@ -1,4 +1,4 @@
-import { StepPosts } from '../trotsky'
+import type { StepPosts } from '../trotsky'
 import { PostMixins } from './mixins/PostMixins'
 
 

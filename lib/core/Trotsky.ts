@@ -6,7 +6,7 @@ import type { StepActorParam } from './StepActor'
 import type { StepPostUri } from './StepPost'
 import type { Resolvable } from './utils/resolvable'
 
-import { StepActor, StepWait, StepPost, StepSearchPosts } from '../trotsky'
+import { StepActor, StepWait, StepPost, StepSearchPosts, StepList } from '../trotsky'
 
 export type ParentConstraint = Trotsky | null
 
@@ -19,6 +19,11 @@ export class Trotsky {
   constructor(agent: AtpAgent, parent: ParentConstraint = null) {
     this._agent = agent
     this._parent = parent
+  }
+  
+  withAgent(agent: AtpAgent) {
+    this._agent = agent
+    return this
   }
 
   actor(param: Resolvable<StepActorParam>) {
@@ -90,20 +95,31 @@ export class Trotsky {
     this._context = value
   }
 
-  async apply(): Promise<void> {
-    throw new Error('Apply method not implemented')
+  get isTrotsky(): boolean {
+    return Object.getPrototypeOf(this) === Trotsky.prototype
+  }
+
+  get isStepListEntry(): boolean {
+    return this._parent instanceof StepList
+  }
+  
+  async applyAll() {
+    for (const step of this.steps) {
+      await step.apply()
+
+      if (!step.isStepListEntry) {
+        await step.applyAll()
+      }
+    }
+  }
+
+  async runAll() {
+    await this.applyAll()
+    return this
   }
 
   async run() {
-    if (Object.getPrototypeOf(this) !== Trotsky.prototype) {
-      return this.end().run()
-    }
-
-    for (const step of this.flattenSteps) {
-      await step.apply()
-    }
-
-    return this
+    return this.isTrotsky ? this.runAll() : this.end().run()
   }
 
   static init(agent: AtpAgent): Trotsky {

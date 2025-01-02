@@ -16,14 +16,19 @@ export class StepPostReply extends Step {
   }
 
   async apply() {
+    this.context = await this.agent.post(await this.queryParams())
+  }
+
+  async queryParams(): Promise<AppBskyFeedPost.Record> {
     const params = await resolveValue<ReplyParams>(this, this._record)
+    const createdAt = new Date().toISOString()
     const reply = this.replyParams()
-    await this.agent.post({ ...params, reply })
+    return { createdAt, reply, ...params }
   }
 
   replyParams(): AppBskyFeedPost.Record['reply'] {
-    const post = this.context as AppBskyFeedDefs.PostView & { record: { reply?: ReplyRefs } }
-    const reply = post.record.reply as ReplyRefs
+    const post = this.context as AppBskyFeedDefs.PostView & { record?: { reply?: ReplyRefs } }
+    const reply = post?.record?.reply ?? null
     const parent = { uri: post.uri, cid: post.cid }
     const root = reply ? { uri: reply.root.uri, cid: reply.root.cid } : parent
     return { root, parent }

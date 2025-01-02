@@ -1,23 +1,33 @@
 import { AtpAgent } from '@atproto/api'
-import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
+import { TestNetwork, SeedClient, usersSeed, RecordRef } from '@atproto/dev-env'
 
 import { Trotsky } from '../../lib/trotsky'
 
-describe.skip('StepPostReply', () => {
+describe('StepPostReply', () => {
   let network: TestNetwork
-  let agent: AtpAgent
+  let agentPds: AtpAgent
+  let agentBksy: AtpAgent
   let sc: SeedClient
+  let postRef: RecordRef
   let bob: { did: string, handle: string, password: string }
   
   beforeAll(async () => {
     network = await TestNetwork.create({ dbPostgresSchema: 'step_post_reply' })
-    agent = network.pds.getClient()    
-    sc = network.getSeedClient()
+    
+    sc = network.getSeedClient()    
     await usersSeed(sc)
-    bob = sc.accounts[sc.dids.bob]
     await sc.post(sc.dids.bob, 'Dan Dan Noodle is my favorite meal')    
     await network.processAll()
-    await agent.login({ identifier: bob.handle, password: bob.password })
+
+    bob = sc.accounts[sc.dids.bob]
+    postRef = sc.posts[sc.dids.bob][0].ref
+
+    // Use PDS agent for authenticated queries on the PDS
+    agentPds = network.pds.getClient()    
+    // Use BSKY agent for non-authenticated queries on the BSKY
+    agentBksy = network.bsky.getClient()
+
+    await agentPds.login({ identifier: bob.handle, password: bob.password })
   })
 
   afterAll(async () => {
@@ -27,11 +37,15 @@ describe.skip('StepPostReply', () => {
   })
 
   test('reply to the post', async () => {
-    const { uri } = sc.posts[sc.dids.bob][0].ref
-    const reply = Trotsky.init(agent).post(uri).reply({ text: 'I love it too!' })
+    const reply = Trotsky
+      .init(agentBksy)
+      .post(postRef.uri)
+        .reply({ text: 'I love it too!' })
+        .withAgent(agentPds)
+    
     await reply.run()
-    expect(reply.context).toHaveProperty('record')
-    expect(reply.context.record).toHaveProperty('text', 'Love it too!')
-    expect(reply.context.record).toHaveProperty('reply')
+
+    expect(await reply.queryParams()).toHaveProperty('text', 'I love it too!')
+    expect(await reply.queryParams()).toHaveProperty('reply')
   })
 })

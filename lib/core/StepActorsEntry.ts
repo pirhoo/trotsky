@@ -7,6 +7,6 @@ export class StepActorsEntry<Parent extends StepActors> extends ActorMixins {
   }
 
   async apply() {
-    console.log('Iterate over actor entries')
+    throw new Error('`apply` method not implemented.')
   }
 }
