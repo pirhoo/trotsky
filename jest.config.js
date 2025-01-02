@@ -1,5 +1,5 @@
 /** @type {import('jest').Config} */
-export default {
+module.exports = {
   transform: {
     '^.+\\.(t|j)sx?$': '@swc/jest',
   },
