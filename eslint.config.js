@@ -1,6 +1,6 @@
-import tseslint from 'typescript-eslint'
+const tseslint = require('typescript-eslint')
 
-export default tseslint
+module.exports = tseslint
   .config(tseslint.configs.strict, tseslint.configs.stylistic, {
-    ignores: ['.dist'],
+    ignores: ['.dist', 'eslint.config.js'],
   })
