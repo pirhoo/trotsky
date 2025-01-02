@@ -13,7 +13,8 @@ describe('StepPost', () => {
     agent = network.bsky.getClient()    
     sc = network.getSeedClient()
     await usersSeed(sc)
-    await sc.post(sc.dids.bob, 'Dan Dan Noodle is my favorite meal')    
+    const post = await sc.post(sc.dids.bob, 'Dan Dan Noodle is my favorite meal')    
+    await sc.reply(sc.dids.alice, post.ref, post.ref, 'Love it too!')    
     await network.processAll()
   })
 
@@ -27,5 +28,16 @@ describe('StepPost', () => {
     const { uri } = sc.posts[sc.dids.bob][0].ref
     const post = Trotsky.init(agent).post(uri)
     await post.run()
+    expect(post.context).toHaveProperty('record')
+    expect(post.context.record).toHaveProperty('text', 'Dan Dan Noodle is my favorite meal')
+  })
+
+  test('get the reply', async () => {
+    const { uri } = sc.replies[sc.dids.alice][0].ref
+    const post = Trotsky.init(agent).post(uri)
+    await post.run()
+    expect(post.context).toHaveProperty('record')
+    expect(post.context.record).toHaveProperty('text', 'Love it too!')
+    expect(post.context.record).toHaveProperty('reply')
   })
 })
