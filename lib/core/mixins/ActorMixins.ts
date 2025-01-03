@@ -1,44 +1,50 @@
 
-import { Step, StepActorBlock, StepActorFollow, StepActorFollowers, StepActorFollowings, StepActorLikes, StepActorPosts, StepActorUnblock, StepActorUnfollow } from '../../trotsky'
+import {
+  Step, 
+  StepActorBlock, 
+  StepActorFollow, 
+  StepActorFollowers, 
+  StepActorFollowings, 
+  StepActorLikes, 
+  StepActorPosts, 
+  StepActorUnblock, 
+  StepActorUnfollow 
+} from "../../trotsky"
 
-export class ActorMixins<P, C, O> extends Step<P, C, O> {
-  followers() {
+export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
+  followers () {
     return this.append(StepActorFollowers<this>)
   }
 
-  followings() {
+  followings () {
     return this.append(StepActorFollowings<this>)
   }
 
-  likes() {
+  likes () {
     return this.append(StepActorLikes<this>)
   }
 
-  posts() {
+  posts () {
     return this.append(StepActorPosts<this>)
   }
 
-  block() {
+  block () {
     this.append(StepActorBlock<this>)
     return this
   }
 
-  unblock() {
+  unblock () {
     this.append(StepActorUnblock<this>)
     return this
   }
 
-  follow() {
+  follow () {
     this.append(StepActorFollow<this>)
     return this
   }
 
-  unfollow() {
+  unfollow () {
     this.append(StepActorUnfollow<this>)
     return this
-  }
-
-  async apply() {
-    throw new Error('`apply` method not implemented.')
   }
 }
