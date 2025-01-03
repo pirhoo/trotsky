@@ -41,8 +41,8 @@ describe("StepPostReply", () => {
     const reply = Trotsky
       .init(agentBksy)
       .post(postRef.uri)
-        .reply({ "text": "I love it too!" })
-        .withAgent(agentPds)
+      .reply({ "text": "I love it too!" })
+      .withAgent(agentPds)
     
     await reply.run()
 
