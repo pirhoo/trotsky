@@ -11,7 +11,7 @@ describe("StepPost", () => {
   let bob: { "did": string; "handle": string; "password": string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ "dbPostgresSchema": "step_post" })
+    network = await TestNetwork.create({ "dbPostgresSchema": "step_create_post" })
     agent = network.pds.getClient()    
     sc = network.getSeedClient()
     await usersSeed(sc) 
@@ -22,7 +22,7 @@ describe("StepPost", () => {
 
   afterAll(async () => {
     // For some reason the AppView schema is not being dropped
-    await network.bsky.db.db.schema.dropSchema("appview_step_post").cascade().execute()
+    await network.bsky.db.db.schema.dropSchema("appview_step_create_post").cascade().execute()
     await network.close()
   })
 
