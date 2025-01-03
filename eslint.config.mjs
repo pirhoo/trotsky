@@ -17,7 +17,7 @@ export default tsPlugin.config([
       globals: jestPlugin.environments.globals.globals,
       parserOptions: {
         projectService: true,
-        project: 'tsconfig.build.json',
+        project: 'tsconfig/build.json',
         tsconfigRootDir: import.meta.dirname,
       }
     },
@@ -43,7 +43,7 @@ export default tsPlugin.config([
     languageOptions: {
       parserOptions: {
         projectService: true,
-        project: 'tsconfig.build.json',
+        project: 'tsconfig/build.json',
         tsconfigRootDir: import.meta.dirname,
       }
     },

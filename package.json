@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint",
-    "build": "tsc --build tsconfig.build.json"
+    "build": "tsc --build tsconfig/build.json"
   },
   "keywords": [],
   "author": "",
