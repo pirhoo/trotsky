@@ -1,21 +1,17 @@
-import type {  AtpAgent } from "@atproto/api"
+import type { AtpAgent, AppBskyFeedPost } from "@atproto/api"
 
 import { Step, type ParentConstraint } from "../trotsky"
-import { PostParams, ResolvablePostParams } from "./mixins/PostMixins"
-import { resolveValue } from "./utils/resolvable"
+import { resolveValue, type Resolvable } from "./utils/resolvable"
 
-interface RecordRef {
-  "uri": string; 
-  "cid": string; 
-}
+export type StepCreatePostParams = Partial<AppBskyFeedPost.Record> & Omit<AppBskyFeedPost.Record, "createdAt">
+export type StepCreatePostOutput = { "uri": string; "cid": string }
 
-export type StepCreatePostParams = PostParams
-export type StepCreatePostOutput = RecordRef
+export type ResolvableStepCreatePostParams = Resolvable<StepCreatePostParams>
 
 export class StepCreatePost<P = ParentConstraint, C = null, O extends StepCreatePostOutput = StepCreatePostOutput> extends Step<P, C, O> {
-  _record: ResolvablePostParams
+  _record: ResolvableStepCreatePostParams
 
-  constructor (agent: AtpAgent, parent: P, record: ResolvablePostParams) {
+  constructor (agent: AtpAgent, parent: P, record: ResolvableStepCreatePostParams) {
     super(agent, parent)
     this._record = record
   }
