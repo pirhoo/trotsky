@@ -18,6 +18,8 @@ export default tseslint.config([
       }
     },
     rules: {
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': ['error'],
       '@stylistic/ts/semi': ['error', 'never'],
       '@stylistic/ts/indent': ['error', 2],
       '@stylistic/ts/object-curly-spacing': ['error', 'always'],

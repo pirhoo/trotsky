@@ -64,7 +64,7 @@ export abstract class StepList<P = ParentConstraint, C = null, O extends StepLis
   // StepList child must define a `applyPagination` method
   abstract applyPagination (): Promise<void>
 
-  // eslint-disable-next-line no-unused-vars
+   
   async paginate<T, R extends ListResponse>(attribute: string, fn: (cursor: ListOutputSchemaCursor) => Promise<R>): Promise<T> {
     let records = []
     let cursor: ListOutputSchemaCursor

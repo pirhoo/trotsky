@@ -64,7 +64,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
     return this._parent
   }
 
-  // eslint-disable-next-line no-unused-vars
+   
   append<Type extends Step<this>>(type: new(agent: AtpAgent, parent: this, ...args) => Type, ...args: unknown[]): Type {
     const step = new type(this.agent, this, ...args)
     this._steps.push(step)
