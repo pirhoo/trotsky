@@ -1,11 +1,7 @@
 import { AtUri } from "@atproto/api"
 
 import matchProperty from "./utils/matchProperty"
-import {
-  Step, 
-  type StepActor, 
-  type StepActorOutput 
-} from "../trotsky"
+import { Step, type StepActor, type StepActorOutput } from "../trotsky"
 
 export class StepActorUnblock<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {
   async apply () {    

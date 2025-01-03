@@ -1,9 +1,4 @@
-import type {
-  AtUri, 
-  AppBskyFeedGetPosts, 
-  AppBskyFeedDefs, 
-  AtpAgent
-} from "@atproto/api"
+import type { AtUri,  AppBskyFeedGetPosts,  AppBskyFeedDefs,  AtpAgent } from "@atproto/api"
 
 import type { ParentConstraint } from "../trotsky"
 import type { Resolvable } from "./utils/resolvable"

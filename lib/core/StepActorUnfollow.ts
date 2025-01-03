@@ -1,9 +1,5 @@
 import matchProperty from "./utils/matchProperty"
-import {
-  Step, 
-  StepActor, 
-  type StepActorOutput 
-} from "../trotsky"
+import { Step,  StepActor, type StepActorOutput } from "../trotsky"
 
 export class StepActorUnfollow<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {
   async apply () {

@@ -3,9 +3,7 @@ import type { HeadersMap } from "@atproto/xrpc"
 
 import type { Resolvable } from "./utils/resolvable"
 import { resolveValue } from "./utils/resolvable"
-import {
-  Step, StepListEntry, type ParentConstraint 
-} from "../trotsky"
+import { Step, StepListEntry, type ParentConstraint } from "../trotsky"
 
 type ListOutputSchemaCursor = string | undefined
 interface ListOutputSchema {

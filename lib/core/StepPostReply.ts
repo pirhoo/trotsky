@@ -2,11 +2,7 @@ import type { AppBskyFeedPost, AtpAgent } from "@atproto/api"
 import type { ResolvableReplyParams, ReplyParams } from "./mixins/PostMixins"
 import { resolveValue } from "./utils/resolvable"
 
-import {
-  Step, 
-  type StepPost, 
-  type StepPostOutput 
-} from "../trotsky"
+import { Step, type StepPost, type StepPostOutput } from "../trotsky"
 
 interface ReplyRecordRef {
   "uri": string;
