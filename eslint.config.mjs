@@ -21,9 +21,10 @@ export default tsPlugin.config([
       }
     },
     rules: {
+      'no-unused-vars': 'off',
+      'newline-per-chained-call': 'off',
       'jest/prefer-importing-jest-globals': 'error',
       'jest/no-disabled-tests': 'off',
-      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'error',
       '@stylistic/ts/semi': ['error', 'never'],
       '@stylistic/ts/indent': ['error', 2],
