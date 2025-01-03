@@ -38,11 +38,13 @@ describe("StepPostReply", () => {
   })
 
   test("reply to the post", async () => {
+    /* eslint-disable @stylistic/ts/indent */
     const reply = Trotsky
       .init(agentBksy)
       .post(postRef.uri)
-      .reply({ "text": "I love it too!" })
-      .withAgent(agentPds)
+        .reply({ "text": "I love it too!" })
+        .withAgent(agentPds)
+    /* eslint-enable @stylistic/ts/indent */
     
     await reply.run()
 
