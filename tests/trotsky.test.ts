@@ -1,4 +1,5 @@
-import { AtpAgent } from '@atproto/api'
+import { beforeAll, describe, expect, test } from "@jest/globals"
+import { AtpAgent } from "@atproto/api"
 
 import { 
   Trotsky, 
@@ -11,31 +12,31 @@ import {
   StepPostsEntry,
   StepPostReply,
   StepWait 
-} from '../lib/trotsky'
+} from "../lib/trotsky"
 
-describe('Trotsky', () => {
+describe("Trotsky", () => {
   let agent: AtpAgent
   
   beforeAll(async () => {
-    agent = new AtpAgent({ service: 'https://test.social' })    
+    agent = new AtpAgent({ "service": "https://test.social" })    
   })
 
-  test('gets an actor, wait 10s, gets its 10 first followers and 10 followings to follow them', async () => {
+  test("gets an actor, wait 10s, gets its 10 first followers and 10 followings to follow them", async () => {
     const trotsky = Trotsky
       .init(agent)
-      .actor('alice.test')
-        .wait(10e3)
-        .followers()
-          .take(10)
-            .each()        
-              .follow()
-              .back()
-          .back()
-        .followings()
-          .take(10)
-            .each()        
-              .follow()
-              .end()
+      .actor("alice.test")
+      .wait(10e3)
+      .followers()
+      .take(10)
+      .each()        
+      .follow()
+      .back()
+      .back()
+      .followings()
+      .take(10)
+      .each()        
+      .follow()
+      .end()
               
     expect(trotsky).toBeInstanceOf(Trotsky) 
     expect(trotsky.flattenSteps).toHaveLength(8) 
@@ -50,15 +51,15 @@ describe('Trotsky', () => {
 
   })
 
-  test('searchs posts containing foo, takes the first 10 and replies "bar" to each and wait 1s', async () => {
+  test("searchs posts containing foo, takes the first 10 and replies \"bar\" to each and wait 1s", async () => {
     const trotsky = Trotsky
       .init(agent)
-      .searchPosts({ q: 'foo' })
-        .take(10)
-        .each()
-          .reply({ text: 'bar' })
-          .wait(1e3)
-          .end()
+      .searchPosts({ "q": "foo" })
+      .take(10)
+      .each()
+      .reply({ "text": "bar" })
+      .wait(1e3)
+      .end()
           
     expect(trotsky).toBeInstanceOf(Trotsky) 
     expect(trotsky.flattenSteps).toHaveLength(4) 

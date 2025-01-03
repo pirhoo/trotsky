@@ -1,17 +1,18 @@
-import { AtpAgent } from '@atproto/api'
-import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
+import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
+import { AtpAgent } from "@atproto/api"
+import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
-import { Trotsky } from '../../lib/trotsky'
+import { Trotsky } from "../../lib/trotsky"
 
-describe('StepActorBlock', () => {
+describe("StepActorBlock", () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
-  let alice: { did: string, handle: string, password: string }
-  let bob: { did: string, handle: string, password: string }
+  let alice: { "did": string; "handle": string; "password": string }
+  let bob: { "did": string; "handle": string; "password": string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'step_actor_block' })
+    network = await TestNetwork.create({ "dbPostgresSchema": "step_actor_block" })
     agent = network.pds.getClient()
     
     sc = network.getSeedClient()
@@ -21,21 +22,21 @@ describe('StepActorBlock', () => {
     alice = sc.accounts[sc.dids.alice]
 
     await network.processAll()
-    await agent.login({ identifier: bob.handle, password: bob.password })
+    await agent.login({ "identifier": bob.handle, "password": bob.password })
   })
 
   afterAll(async () => {
     await network.close()
   })
 
-  test('block Alice', async () => {
+  test("block Alice", async () => {
     await Trotsky.init(agent).actor(alice.handle).block().wait(1e3).run()
-    const { data: { blocks } } = await agent.app.bsky.graph.getBlocks()
+    const { "data": { blocks } } = await agent.app.bsky.graph.getBlocks()
 
     expect(blocks).toEqual(
       expect.arrayContaining([
         expect.objectContaining({ 
-          handle: alice.handle
+          "handle": alice.handle
         })
       ])
     )

@@ -1,17 +1,18 @@
-import { AtpAgent } from '@atproto/api'
-import { TestNetwork, SeedClient, followsSeed } from '@atproto/dev-env'
+import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
+import { AtpAgent } from "@atproto/api"
+import { TestNetwork, SeedClient, followsSeed } from "@atproto/dev-env"
 
-import { Trotsky } from '../../lib/trotsky'
+import { Trotsky } from "../../lib/trotsky"
 
-describe('StepActorFollowers', () => {
+describe("StepActorFollowers", () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
-  let alice: { handle: string, password: string }
-  let bob: { handle: string, password: string }
+  let alice: { "handle": string; "password": string }
+  let bob: { "handle": string; "password": string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'step_actor_followers' })
+    network = await TestNetwork.create({ "dbPostgresSchema": "step_actor_followers" })
     agent = network.pds.getClient()
     
     sc = network.getSeedClient()
@@ -21,14 +22,14 @@ describe('StepActorFollowers', () => {
     alice = sc.accounts[sc.dids.alice]
 
     await network.processAll()
-    await agent.login({ identifier: bob.handle, password: bob.password })
+    await agent.login({ "identifier": bob.handle, "password": bob.password })
   })
 
   afterAll(async () => {
     await network.close()
   })
 
-  test('get Alice\'s all 4 followers', async () => {
+  test("get Alice's all 4 followers", async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followers = trotsky.followers()
     await trotsky.run()
@@ -36,7 +37,7 @@ describe('StepActorFollowers', () => {
     expect(followers.output).toHaveLength(4)
   })
 
-  test('get Alice\'s 2 first followers', async () => {
+  test("get Alice's 2 first followers", async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followers = trotsky.followers().take(2)
     await trotsky.run()
@@ -44,7 +45,7 @@ describe('StepActorFollowers', () => {
     expect(followers.output).toHaveLength(2)
   })
 
-  test('get Alice\'s 2 last followers', async () => {
+  test("get Alice's 2 last followers", async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followers = trotsky.followers().skip(2)
     await trotsky.run()

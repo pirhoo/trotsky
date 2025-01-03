@@ -1,17 +1,18 @@
-import { AtpAgent } from '@atproto/api'
-import { TestNetwork, SeedClient, usersSeed } from '@atproto/dev-env'
+import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
+import { AtpAgent } from "@atproto/api"
+import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
-import { Trotsky } from '../../lib/trotsky'
+import { Trotsky } from "../../lib/trotsky"
 
-describe('StepActor', () => {
+describe("StepActor", () => {
   let network: TestNetwork
   let agent: AtpAgent
   let sc: SeedClient
-  let alice: { did: string, handle: string, password: string }
-  let bob: { did: string, handle: string, password: string }
+  let alice: { "did": string; "handle": string; "password": string }
+  let bob: { "did": string; "handle": string; "password": string }
   
   beforeAll(async () => {
-    network = await TestNetwork.create({ dbPostgresSchema: 'step_actor' })
+    network = await TestNetwork.create({ "dbPostgresSchema": "step_actor" })
     agent = network.pds.getClient()
     
     sc = network.getSeedClient()
@@ -21,33 +22,33 @@ describe('StepActor', () => {
     alice = sc.accounts[sc.dids.alice]
 
     await network.processAll()
-    await agent.login({ identifier: bob.handle, password: bob.password })
+    await agent.login({ "identifier": bob.handle, "password": bob.password })
   })
 
   afterAll(async () => {
     await network.close()
   })
 
-  test('get Alice\'s profile', async () => {
+  test("get Alice's profile", async () => {
     const trotsky = await Trotsky.init(agent)
     const actor = trotsky.actor(alice.handle)
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
-    expect(actor.output).toHaveProperty('handle', alice.handle)
+    expect(actor.output).toHaveProperty("handle", alice.handle)
   })
 
-  test('get Alice\'s profile with a promise', async () => {
+  test("get Alice's profile with a promise", async () => {
     const trotsky = await Trotsky.init(agent)
     const actor = trotsky.actor(async () => alice.handle)
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
-    expect(actor.output).toHaveProperty('handle', alice.handle)
+    expect(actor.output).toHaveProperty("handle", alice.handle)
   })
   
-  test('get Alice\'s followers', async () => {
+  test("get Alice's followers", async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle).followers()
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
   })
   
-  test('get Alice\'s followings', async () => {
+  test("get Alice's followings", async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle).followings()
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
   })
