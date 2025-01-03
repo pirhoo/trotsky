@@ -28,16 +28,16 @@ describe('StepPost', () => {
     const { uri } = sc.posts[sc.dids.bob][0].ref
     const post = Trotsky.init(agent).post(uri)
     await post.run()
-    expect(post.context).toHaveProperty('record')
-    expect(post.context.record).toHaveProperty('text', 'Dan Dan Noodle is my favorite meal')
+    expect(post.output).toHaveProperty('record')
+    expect(post.output.record).toHaveProperty('text', 'Dan Dan Noodle is my favorite meal')
   })
 
   test('get the reply', async () => {
     const { uri } = sc.replies[sc.dids.alice][0].ref
     const post = Trotsky.init(agent).post(uri)
     await post.run()
-    expect(post.context).toHaveProperty('record')
-    expect(post.context.record).toHaveProperty('text', 'Love it too!')
-    expect(post.context.record).toHaveProperty('reply')
+    expect(post.output).toHaveProperty('record')
+    expect(post.output.record).toHaveProperty('text', 'Love it too!')
+    expect(post.output.record).toHaveProperty('reply')
   })
 })

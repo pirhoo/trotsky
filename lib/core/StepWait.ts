@@ -1,6 +1,6 @@
-import { Step } from '../trotsky'
+import { Step, type ParentConstraint } from '../trotsky'
 
-export class StepWait extends Step {
+export class StepWait<P = ParentConstraint, C = null, O = null> extends Step<P, C, O> {
   protected _duration: number
 
   constructor(agent, parent, duration = 0) {

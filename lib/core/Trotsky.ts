@@ -8,17 +8,20 @@ import type { Resolvable } from './utils/resolvable'
 
 import { StepActor, StepWait, StepPost, StepSearchPosts, StepList } from '../trotsky'
 
-export type ParentConstraint = Trotsky | null
+export type ParentConstraint = unknown
+export type ContextConstraint = null
+export type OutputConstraint = null
 
-export class Trotsky {
+export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputConstraint> {
   _agent: AtpAgent
-  _parent: ParentConstraint = null
-  _steps: Step[] = []
-  _context: unknown | null = null
+  _steps: Step<this>[] = []
+  _parent: P | null = null
+  _context: C | null = null
+  _output: O | null = null
 
-  constructor(agent: AtpAgent, parent: ParentConstraint = null) {
+  constructor(agent: AtpAgent, parent?: P) {
     this._agent = agent
-    this._parent = parent
+    this._parent = parent ?? null
   }
   
   withAgent(agent: AtpAgent) {
@@ -26,47 +29,50 @@ export class Trotsky {
     return this
   }
 
+  withContext(context: C) {
+    this._context = context
+    return this
+  }
+
   actor(param: Resolvable<StepActorParam>) {
-    const step = new StepActor(this.agent, this, param)
+    const step = new StepActor<this>(this.agent, this, param)
     this._steps.push(step)
     return step
   }
 
   post(uri: Resolvable<StepPostUri>) {
-    const step = new StepPost(this.agent, this, uri)
+    const step = new StepPost<this>(this.agent, this, uri)
     this._steps.push(step)
     return step
   }
 
   searchPosts(queryParams: QueryParams) {
-    const step = new StepSearchPosts(this.agent, this, queryParams)
+    const step = new StepSearchPosts<this>(this.agent, this, queryParams)
     this._steps.push(step)
     return step
   }
 
   end(): Trotsky {
-    return this.back()?.end() ?? this
+    return this.isTrotsky ? this as Trotsky : (this.back() as Step).end()
   }
 
-  back(): ParentConstraint {
+  back(): P | null {
     return this._parent
   }
 
-  append<Type extends Step>(type: new(agent: AtpAgent, parent: this, ...args) => Type, ...args: unknown[]): Type {
+  append<Type extends Step<this>>(type: new(agent: AtpAgent, parent: this, ...args) => Type, ...args: unknown[]): Type {
     const step = new type(this.agent, this, ...args)
-    this._steps.push(step)
+    this._steps.push(step as Type)
     return step
   }
 
   wait(duration = 0) {
-    this.append(StepWait, duration)
+    this.append(StepWait<this>, duration)
     return this
   }
 
   get steps(): Step[] {
-    return this._steps.reduce((acc, step: Step) => {
-      return [...acc, step]
-    }, [] as Step[])
+    return this._steps as Step[]
   }
   
   get flattenSteps(): Step[] {
@@ -80,19 +86,19 @@ export class Trotsky {
   }
 
   get context() {
-    return this._context ?? this.back()?.context
+    return this._context ?? (this.back() as Trotsky)?.output
   }
 
   set context(value) {
     this._context = value
   }
 
-  get ownContext() {
-    return this._context
+  get output() {
+    return this._output
   }
 
-  set ownContext(value) {
-    this._context = value
+  set output(value) {
+    this._output = value
   }
 
   get isTrotsky(): boolean {

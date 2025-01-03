@@ -32,8 +32,8 @@ describe('StepActorFollowings', () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followings = trotsky.followings()
     await trotsky.run()
-    expect(followings.context).toBeInstanceOf(Array)
-    expect(followings.context).toHaveLength(4)
+    expect(followings.output).toBeInstanceOf(Array)
+    expect(followings.output).toHaveLength(4)
   })
 
 
@@ -41,16 +41,16 @@ describe('StepActorFollowings', () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followings = trotsky.followings().take(2)
     await trotsky.run()
-    expect(followings.context).toBeInstanceOf(Array)
-    expect(followings.context).toHaveLength(2)
+    expect(followings.output).toBeInstanceOf(Array)
+    expect(followings.output).toHaveLength(2)
   })
 
   test('get Alice\'s 2 last followings', async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followings = trotsky.followings().skip(2)
     await trotsky.run()
-    expect(followings.context).toBeInstanceOf(Array)
-    expect(followings.context).toHaveLength(2)
+    expect(followings.output).toBeInstanceOf(Array)
+    expect(followings.output).toHaveLength(2)
   })
 
 
@@ -58,15 +58,15 @@ describe('StepActorFollowings', () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followings = trotsky.followings().skip(() => 2)
     await trotsky.run()
-    expect(followings.context).toBeInstanceOf(Array)
-    expect(followings.context).toHaveLength(2)
+    expect(followings.output).toBeInstanceOf(Array)
+    expect(followings.output).toHaveLength(2)
   })
 
   test('get Alice\'s 2 last followings with a promise', async () => {
     const trotsky = Trotsky.init(agent).actor(alice.handle)
     const followings = trotsky.followings().skip(Promise.resolve(2))
     await trotsky.run()
-    expect(followings.context).toBeInstanceOf(Array)
-    expect(followings.context).toHaveLength(2)
+    expect(followings.output).toBeInstanceOf(Array)
+    expect(followings.output).toHaveLength(2)
   })
 })

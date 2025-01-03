@@ -1,14 +1,16 @@
-import type { AppBskyFeedPost, AppBskyFeedDefs } from '@atproto/api'
+import type { AppBskyFeedPost } from '@atproto/api'
 import type { ResolvableReplyParams, ReplyParams } from './mixins/PostMixins'
 import { resolveValue } from './utils/resolvable'
 
-import { Step } from "../trotsky"
+import { Step, type StepPost, type StepPostOutput } from '../trotsky'
 
 interface ReplyRecordRef { uri: string, cid: string }
 interface ReplyRefs { parent: ReplyRecordRef, root: ReplyRecordRef }
 
-export class StepPostReply extends Step {
-  protected _record: ResolvableReplyParams
+export type StepPostReplyOutput = ReplyRecordRef
+
+export class StepPostReply<P = StepPost, C extends StepPostOutput = StepPostOutput, O extends StepPostReplyOutput = StepPostReplyOutput> extends Step<P, C, O> {
+  _record: ResolvableReplyParams
 
   constructor(agent, parent, record: ResolvableReplyParams) {
     super(agent, parent)
@@ -16,7 +18,7 @@ export class StepPostReply extends Step {
   }
 
   async apply() {
-    this.context = await this.agent.post(await this.queryParams())
+    this.output = await this.agent.post(await this.queryParams()) as O
   }
 
   async queryParams(): Promise<AppBskyFeedPost.Record> {
@@ -27,7 +29,7 @@ export class StepPostReply extends Step {
   }
 
   replyParams(): AppBskyFeedPost.Record['reply'] {
-    const post = this.context as AppBskyFeedDefs.PostView & { record?: { reply?: ReplyRefs } }
+    const post = this.context as C & { record?: { reply?: ReplyRefs } }
     const reply = post?.record?.reply ?? null
     const parent = { uri: post.uri, cid: post.cid }
     const root = reply ? { uri: reply.root.uri, cid: reply.root.cid } : parent

@@ -47,5 +47,6 @@ describe('StepPostReply', () => {
 
     expect(await reply.queryParams()).toHaveProperty('text', 'I love it too!')
     expect(await reply.queryParams()).toHaveProperty('reply')
+    expect(reply.output).toHaveProperty('cid')
   })
 })

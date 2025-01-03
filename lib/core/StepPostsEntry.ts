@@ -1,12 +1,8 @@
-import type { StepPosts } from '../trotsky'
+import type { StepPosts, StepPostsOutput } from '../trotsky'
 import { PostMixins } from './mixins/PostMixins'
 
 
-export class StepPostsEntry<Parent extends StepPosts> extends PostMixins {
-  back() {
-    return super.back() as Parent
-  }
-
+export class StepPostsEntry<P = StepPosts, C extends StepPostsOutput = StepPostsOutput, O = null> extends PostMixins<P, C, O> {
   async apply() {
     console.log('Iterate over post entries')
   }

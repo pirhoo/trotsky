@@ -1,6 +1,11 @@
-import { StepActorsEntry, StepList } from '../trotsky'
+import type { AppBskyActorGetProfiles } from '@atproto/api'
 
-export class StepActors extends StepList {
+import { ParentConstraint, StepActorsEntry, StepList } from '../trotsky'
+
+
+export type StepActorsOutput = AppBskyActorGetProfiles.OutputSchema['profiles']
+
+export class StepActors<P = ParentConstraint, C = null, O extends StepActorsOutput = StepActorsOutput> extends StepList<P, C, O> {
   _steps: StepActorsEntry<this>[] = []
 
   each(): StepActorsEntry<this> {

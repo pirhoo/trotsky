@@ -29,8 +29,8 @@ describe('StepSearchPosts', () => {
     await posts.run()
     
     expect(posts).toBeInstanceOf(StepSearchPosts)
-    expect(posts.context).toBeInstanceOf(Array)
-    expect(posts.context).toHaveLength(2)
+    expect(posts.output).toBeInstanceOf(Array)
+    expect(posts.output).toHaveLength(2)
   })
 
   test('search 1 post for "love"', async () => {
@@ -38,7 +38,7 @@ describe('StepSearchPosts', () => {
     await posts.run()
     
     expect(posts).toBeInstanceOf(StepSearchPosts)
-    expect(posts.context).toBeInstanceOf(Array)
-    expect(posts.context).toHaveLength(1)
+    expect(posts.output).toBeInstanceOf(Array)
+    expect(posts.output).toHaveLength(1)
   })
 })

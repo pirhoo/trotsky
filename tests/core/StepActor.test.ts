@@ -32,14 +32,14 @@ describe('StepActor', () => {
     const trotsky = await Trotsky.init(agent)
     const actor = trotsky.actor(alice.handle)
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
-    expect(actor.context).toHaveProperty('handle', alice.handle)
+    expect(actor.output).toHaveProperty('handle', alice.handle)
   })
 
   test('get Alice\'s profile with a promise', async () => {
     const trotsky = await Trotsky.init(agent)
     const actor = trotsky.actor(async () => alice.handle)
     expect(await trotsky.run()).toBeInstanceOf(Trotsky)
-    expect(actor.context).toHaveProperty('handle', alice.handle)
+    expect(actor.output).toHaveProperty('handle', alice.handle)
   })
   
   test('get Alice\'s followers', async () => {

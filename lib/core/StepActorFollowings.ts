@@ -1,24 +1,24 @@
 import type { AppBskyGraphGetFollows } from '@atproto/api'
-import { StepActor, StepActors } from '../trotsky'
 
-type StepActorFollowingsContext = AppBskyGraphGetFollows.OutputSchema['follows']
+import { StepActors, type StepActor, type StepActorOutput } from '../trotsky'
+
+type StepActorFollowingsOutput = AppBskyGraphGetFollows.OutputSchema['follows']
 type StepActorFollowingsQueryParams = AppBskyGraphGetFollows.QueryParams
 type StepActorFollowingsQueryParamsCursor = StepActorFollowingsQueryParams['cursor'] | undefined
 
-export class StepActorFollowings extends StepActors {
-  override _context: StepActorFollowingsContext = []
-
-  override back(): StepActor {
-    return super.back() as StepActor
-  }
+export class StepActorFollowings<P = StepActor, C extends StepActorOutput = StepActorOutput, O extends StepActorFollowingsOutput = StepActorFollowingsOutput> extends StepActors<P, C, O> {
 
   async applyPagination() {
-    this._context = await this.paginate<StepActorFollowingsContext, AppBskyGraphGetFollows.Response>('follows', (cursor) => {
+    this.output = await this.paginate<O, AppBskyGraphGetFollows.Response>('follows', (cursor) => {
       return this.agent.app.bsky.graph.getFollows(this.queryParams(cursor))
     })
   }
 
   queryParams(cursor: StepActorFollowingsQueryParamsCursor): StepActorFollowingsQueryParams {
-    return { actor: this.back().context.did, cursor }
+    if (!this.context) {
+      throw new Error('No context found for StepActorFollowings')
+    }
+  
+    return { actor: this.context.did, cursor }
   }
 }
