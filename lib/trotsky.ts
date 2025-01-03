@@ -27,6 +27,7 @@ export * from "./core/StepActorUnblock"
 export * from "./core/StepActorUnfollow"
 
 // Single post
+export * from "./core/StepCreatePost"
 export * from "./core/StepPost"
 export * from "./core/StepPostReply"
 

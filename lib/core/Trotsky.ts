@@ -4,9 +4,10 @@ import type { QueryParams } from "@atproto/api/src/client/types/app/bsky/feed/se
 import type { Step } from "../trotsky"
 import type { StepActorParam } from "./StepActor"
 import type { StepPostUri } from "./StepPost"
+import type { StepCreatePostParams } from "./StepCreatePost"
 import type { Resolvable } from "./utils/resolvable"
 
-import { StepActor, StepWait, StepPost, StepSearchPosts, StepList } from "../trotsky"
+import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepList } from "../trotsky"
 
 export type ParentConstraint = unknown
 export type ContextConstraint = null
@@ -48,6 +49,10 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
     const step = new StepPost<this>(this.agent, this, uri)
     this._steps.push(step)
     return step
+  }
+
+  createPost (record: StepCreatePostParams) {
+    return this.append(StepCreatePost<this>, record)
   }
 
   searchPosts (queryParams: QueryParams) {
