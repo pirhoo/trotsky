@@ -2,6 +2,24 @@
   "name": "trotsky",
   "version": "0.0.0",
   "main": "dist/trotsky.js",
+  "module": "dist/trotsky.js",
+  "author": "hello@pirhoo.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pirhoo/trotsky"
+  },
+  "bugs": {
+    "url": "https://github.com/pirhoo/trotsky/issues"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/trotsky.js",
+      "require": "./dist/trotsky.js"
+    }
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint",
@@ -10,8 +28,7 @@
     "doc:build": "yarn --cwd docs/ run build",
     "doc:preview": "yarn --cwd docs/ run preview"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["bluesky", "atproto", "automation", "typescript"],
   "license": "MIT",
   "description": "A type-safe library to build automation at the top of ATProto/Bluesky API.",
   "devDependencies": {
