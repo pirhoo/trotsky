@@ -12,8 +12,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": "🐎",
+  "license": "MIT",
+  "description": "A type-safe library to build automation at the top of ATProto/Bluesky API.",
   "devDependencies": {
     "@atproto/dev-env": "^0.3.71",
     "@eslint/js": "^9.17.0",
