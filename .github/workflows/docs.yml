@@ -16,10 +16,12 @@ jobs:
           node-version: 22.x
 
       - name: Install dependencies
+        working-directory: docs
         run: yarn --frozen-lockfile
 
       - name: Build documentation
-        run: yarn doc:build
+        working-directory: docs
+        run: yarn build
 
       - name: Upload documentation artifacts
         uses: actions/upload-pages-artifact@v3
