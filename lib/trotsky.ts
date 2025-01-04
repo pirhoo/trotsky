@@ -36,6 +36,7 @@ export * from "./core/StepActorUnfollow"
 export * from "./core/StepCreatePost"
 export * from "./core/StepPost"
 export * from "./core/StepPostReply"
+export * from "./core/StepPostLike"
 
 
 // Utils
