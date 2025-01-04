@@ -9,9 +9,17 @@ export default defineConfig({
       port: 9009,
       host: '0.0.0.0'
     }
-  },
+  },  
+  head: [
+    ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: 'Trotsky' }],
+    ['link', { rel: 'manifest', href: '/site.webmanifest' }]
+  ],
   themeConfig: {
-    logo: './logo.svg',    
+    logo: './logo.svg',  
     search: {
       provider: 'local'
     },
