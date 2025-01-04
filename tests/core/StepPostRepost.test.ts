@@ -39,12 +39,27 @@ describe("StepPostRepost", () => {
 
   test("repost the post without throwing an exception", async () => {
     /* eslint-disable @stylistic/ts/indent */
-    const reply = Trotsky
+    const repost = Trotsky
       .init(agentBksy)
       .post(postRef.uri)
         .repost()
         .withAgent(agentPds)
     /* eslint-enable @stylistic/ts/indent */    
-    await expect(reply.run()).resolves.not.toThrow()
+    await expect(repost.run()).resolves.not.toThrow()
+  })
+
+
+  test("repost the post and save output", async () => {
+    /* eslint-disable @stylistic/ts/indent */
+    const repost = Trotsky
+      .init(agentBksy)
+      .post(postRef.uri)
+        .repost()
+        .withAgent(agentPds)
+    /* eslint-enable @stylistic/ts/indent */    
+    await repost.run()
+    
+    expect(repost.output).toHaveProperty("cid")
+    expect(repost.output).toHaveProperty("uri")
   })
 })
