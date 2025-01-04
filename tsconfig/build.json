@@ -4,6 +4,6 @@
   "include": ["../lib"],
   "compilerOptions": {
     "rootDir": "../lib",
-    "outDir": "../.dist",
+    "outDir": "../dist",
   }
 }

@@ -2,10 +2,10 @@
 *.tsbuildinfo
 .idea
 .tscache
-.dist
 .DS_Store
+.npmrc
+.env
+dist/
 node_modules/
 coverage/
 temp/
-.npmrc
-.env

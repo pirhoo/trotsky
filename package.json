@@ -1,11 +1,14 @@
 {
   "name": "trotsky",
   "version": "0.0.0",
-  "main": ".dist/trotsky.js",
+  "main": "dist/trotsky.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint",
-    "build": "tsc --build tsconfig/build.json"
+    "build": "tsc --build tsconfig/build.json",
+    "doc:dev": "yarn --cwd docs/ run dev",
+    "doc:build": "yarn --cwd docs/ run build",
+    "doc:preview": "yarn --cwd docs/ run preview"
   },
   "keywords": [],
   "author": "",

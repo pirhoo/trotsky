@@ -39,6 +39,10 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/pirhoo/trotsky' },
       { icon: 'bluesky', link: 'https://bsky.app/profile/trotsky.pirhoo.com' }
-    ]
+    ],
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'By <a href="https://bsky.app/profile/pirhoo.com">@pirhoo.com</a>',
+    },
   }
 })
