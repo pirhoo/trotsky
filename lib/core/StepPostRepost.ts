@@ -1,6 +1,6 @@
 import { Step, type StepPost, type StepPostOutput } from "../trotsky"
 
-export type StepPostRepostOutput = { "uri": string; "cid": string; }
+export type StepPostRepostOutput = { "uri": string; "cid": string }
 
 export class StepPostRepost<P = StepPost, C extends StepPostOutput = StepPostOutput, O = null> extends Step<P, C, O> {
   async apply () {

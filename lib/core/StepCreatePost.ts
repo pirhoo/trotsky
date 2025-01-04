@@ -5,7 +5,6 @@ import { resolveValue, type Resolvable } from "./utils/resolvable"
 
 export type StepCreatePostParams = Partial<AppBskyFeedPost.Record> & Omit<AppBskyFeedPost.Record, "createdAt">
 export type StepCreatePostOutput = { "uri": string; "cid": string }
-
 export type ResolvableStepCreatePostParams = Resolvable<StepCreatePostParams>
 
 export class StepCreatePost<P = ParentConstraint, C = null, O extends StepCreatePostOutput = StepCreatePostOutput> extends Step<P, C, O> {
