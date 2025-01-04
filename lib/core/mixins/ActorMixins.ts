@@ -8,7 +8,8 @@ import {
   StepActorLikes, 
   StepActorPosts, 
   StepActorUnblock, 
-  StepActorUnfollow 
+  StepActorUnfollow,
+  StepActorStreamPosts
 } from "../../trotsky"
 
 export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
@@ -26,6 +27,10 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
 
   posts () {
     return this.append(StepActorPosts<this>)
+  }
+
+  streamPosts () {
+    return this.append(StepActorStreamPosts<this>)
   }
 
   block () {

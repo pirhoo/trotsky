@@ -19,7 +19,7 @@ interface ListResponse {
 
 export type StepListOutput = unknown[]
 
-export abstract class StepList<P = ParentConstraint, C = null, O extends StepListOutput = StepListOutput> extends Step<P, C, O> { 
+export abstract class StepList<P = ParentConstraint, C = unknown, O extends StepListOutput = StepListOutput> extends Step<P, C, O> { 
   _steps: StepListEntry<this>[]
 
   _context: C | null = null

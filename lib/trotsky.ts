@@ -8,6 +8,9 @@ export * from "./core/StepListEntry"
 export * from "./core/StepStream"
 export * from "./core/StepStreamEntry"
 
+// Streams
+export * from "./core/StepStreamPosts"
+
 // List of actors
 export * from "./core/StepActors"
 export * from "./core/StepActorsEntry"
@@ -25,6 +28,7 @@ export * from "./core/StepActorFollowers"
 export * from "./core/StepActorFollowings"
 export * from "./core/StepActorLikes"
 export * from "./core/StepActorPosts"
+export * from "./core/StepActorStreamPosts"
 export * from "./core/StepActorUnblock"
 export * from "./core/StepActorUnfollow"
 
@@ -33,8 +37,6 @@ export * from "./core/StepCreatePost"
 export * from "./core/StepPost"
 export * from "./core/StepPostReply"
 
-// Streams
-export * from "./core/StepStreamPosts"
 
 // Utils
 export * from "./core/StepWait"

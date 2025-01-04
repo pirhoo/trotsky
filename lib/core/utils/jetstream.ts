@@ -1,7 +1,7 @@
 import type { Did, FollowRecord, LikeRecord, PostRecord } from "@atproto/api"
-
 import WebSocket from "ws"
 import EventEmitter from "events"
+
 import { decompressJetstreamZstd } from "./zstd"
 
 export interface JetstreamMessageBase {
@@ -11,7 +11,7 @@ export interface JetstreamMessageBase {
 }
 
 export interface JetstreamMessageCommit extends JetstreamMessageBase {
-  "commit"?: {
+  "commit": {
     "rev": string;
     "operation": "create" | "update" | "delete";
     "collection": string;
@@ -22,7 +22,7 @@ export interface JetstreamMessageCommit extends JetstreamMessageBase {
 }
 
 export interface JetstreamMessageIdentity extends JetstreamMessageBase {
-  "identity"?: {
+  "identity": {
     "did": Did;
     "handle": string;
     "seq": number;
@@ -31,7 +31,7 @@ export interface JetstreamMessageIdentity extends JetstreamMessageBase {
 }
 
 export interface JetstreamMessageAccount extends JetstreamMessageBase {
-  "account"?: {
+  "account": {
     "active": boolean;
     "did": Did;
     "seq": number;

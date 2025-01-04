@@ -1,8 +1,6 @@
 import type { AppBskyActorGetProfiles } from "@atproto/api"
 
-import {
-  ParentConstraint, StepActorsEntry, StepList 
-} from "../trotsky"
+import { ParentConstraint, StepActorsEntry, StepList } from "../trotsky"
 
 
 export type StepActorsOutput = AppBskyActorGetProfiles.OutputSchema["profiles"]

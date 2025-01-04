@@ -39,6 +39,11 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
     return this
   }
 
+  withOutput (output: O) {
+    this._output = output
+    return this
+  }
+
   actor (param: Resolvable<StepActorParam>) {
     const step = new StepActor<this>(this.agent, this, param)
     this._steps.push(step)
@@ -62,9 +67,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
   }
 
   streamPosts () {
-    const step = new StepStreamPosts<this>(this.agent, this)
-    this._steps.push(step)
-    return step
+    return this.append(StepStreamPosts<this>)
   }
 
   end (): Trotsky {

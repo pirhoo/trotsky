@@ -5,11 +5,13 @@ import { resolveValue } from "./utils/resolvable"
 import { Step, type StepPost, type StepPostOutput } from "../trotsky"
 
 export interface StepPostReplyRecordRef {
-  "uri": string; "cid": string;  
+  "uri": string;
+  "cid": string;  
 }
 
 export interface StepPostReplyRef {
-  "parent": StepPostReplyRecordRef; "root": StepPostReplyRecordRef;  
+  "parent": StepPostReplyRecordRef;
+  "root": StepPostReplyRecordRef;  
 }
 
 export type StepPostReplyOutput = StepPostReplyRecordRef
