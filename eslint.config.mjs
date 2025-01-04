@@ -4,9 +4,12 @@ import tsPlugin from 'typescript-eslint'
 import stylisticTsPlugin from '@stylistic/eslint-plugin-ts'
 import jestPlugin from 'eslint-plugin-jest'
 
-export default tsPlugin.config([
+export default tsPlugin.config(
   {
-    files: ['tests/**/*.ts'],
+    ignores: ['docs', 'dist', 'node_modules'],
+  },
+  {
+    files: ['tests/**/*.ts', 'lib/**/*.ts'],
     extends: [
       esPlugin.configs.recommended,
       tsPlugin.configs.recommended,
@@ -32,28 +35,5 @@ export default tsPlugin.config([
       '@stylistic/ts/object-curly-spacing': ['error', 'always'],
       '@stylistic/ts/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }]
     }
-  },
-  {
-    files: ['lib/**/*.ts'],
-    extends: [
-      esPlugin.configs.recommended,
-      tsPlugin.configs.recommendedTypeCheckedOnly,
-      stylisticTsPlugin.configs['all-flat'],
-    ],
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        project: 'tsconfig/build.json',
-        tsconfigRootDir: import.meta.dirname,
-      }
-    },
-    rules: {
-      'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': ['error'],
-      '@stylistic/ts/semi': ['error', 'never'],
-      '@stylistic/ts/indent': ['error', 2],
-      '@stylistic/ts/object-curly-spacing': ['error', 'always'],
-      '@stylistic/ts/object-property-newline': ['error', { allowAllPropertiesOnSameLine: true }]
-    }
   }
-])
+)
