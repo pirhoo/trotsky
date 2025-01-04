@@ -5,6 +5,8 @@ export * from "./core/Trotsky"
 export * from "./core/Step"
 export * from "./core/StepList"
 export * from "./core/StepListEntry"
+export * from "./core/StepStream"
+export * from "./core/StepStreamEntry"
 
 // List of actors
 export * from "./core/StepActors"
@@ -30,6 +32,9 @@ export * from "./core/StepActorUnfollow"
 export * from "./core/StepCreatePost"
 export * from "./core/StepPost"
 export * from "./core/StepPostReply"
+
+// Streams
+export * from "./core/StepStreamPosts"
 
 // Utils
 export * from "./core/StepWait"

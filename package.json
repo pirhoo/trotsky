@@ -28,7 +28,12 @@
     "doc:build": "yarn --cwd docs/ run build",
     "doc:preview": "yarn --cwd docs/ run preview"
   },
-  "keywords": ["bluesky", "atproto", "automation", "typescript"],
+  "keywords": [
+    "bluesky",
+    "atproto",
+    "automation",
+    "typescript"
+  ],
   "license": "MIT",
   "description": "A type-safe library to build automation at the top of ATProto/Bluesky API.",
   "devDependencies": {
@@ -47,7 +52,9 @@
     "typescript-eslint": "^8.19.0"
   },
   "dependencies": {
-    "@atproto/api": "^0.13.23"
+    "@atproto/api": "^0.13.23",
+    "@skhaz/zstd": "^1.0.21",
+    "ws": "^8.18.0"
   },
   "resolutions": {
     "string-width": "^4.2.0",

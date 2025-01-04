@@ -7,7 +7,7 @@ import type { StepPostUri } from "./StepPost"
 import type { StepCreatePostParams } from "./StepCreatePost"
 import type { Resolvable } from "./utils/resolvable"
 
-import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepList } from "../trotsky"
+import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepStreamPosts, StepList } from "../trotsky"
 
 export type ParentConstraint = unknown
 export type ContextConstraint = null
@@ -57,6 +57,12 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
 
   searchPosts (queryParams: QueryParams) {
     const step = new StepSearchPosts<this>(this.agent, this, queryParams)
+    this._steps.push(step)
+    return step
+  }
+
+  streamPosts () {
+    const step = new StepStreamPosts<this>(this.agent, this)
     this._steps.push(step)
     return step
   }
