@@ -12,7 +12,7 @@ export abstract class StepStream<P = ParentConstraint, C = null, O = JetstreamMe
     return new Promise((resolve, reject) => {
       // Get the event emitter that is defined in the child class
       this.eventEmitter
-        .on("error", reject)
+        .on("error", reject)         
         .on("message", this.onMessage.bind(this))
     })
   }

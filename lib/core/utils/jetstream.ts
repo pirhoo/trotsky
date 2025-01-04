@@ -72,8 +72,8 @@ export function buildEventEmitter (wantedCollections: string[] = [], wantedDids:
   const eventEmitter: JetstreamEventEmitter = new EventEmitter()
   
   try {
-    const url = jetstreamUrl(wantedCollections, wantedDids, maxMessageSizeBytes)
-    const ws = new WebSocket(url)  
+    const url = jetstreamUrl(wantedCollections, wantedDids, maxMessageSizeBytes)    
+    const ws = new WebSocket(url)
     ws.on("message", async (buffer: Buffer<ArrayBufferLike>) => {
       try {
         const data = await decompressJetstreamZstd(buffer)

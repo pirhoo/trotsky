@@ -8,7 +8,7 @@ export function download (url: string, output: string): Promise<Buffer> {
 
     get(url, function (response) {
       response.pipe(file)
-      file.on("error", (err) => reject(err))      
+      file.on("error", (err) => reject(err))       
       file.on("finish", async () => {
         file.close()
         await readFile(output).then(resolve)
