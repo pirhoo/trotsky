@@ -39,12 +39,26 @@ describe("StepPostLike", () => {
 
   test("like the post without throwing an exception", async () => {
     /* eslint-disable @stylistic/ts/indent */
-    const reply = Trotsky
+    const like = Trotsky
       .init(agentBksy)
       .post(postRef.uri)
         .like()
         .withAgent(agentPds)
     /* eslint-enable @stylistic/ts/indent */    
-    await expect(reply.run()).resolves.not.toThrow()
+    await expect(like.run()).resolves.not.toThrow()
+  })
+
+  test("like the post and save output", async () => {
+    /* eslint-disable @stylistic/ts/indent */
+    const like = Trotsky
+      .init(agentBksy)
+      .post(postRef.uri)
+        .like()
+        .withAgent(agentPds)
+    /* eslint-enable @stylistic/ts/indent */    
+    await like.run()
+    
+    expect(like.output).toHaveProperty("cid")
+    expect(like.output).toHaveProperty("uri")
   })
 })
