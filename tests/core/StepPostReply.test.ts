@@ -39,15 +39,13 @@ describe("StepPostReply", () => {
 
   test("reply to the post", async () => {
     /* eslint-disable @stylistic/ts/indent */
-    const reply = Trotsky
+    const reply = await Trotsky
       .init(agentBksy)
       .post(postRef.uri)
         .reply({ "text": "I love it too!" })
         .withAgent(agentPds)
+        .runHere()
     /* eslint-enable @stylistic/ts/indent */
-    
-    await reply.run()
-
     expect(await reply.queryParams()).toHaveProperty("text", "I love it too!")
     expect(await reply.queryParams()).toHaveProperty("reply")
     expect(reply.output).toHaveProperty("cid")

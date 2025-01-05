@@ -50,14 +50,13 @@ describe("StepPostLike", () => {
 
   test("like the post and save output", async () => {
     /* eslint-disable @stylistic/ts/indent */
-    const like = Trotsky
+    const like = await Trotsky
       .init(agentBksy)
       .post(postRef.uri)
         .like()
         .withAgent(agentPds)
-    /* eslint-enable @stylistic/ts/indent */    
-    await like.run()
-    
+        .runHere()
+    /* eslint-enable @stylistic/ts/indent */
     expect(like.output).toHaveProperty("cid")
     expect(like.output).toHaveProperty("uri")
   })

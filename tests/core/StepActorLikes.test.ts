@@ -31,9 +31,7 @@ describe.skip("StepActorLikes", () => {
   })
 
   test("get user's likes", async () => {
-    const trotsky = Trotsky.init(agent).actor(bob.handle)
-    const likes = trotsky.likes()
-    await trotsky.run()
+    const likes = await Trotsky.init(agent).actor(bob.handle).likes().runHere()
     expect(likes.output).toBeInstanceOf(Array)
     expect(likes.output).toHaveLength(1)
   })

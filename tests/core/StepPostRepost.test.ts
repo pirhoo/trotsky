@@ -51,14 +51,13 @@ describe("StepPostRepost", () => {
 
   test("repost the post and save output", async () => {
     /* eslint-disable @stylistic/ts/indent */
-    const repost = Trotsky
+    const repost = await Trotsky
       .init(agentBksy)
       .post(postRef.uri)
         .repost()
         .withAgent(agentPds)
-    /* eslint-enable @stylistic/ts/indent */    
-    await repost.run()
-    
+        .runHere()
+    /* eslint-enable @stylistic/ts/indent */ 
     expect(repost.output).toHaveProperty("cid")
     expect(repost.output).toHaveProperty("uri")
   })

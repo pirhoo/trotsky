@@ -27,16 +27,14 @@ describe("StepPost", () => {
 
   test("get the post", async () => {
     const { uri } = sc.posts[sc.dids.bob][0].ref
-    const post = Trotsky.init(agent).post(uri)
-    await post.run()
+    const post = await Trotsky.init(agent).post(uri).runHere()
     expect(post.output).toHaveProperty("record")
     expect(post.output.record).toHaveProperty("text", "Dan Dan Noodle is my favorite meal")
   })
 
   test("get the reply", async () => {
     const { uri } = sc.replies[sc.dids.alice][0].ref
-    const post = Trotsky.init(agent).post(uri)
-    await post.run()
+    const post = await Trotsky.init(agent).post(uri).runHere()
     expect(post.output).toHaveProperty("record")
     expect(post.output.record).toHaveProperty("text", "Love it too!")
     expect(post.output.record).toHaveProperty("reply")

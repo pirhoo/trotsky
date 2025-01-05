@@ -288,6 +288,14 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
   }
 
   /**
+   * Runs all steps in the sequence and returns the current {@link Step} instance.
+   */
+  async runHere () {
+    await this.run()
+    return this
+  }
+
+  /**
    * Initializes a new {@link Trotsky} instance with the specified agent.
    * @param agent - The {@link AtpAgent} instance.
    * @returns A new {@link Trotsky} instance.

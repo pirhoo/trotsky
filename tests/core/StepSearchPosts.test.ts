@@ -26,18 +26,14 @@ describe("StepSearchPosts", () => {
   })
 
   test("search 2 posts for \"foo\"", async () => {
-    const posts = Trotsky.init(agent).searchPosts({ "q": "foo" })
-    await posts.run()
-    
+    const posts = await Trotsky.init(agent).searchPosts({ "q": "foo" }).runHere()
     expect(posts).toBeInstanceOf(StepSearchPosts)
     expect(posts.output).toBeInstanceOf(Array)
     expect(posts.output).toHaveLength(2)
   })
 
   test("search 1 post for \"love\"", async () => {
-    const posts = Trotsky.init(agent).searchPosts({ "q": "love" })
-    await posts.run()
-    
+    const posts = await Trotsky.init(agent).searchPosts({ "q": "love" }).runHere()
     expect(posts).toBeInstanceOf(StepSearchPosts)
     expect(posts.output).toBeInstanceOf(Array)
     expect(posts.output).toHaveLength(1)

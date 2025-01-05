@@ -30,43 +30,33 @@ describe("StepActorFollowings", () => {
   })
 
   test("get Alice's all 4 followings", async () => {
-    const trotsky = Trotsky.init(agent).actor(alice.handle)
-    const followings = trotsky.followings()
-    await trotsky.run()
+    const followings = await Trotsky.init(agent).actor(alice.handle).followings().runHere()
     expect(followings.output).toBeInstanceOf(Array)
     expect(followings.output).toHaveLength(4)
   })
 
 
   test("get Alice's 2 first followings", async () => {
-    const trotsky = Trotsky.init(agent).actor(alice.handle)
-    const followings = trotsky.followings().take(2)
-    await trotsky.run()
+    const followings = await Trotsky.init(agent).actor(alice.handle).followings().take(2).runHere()
     expect(followings.output).toBeInstanceOf(Array)
     expect(followings.output).toHaveLength(2)
   })
 
   test("get Alice's 2 last followings", async () => {
-    const trotsky = Trotsky.init(agent).actor(alice.handle)
-    const followings = trotsky.followings().skip(2)
-    await trotsky.run()
+    const followings = await Trotsky.init(agent).actor(alice.handle).followings().skip(2).runHere()
     expect(followings.output).toBeInstanceOf(Array)
     expect(followings.output).toHaveLength(2)
   })
 
 
   test("get Alice's 2 last followings with a function", async () => {
-    const trotsky = Trotsky.init(agent).actor(alice.handle)
-    const followings = trotsky.followings().skip(() => 2)
-    await trotsky.run()
+    const followings = await Trotsky.init(agent).actor(alice.handle).followings().skip(() => 2).runHere()
     expect(followings.output).toBeInstanceOf(Array)
     expect(followings.output).toHaveLength(2)
   })
 
   test("get Alice's 2 last followings with a promise", async () => {
-    const trotsky = Trotsky.init(agent).actor(alice.handle)
-    const followings = trotsky.followings().skip(Promise.resolve(2))
-    await trotsky.run()
+    const followings = await Trotsky.init(agent).actor(alice.handle).followings().skip(Promise.resolve(2)).runHere()
     expect(followings.output).toBeInstanceOf(Array)
     expect(followings.output).toHaveLength(2)
   })
