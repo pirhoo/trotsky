@@ -13,24 +13,24 @@ import {
 } from "../../trotsky"
 
 export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
-  followers () {
+  followers (): StepActorFollowers<this> {
     return this.append(StepActorFollowers<this>)
   }
 
-  followings () {
+  followings (): StepActorFollowings<this> {
     return this.append(StepActorFollowings<this>)
   }
 
-  likes () {
+  likes (): StepActorLikes<this> {
     return this.append(StepActorLikes<this>)
   }
 
-  posts () {
+  posts (): StepActorPosts<this> {
     return this.append(StepActorPosts<this>)
   }
 
-  streamPosts () {
-    return this.append(StepActorStreamPosts<this>)
+  streamPosts<T = StepActorStreamPosts<this>>(): T {
+    return this.append(StepActorStreamPosts<this>) as T
   }
 
   block () {

@@ -86,7 +86,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @param param - Parameters for the actor step.
    * @returns The new {@link StepActor} instance.
    */
-  actor (param: Resolvable<StepActorParam>) {
+  actor (param: Resolvable<StepActorParam>): StepActor<this> {
     return this.append(StepActor<this>, param)
   }
 
@@ -95,7 +95,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @param uri - The post URI.
    * @returns The new {@link StepPost} instance.
    */
-  post (uri: Resolvable<StepPostUri>) {
+  post (uri: Resolvable<StepPostUri>): StepPost<this> {
     return this.append(StepPost<this>, uri)
   }
 
@@ -104,7 +104,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @param record - Parameters for creating a post.
    * @returns The new {@link StepCreatePost} instance.
    */
-  createPost (record: StepCreatePostParams) {
+  createPost (record: StepCreatePostParams): StepCreatePost<this> {
     return this.append(StepCreatePost<this>, record)
   }
 
@@ -113,7 +113,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @param queryParams - Search parameters.
    * @returns The new {@link StepSearchPosts} instance.
    */
-  searchPosts (queryParams: QueryParams) {
+  searchPosts (queryParams: QueryParams): StepSearchPosts<this> {
     return this.append(StepSearchPosts<this>, queryParams)
   }
 
@@ -121,8 +121,8 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * Adds a {@link StepStreamPosts} step.
    * @returns The new {@link StepStreamPosts} instance.
    */
-  streamPosts () {
-    return this.append(StepStreamPosts<this>)
+  streamPosts<T = StepStreamPosts<this>>(): T {
+    return this.append(StepStreamPosts<this>) as T
   }
 
   /**

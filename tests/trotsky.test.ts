@@ -55,7 +55,6 @@ describe("Trotsky", () => {
   })
 
   test("searchs posts containing foo, takes the first 10 and replies \"bar\" to each and wait 1s", async () => {
-
     /* eslint-disable @stylistic/ts/indent */
     const trotsky = Trotsky
       .init(agent)
@@ -66,7 +65,7 @@ describe("Trotsky", () => {
           .wait(1e3)
           .end()
     /* eslint-enable @stylistic/ts/indent */
-          
+    
     expect(trotsky).toBeInstanceOf(Trotsky) 
     expect(trotsky.flattenSteps).toHaveLength(4) 
     expect(trotsky.flattenSteps[0]).toBeInstanceOf(StepSearchPosts)

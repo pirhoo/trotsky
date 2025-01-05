@@ -7,15 +7,15 @@ export type PostReplyParams = Partial<AppBskyFeedPost.Record> & { "text": string
 export type ResolvablePostReplyParams = Resolvable<PostReplyParams>
 
 export abstract class PostMixins<P, C, O> extends Step<P, C, O> {
-  reply (record: ResolvablePostReplyParams) {
+  reply (record: ResolvablePostReplyParams): StepPostReply<this> {
     return this.append(StepPostReply<this>, record)
   }
 
-  like () {
+  like (): StepPostLike<this> {
     return this.append(StepPostLike<this>)
   }
 
-  repost () {
+  repost (): StepPostRepost<this> {
     return this.append(StepPostRepost<this>)
   }
 }

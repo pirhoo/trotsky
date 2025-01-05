@@ -54,7 +54,8 @@ export abstract class StepList<P = ParentConstraint, C = unknown, O extends Step
 
     for (const context of this.output!) {
       for (const step of this.steps) {
-        await step.withContext(context).applyAll()
+        // Use current context as output for each child step
+        await step.withOutput(context).applyAll()
       }
     }
   }

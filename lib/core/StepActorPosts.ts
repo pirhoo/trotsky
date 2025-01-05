@@ -1,4 +1,4 @@
-import type { AppBskyFeedGetAuthorFeed } from "@atproto/api"
+import type { AppBskyFeedGetAuthorFeed, AppBskyFeedDefs } from "@atproto/api"
 
 import {
   StepPosts, 
@@ -37,9 +37,11 @@ export class StepActorPosts<P = StepActor, C extends StepActorOutput = StepActor
    * Fetches paginated results using the agent and appends them to the output.
    */
   async applyPagination () {
-    this.output = await this.paginate<O, AppBskyFeedGetAuthorFeed.Response>("feed", (cursor) => {
+    const feed = await this.paginate<AppBskyFeedDefs.FeedViewPost[], AppBskyFeedGetAuthorFeed.Response>("feed", (cursor) => {
       return this.agent.app.bsky.feed.getAuthorFeed(this.queryParams(cursor))
     })
+
+    this.output = feed.map((post: AppBskyFeedDefs.FeedViewPost) => post.post) as O
   }
 
   /**
