@@ -24,14 +24,14 @@ export default defineConfig({
       provider: 'local'
     },
     nav: [
-      { text: 'Guide', link: '/guide' },
+      { text: 'Guide', link: '/guide/getting-started' },
       { text: 'API', link: '/api' }
     ],
     sidebar: [
       {
         text: 'Guide',
         items: [
-          { text: 'Getting started', link: '/guide' },
+          { text: 'Getting started', link: '/guide/getting-started' },
           { text: 'Why Trotsky', link: '/guide/why' },
           { text: 'Features', link: '/guide/features' },
           { text: 'Code of Conduct', link: '/guide/code-of-conduct' },
