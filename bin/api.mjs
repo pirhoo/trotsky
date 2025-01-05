@@ -1,4 +1,4 @@
-import fsExtra from "fs-extra";
+import fsExtra from "fs-extra"
 import { readdir } from "fs/promises"
 import { createInterface } from "readline"
 import { join, parse } from "path"
@@ -33,14 +33,14 @@ async function rewrite () {
   const files = await readdir(API_OUTPUT_DIR)
   for (const file of files) {
     try {
-      const { name: id, ext } = parse(file);
+      const { "name": id, ext } = parse(file)
       // Skip non-markdown files
       if (ext !== ".md") continue
 
       const path = join(API_OUTPUT_DIR, file)
       const input = fsExtra.createReadStream(path)
       const output = []
-      const lines = createInterface({ input, crlfDelay: Infinity })
+      const lines = createInterface({ input, "crlfDelay": Infinity })
 
       let title = false
       let breadcrumb = false
@@ -48,20 +48,20 @@ async function rewrite () {
       lines.on("line", (line) => {
         // Fix title to use h1
         if (!title && line.match(/## (.*)/)) {
-          line = line.replace(/## (.*)/, '# $1')
+          line = line.replace(/## (.*)/, "# $1")
           title = true
         }
 
         // Fix breadcrumbs to use a different separator
         if (!breadcrumb && line.match(/\[Home\]\(.\/index\.md\) &gt; (.*)/)) {
-          line = line.replace(/\[Home\]/, '\[Packages\]')
-          line = line.replace(/&gt;/g, '&nbsp;&#8250;&nbsp;')
+          line = line.replace(/\[Home\]/, "\[Packages\]")
+          line = line.replace(/&gt;/g, "&nbsp;&#8250;&nbsp;")
           breadcrumb = true
         }
 
         // Remove breadcrumbs from home page
         if (!breadcrumb && line.match(/\[Home\]\(.\/index\.md\)/)) {
-          line = ''
+          line = ""
           breadcrumb = true
         }
         
@@ -72,7 +72,7 @@ async function rewrite () {
       input.close()
       await fsExtra.writeFile(path, output.join("\n"))
     } catch (err) {
-      console.error(`Error while processing ${file}: ${err}`);
+      console.error(`Error while processing ${file}: ${err}`)
     }
   }
 }
