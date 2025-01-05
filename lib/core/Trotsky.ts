@@ -4,6 +4,7 @@ import type { QueryParams } from "@atproto/api/src/client/types/app/bsky/feed/se
 import type { Step } from "../trotsky"
 import type { StepActorParam } from "./StepActor"
 import type { StepPostUri } from "./StepPost"
+import type { StepCreatePostParams } from "./StepCreatePost"
 import type { StepWhenPredicate } from "./StepWhen"
 import type { Resolvable } from "./utils/resolvable"
 
