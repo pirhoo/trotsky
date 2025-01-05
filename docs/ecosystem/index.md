@@ -2,7 +2,7 @@
 
 Welcome to the **Trotsky Ecosystem** page—your one-stop hub for sharing ideas, scripts, and best practices you’ve built with Trotsky. The goal is to highlight community-driven creativity, help newcomers discover powerful workflows, and inspire innovation on Bluesky!
 
-Have you built a neat automation script, a quirky bot, or an interesting chain of steps with Trotsky yet? **We want to see it!** Feel free to share your code examples with us, etheir by openning an [issue on Github](https://github.com/pirhoo/trotsky/issues) or direclty submitting a PR to edit this document.
+Have you built a neat automation script, a quirky bot, or an interesting chain of steps with Trotsky yet? **We want to see it!** Feel free to share your code examples with us, etheir by openning an [issue on Github](https://github.com/pirhoo/trotsky/issues) or directly submitting a PR to edit this document.
 
 ## Reply-bots
 
