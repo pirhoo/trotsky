@@ -1,7 +1,7 @@
 import type { AtpAgent, AppBskyActorGetProfile } from "@atproto/api"
 
 import type { Resolvable } from "./utils/resolvable"
-import type { ParentConstraint, Step } from "../trotsky"
+import type { StepBuilder, Step } from "../trotsky"
 import { ActorMixins } from "./mixins/ActorMixins"
 import { resolveValue } from "./utils/resolvable"
 
@@ -24,7 +24,7 @@ export type StepActorOutput = AppBskyActorGetProfile.OutputSchema
  * @typeParam O - Type of the output object, extending {@link StepActorOutput}.
  * @public
  */
-export class StepActor<P = ParentConstraint, C = null, O extends StepActorOutput = StepActorOutput> extends ActorMixins<P, C, O> {
+export class StepActor<P = StepBuilder, C = null, O extends StepActorOutput = StepActorOutput> extends ActorMixins<P, C, O> {
 
   /** @internal */
   _param: Resolvable<StepActorParam>
@@ -46,7 +46,7 @@ export class StepActor<P = ParentConstraint, C = null, O extends StepActorOutput
    * @returns A promise that resolves when the step is complete.
    */
   async apply () {
-    const actor = await resolveValue<StepActorParam>(this as Step<ParentConstraint>, this._param)
+    const actor = await resolveValue<StepActorParam>(this as Step<StepBuilder>, this._param)
     const { data } = await this.agent.getProfile({ actor })
     this.output = data as O
   }

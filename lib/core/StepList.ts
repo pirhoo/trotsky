@@ -3,14 +3,16 @@ import type { HeadersMap } from "@atproto/xrpc"
 
 import type { Resolvable } from "./utils/resolvable"
 import { resolveValue } from "./utils/resolvable"
-import { Step, StepListEntry, type ParentConstraint } from "../trotsky"
+import { Step, StepListEntry, type StepBuilder } from "../trotsky"
 
 type ListOutputSchemaCursor = string | undefined
+
 interface ListOutputSchema {
   "cursor"?: ListOutputSchemaCursor;
   "hitsTotal"?: number;
   [k: string]: unknown; 
 }
+
 interface ListResponse {
   "success": boolean;
   "headers": HeadersMap;
@@ -19,12 +21,8 @@ interface ListResponse {
 
 export type StepListOutput = unknown[]
 
-export abstract class StepList<P = ParentConstraint, C = unknown, O extends StepListOutput = StepListOutput> extends Step<P, C, O> { 
+export abstract class StepList<P = StepBuilder, C = unknown, O extends StepListOutput = StepListOutput> extends Step<P, C, O> { 
   _steps: StepListEntry<this>[]
-
-  _context: C | null = null
-
-  _output: O | null = null
 
   _take: Resolvable<number> = Infinity
 

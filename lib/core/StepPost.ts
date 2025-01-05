@@ -1,6 +1,6 @@
 import type { AtUri, AppBskyFeedGetPosts, AtpAgent } from "@atproto/api"
 
-import type { ParentConstraint } from "../trotsky"
+import type { StepBuilder } from "../trotsky"
 import type { Resolvable } from "./utils/resolvable"
 import { PostMixins } from "./mixins/PostMixins"
 import { resolveValue } from "./utils/resolvable"
@@ -9,7 +9,7 @@ export type StepPostQueryParams = AppBskyFeedGetPosts.QueryParams
 export type StepPostUri = string | AtUri
 export type StepPostOutput = { "uri": string; "cid": string; "record": object }
 
-export class StepPost<P = ParentConstraint, C = null, O extends StepPostOutput = StepPostOutput> extends PostMixins<P, C, O> {
+export class StepPost<P = StepBuilder, C = null, O extends StepPostOutput = StepPostOutput> extends PostMixins<P, C, O> {
   _uri: Resolvable<StepPostUri>
 
   constructor (agent: AtpAgent, parent: P, uri: Resolvable<StepPostUri>) {

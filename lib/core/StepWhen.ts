@@ -1,5 +1,5 @@
 import type { AtpAgent } from "@atproto/api"
-import { Step, type ParentConstraint } from "../trotsky"
+import { Step, type StepBuilder } from "../trotsky"
 import { Resolvable, resolveValue } from "./utils/resolvable"
 
 
@@ -16,7 +16,7 @@ export type StepWhenPredicate = boolean
  * This step evaluates a predicate, which can be a boolean value or a resolvable that
  * resolves to a boolean. The result of the predicate evaluation is stored in the output.
  */
-export class StepWhen<P = ParentConstraint, C = unknown, O = boolean> extends Step<P, C, O> {
+export class StepWhen<P = StepBuilder, C = unknown, O = boolean> extends Step<P, C, O> {
   private _predicate: Resolvable<StepWhenPredicate>
 
   /**

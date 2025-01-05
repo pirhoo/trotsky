@@ -1,8 +1,8 @@
 import type{ AtpAgent } from "@atproto/api"
 
-import { Step, type ParentConstraint } from "../trotsky"
+import { Step, type StepBuilder } from "../trotsky"
 
-export class StepWait<P = ParentConstraint, C = null, O = null> extends Step<P, C, O> {
+export class StepWait<P = StepBuilder, C = null, O = null> extends Step<P, C, O> {
   protected _duration: number
 
   constructor (agent: AtpAgent, parent: P, duration = 0) {

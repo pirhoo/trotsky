@@ -1,9 +1,9 @@
 import { type AtpAgent } from "@atproto/api"
 
-import { Step, StepStreamEntry, type ParentConstraint } from "../trotsky"
+import { Step, StepStreamEntry, type StepBuilder } from "../trotsky"
 import { type JetstreamMessage, type JetstreamMessageCommit, type JetstreamEventEmitter } from "./utils/jetstream"
 
-export abstract class StepStream<P = ParentConstraint, C = unknown, O = JetstreamMessage> extends Step<P, C, O> {
+export abstract class StepStream<P = StepBuilder, C = unknown, O = JetstreamMessage> extends Step<P, C, O> {
   _steps: StepStreamEntry<this>[]
 
 

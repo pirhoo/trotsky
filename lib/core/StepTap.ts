@@ -1,5 +1,5 @@
 import type { AtpAgent } from "@atproto/api"
-import { Step, type ParentConstraint } from "../trotsky"
+import { Step, type StepBuilder } from "../trotsky"
 
 /**
  * Defines the type for a function that intercepts a {@link Step} instance.
@@ -24,7 +24,7 @@ export type StepTapInterceptor =
  *
  * @see {@link Step}
  */
-export class StepTap<P = ParentConstraint, C = unknown, O = null> extends Step<P, C, O> {
+export class StepTap<P = StepBuilder, C = unknown, O = null> extends Step<P, C, O> {
 
   /**
    * The interceptor function to be executed during the apply phase.
@@ -48,6 +48,6 @@ export class StepTap<P = ParentConstraint, C = unknown, O = null> extends Step<P
    * Executes the interceptor function with the current step as its argument.
    */
   async apply (): Promise<void> {
-    await this._interceptor(this)
+    await this._interceptor(this as Step)
   }
 }
