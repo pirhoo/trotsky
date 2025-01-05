@@ -87,9 +87,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @returns The new {@link StepActor} instance.
    */
   actor (param: Resolvable<StepActorParam>) {
-    const step = new StepActor<this>(this.agent, this, param)
-    this._steps.push(step)
-    return step
+    return this.append(StepActor<this>, param)
   }
 
   /**
@@ -98,9 +96,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @returns The new {@link StepPost} instance.
    */
   post (uri: Resolvable<StepPostUri>) {
-    const step = new StepPost<this>(this.agent, this, uri)
-    this._steps.push(step)
-    return step
+    return this.append(StepPost<this>, uri)
   }
 
   /**
@@ -118,9 +114,7 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @returns The new {@link StepSearchPosts} instance.
    */
   searchPosts (queryParams: QueryParams) {
-    const step = new StepSearchPosts<this>(this.agent, this, queryParams)
-    this._steps.push(step)
-    return step
+    return this.append(StepSearchPosts<this>, queryParams)
   }
 
   /**
@@ -165,7 +159,8 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @returns The current {@link Trotsky} instance.
    */
   wait (duration = 0) {
-    return this.append(StepWait<this>, duration)
+    this.append(StepWait<this>, duration)
+    return this
   }
 
   /**
