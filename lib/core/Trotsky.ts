@@ -6,9 +6,20 @@ import type { StepActorParam } from "./StepActor"
 import type { StepPostUri } from "./StepPost"
 import type { StepCreatePostParams } from "./StepCreatePost"
 import type { StepWhenPredicate } from "./StepWhen"
+import type { StepTapInterceptor } from "./StepTap"
 import type { Resolvable } from "./utils/resolvable"
 
-import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepStreamPosts, StepList, StepWhen } from "../trotsky"
+import { 
+  StepActor, 
+  StepWait, 
+  StepPost, 
+  StepCreatePost, 
+  StepSearchPosts, 
+  StepStreamPosts, 
+  StepList, 
+  StepTap, 
+  StepWhen 
+} from "../trotsky"
 
 /**
  * Type constraints for generic parameters of the {@link Trotsky} class.
@@ -166,10 +177,19 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
   /**
    *Adds a {@link StepWhen} step.
    * @param predicate - The predicate function.
-   * @returns The new {@link StepWhen} instance.
+   * @returns The current {@link Trotsky} instance.
    */
   when (predicate: Resolvable<StepWhenPredicate>) {
     this.append(StepWhen<this>, predicate)
+    return this
+  }
+
+  /**
+   * Adds a {@link StepTap} step.
+   * @returns The current {@link Trotsky} instance.
+   */
+  tap (interceptor: StepTapInterceptor) {
+    this.append(StepTap<this>, interceptor)
     return this
   }
 
