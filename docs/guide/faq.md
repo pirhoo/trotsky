@@ -12,7 +12,7 @@ The name "Trotsky" is a reference to the historical figure Leon Trotsky. It refl
 
 Trotsky relies on the APIs it interacts with, and therefore it is subject to their limitations, such as:
 
-* API rate limits.
+* API [rate limits](https://docs.bsky.app/docs/advanced-guides/rate-limits).
 * Availability of features and data from the API.
 
 ## Is it dangerous to use Trotsky?
