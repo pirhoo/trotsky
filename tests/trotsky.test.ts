@@ -73,4 +73,19 @@ describe("Trotsky", () => {
     expect(trotsky.flattenSteps[2]).toBeInstanceOf(StepPostReply)
     expect(trotsky.flattenSteps[3]).toBeInstanceOf(StepWait)
   })
+
+  test("set a configuration value", () => {
+    const trotsky = Trotsky.init(agent).config("foo", "bar")
+    expect(trotsky.config("foo")).toBe("bar")
+  })
+
+  test("set a configuration object", () => {
+    const trotsky = Trotsky.init(agent).config({ "foo": "bar" })
+    expect(trotsky.config("foo")).toBe("bar")
+  })
+
+  test("override a configuration object", () => {
+    const trotsky = Trotsky.init(agent).config({ "foo": "bar" }).config({ "foo": "biz" })
+    expect(trotsky.config("foo")).toBe("biz")
+  })
 })

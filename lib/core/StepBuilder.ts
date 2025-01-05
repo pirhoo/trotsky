@@ -1,6 +1,8 @@
 import type AtpAgent from "@atproto/api"
 import Trotsky, { Step } from "../trotsky"
 
+type StepBuilderConfig = object
+
 /**
  * Represents a builder for a sequence of steps. This class is used internally by the {@link Trotsky} framework.
  * @private
@@ -12,6 +14,9 @@ export class StepBuilder {
 
   /** @internal */
   _steps: Step<this>[] = []
+
+  /** @internal */
+  _config: StepBuilderConfig = {}
 
   /**
    * Initializes a new {@link StepBuilder} instance.
@@ -29,6 +34,47 @@ export class StepBuilder {
   withAgent (agent: AtpAgent) {
     this._agent = agent
     return this
+  }
+
+  /**
+   * Retreive the configuration value for a given key.
+   * @param key - The configuration key.
+   */
+  config (key: string): unknown
+
+  /**
+   * Updates the configuration value for a given key.
+   * @param key - The configuration key.
+   * @param value - The new value.
+   */
+  config (key: string, value: unknown): this
+
+  /**
+   * Updates the configuration object.
+   * @param config - The new configuration object.
+   */
+  config (config: StepBuilderConfig): this
+
+  /**
+   * Retrieves or updates the configuration value for a given key.
+   * @param keyOrconfig - The configuration key or object.
+   * @param value - The new value.
+   * @returns The current {@link StepBuilder} instance if updating, or the configuration value if retrieving.
+   * @remarks If the first argument is an object, it will be merged with the existing configuration.
+   */
+  config (keyOrconfig: string | StepBuilderConfig, value?: unknown): this | unknown {
+
+    if (keyOrconfig instanceof Object) {
+      this._config = { ...this._config, ...keyOrconfig } 
+      return this
+    }
+
+    if (value !== undefined) {
+      this._config[keyOrconfig] = value
+      return this
+    }
+
+    return this._config[keyOrconfig]
   }
 
   /**
