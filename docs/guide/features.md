@@ -19,6 +19,7 @@ Trotsky is currently limited to the following features:
  **StepActorUnmute** | :x: | Unmute an actor. |  
  **StepCreatePost** | :white_check_mark: | Create a post. | ```Trotsky.init(agent).post({ text: "Mapo Tofu is spicy 🌶️" })``` 
  **StepPost** | :white_check_mark: | Get a post by its URI. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")``` 
+ **StepPostAuthor** | :x: | Get a post author. | 
  **StepPostLike** | :white_check_mark: | Like a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").like()``` 
  **StepPostReply** | :white_check_mark: | Reply to a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").reply({ text: "Well done!" })``` 
  **StepPostRepost** | :white_check_mark: | Repost a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").repost()``` 
