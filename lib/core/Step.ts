@@ -79,8 +79,8 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
    * Retrieves the parent object of this instance.
    * @returns The parent object.
    */
-  back (): StepBuilder {
-    return this._parent as StepBuilder
+  back (): P {
+    return this._parent as P
   }
 
   /**
@@ -92,8 +92,8 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
       return this
     }
 
-    if (this.back().isTrotsky) {
-      return this.back()
+    if ((this.back() as StepBuilder).isTrotsky) {
+      return this.back() as StepBuilder
     }
 
     return (this.back() as unknown as Step).end()
