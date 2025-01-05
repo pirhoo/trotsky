@@ -1,3 +1,8 @@
+/**
+ * This is the main entry point for the Trotsky library.
+ * 
+ * @packageDocumentation
+ */
 export { Trotsky as default } from "./core/Trotsky"
 export * from "./core/Trotsky"
 
