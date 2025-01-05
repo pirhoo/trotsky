@@ -17,7 +17,7 @@ Trotsky relies on the APIs it interacts with, and therefore it is subject to the
 
 ## Is it dangerous to use Trotsky?
 
-No, using Trotsky is not dangerous. However, certain operations, like [`streamPosts`](/api/trotsky.trotsky.streamposts), can consume significant bandwidth, especially when utilizing the **Bluesky Firehose**. To limit bandwidth usage, Trotsky is already configured to use compressed stream with `zstd` through [Jetstream](https://github.com/bluesky-social/jetstream).
+No, using Trotsky is not dangerous. However, certain operations, like [`streamPosts`](/api/trotsky.trotsky.streamposts), can consume significant bandwidth since it utilizes the **Bluesky Firehose**. To limit bandwidth usage, Trotsky is already configured to use compressed stream with `zstd` through [Jetstream](https://github.com/bluesky-social/jetstream).
 
 ## What's the Bluesky Firehose?
 
