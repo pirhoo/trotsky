@@ -27,6 +27,8 @@ Trotsky is currently limited to the following features:
  **StepTimeline** | :x: | Get the timeline. |  
  **Stream posts** | :white_check_mark: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPost().each()```
 
+ <small>:x: Not implemented :white_check_mark: Implemented</small>
+
 <style scoped>
 .vp-doc table {
   white-space: nowrap;
