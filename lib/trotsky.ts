@@ -44,6 +44,6 @@ export * from "./core/StepPostLike"
 export * from "./core/StepPostReply"
 export * from "./core/StepPostRepost"
 
-
 // Utils
 export * from "./core/StepWait"
+export * from "./core/StepWhen"

@@ -4,10 +4,10 @@ import type { QueryParams } from "@atproto/api/src/client/types/app/bsky/feed/se
 import type { Step } from "../trotsky"
 import type { StepActorParam } from "./StepActor"
 import type { StepPostUri } from "./StepPost"
-import type { StepCreatePostParams } from "./StepCreatePost"
+import type { StepWhenPredicate } from "./StepWhen"
 import type { Resolvable } from "./utils/resolvable"
 
-import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepStreamPosts, StepList } from "../trotsky"
+import { StepActor, StepWait, StepPost, StepCreatePost, StepSearchPosts, StepStreamPosts, StepList, StepWhen } from "../trotsky"
 
 /**
  * Type constraints for generic parameters of the {@link Trotsky} class.
@@ -164,7 +164,16 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
    * @returns The current {@link Trotsky} instance.
    */
   wait (duration = 0) {
-    this.append(StepWait<this>, duration)
+    return this.append(StepWait<this>, duration)
+  }
+
+  /**
+   *Adds a {@link StepWhen} step.
+   * @param predicate - The predicate function.
+   * @returns The new {@link StepWhen} instance.
+   */
+  when (predicate: Resolvable<StepWhenPredicate>) {
+    this.append(StepWhen<this>, predicate)
     return this
   }
 
@@ -227,12 +236,18 @@ export class Trotsky<P = ParentConstraint, C = ContextConstraint, O = OutputCons
     return this._parent instanceof StepList
   }
 
+  get isStepWhen (): boolean {
+    return this instanceof StepWhen
+  }
+
   /**
    * Applies all steps in the sequence.
    */
   async applyAll () {
     for (const step of this.steps) {
       await step.apply()
+      // Skip the rest of the steps if the current step is a StepWhen its output is falsy
+      if (step.isStepWhen && !step.output) break
 
       if (!step.isStepListEntry) {
         await step.applyAll()
