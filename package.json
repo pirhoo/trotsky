@@ -2,7 +2,7 @@
   "name": "trotsky",
   "version": "0.0.0",
   "main": "dist/trotsky.js",
-  "module": "dist/trotsky.js",
+  "typings": "dist/trotsky.d.ts",
   "author": "hello@pirhoo.com",
   "repository": {
     "type": "git",
@@ -24,9 +24,13 @@
     "test": "jest",
     "lint": "eslint",
     "build": "tsc --build tsconfig/build.json",
+    "clean": "rm -rf dist/ tsconfig/*.tsbuildinfo temp/ docs/.vitepress/dist/",
     "doc:dev": "yarn --cwd docs/ run dev",
     "doc:build": "yarn --cwd docs/ run build",
-    "doc:preview": "yarn --cwd docs/ run preview"
+    "doc:preview": "yarn --cwd docs/ run preview",
+    "doc:api": "yarn run doc:api:extract && yarn run doc:api:gen",
+    "doc:api:extract": "api-extractor run --local --verbose",
+    "doc:api:gen": "api-documenter markdown -i temp -o docs/api"
   },
   "keywords": [
     "bluesky",
@@ -39,6 +43,8 @@
   "devDependencies": {
     "@atproto/dev-env": "^0.3.73",
     "@eslint/js": "^9.17.0",
+    "@microsoft/api-documenter": "^7.26.3",
+    "@microsoft/api-extractor": "^7.48.1",
     "@stylistic/eslint-plugin-ts": "^2.12.1",
     "@swc/core": "^1.10.4",
     "@swc/jest": "^0.2.37",
