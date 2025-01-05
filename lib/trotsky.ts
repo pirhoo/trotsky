@@ -1,3 +1,9 @@
+/**
+ * This is the main entry point for the Trotsky library.
+ * 
+ * @packageDocumentation
+ */
+
 // Top-level classes
 export * from "./core/StepBuilder"
 export * from "./core/Trotsky"
@@ -45,9 +51,5 @@ export * from "./core/StepTap"
 export * from "./core/StepWait"
 export * from "./core/StepWhen"
 
-/**
- * This is the main entry point for the Trotsky library.
- * 
- * @packageDocumentation
- */
+// Main entry point class
 export { Trotsky as default } from "./core/Trotsky"

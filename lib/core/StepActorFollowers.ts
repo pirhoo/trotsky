@@ -46,7 +46,6 @@ export class StepActorFollowers<P = StepActor, C extends StepActorOutput = StepA
    * @param cursor - The cursor for paginated queries.
    * @returns The query parameters for retrieving followers.
    * @throws Error if no context is found.
-   * @private
    */
   private queryParams (cursor: StepActorFollowersQueryParamsCursor): StepActorFollowersQueryParams {
     if (!this.context) {

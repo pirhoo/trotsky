@@ -4,10 +4,9 @@ import Trotsky, { Step } from "../trotsky"
 type StepBuilderConfig = object
 
 /**
- * Represents a builder for a sequence of steps. This class is used internally by the {@link Trotsky} framework.
- * @private
+ * Represents a builder for a sequence of steps. This class is used internally by the {@link Trotsky} framework. 
  */
-export class StepBuilder {
+export abstract class StepBuilder {
 
   /** @internal */
   _agent: AtpAgent
