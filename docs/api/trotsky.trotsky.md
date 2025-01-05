@@ -153,6 +153,25 @@ Checks if this instance is part of a [StepList](./trotsky.steplist.md)<!-- -->.
 </td></tr>
 <tr><td>
 
+[isStepWhen](./trotsky.trotsky.isstepwhen.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [isTrotsky](./trotsky.trotsky.istrotsky.md)
 
 
@@ -413,6 +432,20 @@ Adds a [StepStreamPosts](./trotsky.stepstreamposts.md) step.
 </td><td>
 
 Adds a [StepWait](./trotsky.stepwait.md) step.
+
+
+</td></tr>
+<tr><td>
+
+[when(predicate)](./trotsky.trotsky.when.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a [StepWhen](./trotsky.stepwhen.md) step.
 
 
 </td></tr>

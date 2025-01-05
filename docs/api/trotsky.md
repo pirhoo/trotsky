@@ -233,6 +233,17 @@ Represents a step for retrieving an actor's posts using the Bluesky API. Support
 </td></tr>
 <tr><td>
 
+[StepWhen](./trotsky.stepwhen.md)
+
+
+</td><td>
+
+Represents a conditional step that evaluates a predicate to determine its outcome.
+
+
+</td></tr>
+<tr><td>
+
 [Trotsky](./trotsky.trotsky.md)
 
 
@@ -514,6 +525,15 @@ Type for the parameter passed to the [StepActor](./trotsky.stepactor.md) class. 
 <tr><td>
 
 [StepPostUri](./trotsky.stepposturi.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[StepWhenPredicate](./trotsky.stepwhenpredicate.md)
 
 
 </td><td>

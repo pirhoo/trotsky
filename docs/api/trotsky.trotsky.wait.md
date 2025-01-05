@@ -9,7 +9,7 @@ Adds a [StepWait](./trotsky.stepwait.md) step.
 **Signature:**
 
 ```typescript
-wait(duration?: number): this;
+wait(duration?: number): any;
 ```
 
 ## Parameters
@@ -49,6 +49,6 @@ _(Optional)_ The duration to wait, in milliseconds.
 </tbody></table>
 **Returns:**
 
-this
+any
 
 The current [Trotsky](./trotsky.trotsky.md) instance.
