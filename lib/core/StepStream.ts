@@ -1,4 +1,5 @@
 import { type AtpAgent } from "@atproto/api"
+
 import { Step, StepStreamEntry, type ParentConstraint } from "../trotsky"
 import { type JetstreamMessage, type JetstreamMessageCommit, type JetstreamEventEmitter } from "./utils/jetstream"
 
@@ -22,11 +23,25 @@ export abstract class StepStream<P = ParentConstraint, C = unknown, O = Jetstrea
   }
 
   async apply (): Promise<void> {
-    return new Promise((resolve, reject) => {
+    // PQueue is a CommonJS module whose imports will produce 'require' calls; however, this 
+    // file is an ECMAScript module and cannot be imported with 'require'.
+    const { "default": PQueue } = await import("p-queue")
+
+    return new Promise((_resolve, reject) => {
+      // We use a queue to ensure that we process messages sequentially
+      const queue = new PQueue()
       // Get the event emitter that is defined in the child class
       this.eventEmitter
         .on("error", reject)         
-        .on("message", this.onMessage.bind(this))
+        .on("message", async (message) => {
+          try {
+            await queue.add(() => this.onMessage(message))
+          // Any error that occurs during the processing of a message by child steps will 
+          // be caught here and will cause a rejection of the promise.
+          } catch (error) {
+            reject(error)
+          }
+        })
     })
   }
 

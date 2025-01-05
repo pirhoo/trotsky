@@ -74,6 +74,7 @@ export function buildEventEmitter (wantedCollections: string[] = [], wantedDids:
   try {
     const url = jetstreamUrl(wantedCollections, wantedDids, maxMessageSizeBytes)    
     const ws = new WebSocket(url)
+
     ws.on("message", async (buffer: Buffer<ArrayBufferLike>) => {
       try {
         const data = await decompressJetstreamZstd(buffer)
@@ -83,7 +84,7 @@ export function buildEventEmitter (wantedCollections: string[] = [], wantedDids:
         eventEmitter.emit("error", new Error("Failed to parse message from Jetstream"))
       }
     })
-  } catch {    
+  } catch {
     eventEmitter.emit("error", new Error("Failed to connect to Jetstream"))
   }
 

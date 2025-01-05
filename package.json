@@ -60,6 +60,7 @@
   "dependencies": {
     "@atproto/api": "^0.13.25",
     "@skhaz/zstd": "^1.0.21",
+    "p-queue": "^8.0.1",
     "ws": "^8.18.0"
   },
   "resolutions": {
