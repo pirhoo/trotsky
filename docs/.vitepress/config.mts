@@ -25,7 +25,8 @@ export default defineConfig({
     },
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'API', link: '/api/reference' }
+      { text: 'API', link: '/api/reference' },
+      { text: 'Ecosystem', link: '/ecosystem' }
     ],
     sidebar: [
       {
@@ -36,6 +37,12 @@ export default defineConfig({
           { text: 'Features', link: '/guide/features' },
           { text: 'Code of Conduct', link: '/guide/code-of-conduct' },
           { text: 'FAQ', link: '/guide/faq' },
+        ]
+      },
+      {
+        text: 'Ecosystem',
+        items: [
+          { text: 'Community', link: '/ecosystem' },
         ]
       },
       {
