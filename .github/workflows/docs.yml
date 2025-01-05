@@ -21,12 +21,16 @@ jobs:
           node-version: 22.x
 
       - name: Install dependencies
-        working-directory: docs
         run: yarn --frozen-lockfile
 
-      - name: Build documentation
-        working-directory: docs
+      - name: Build Trotsky
         run: yarn build
+
+      - name: API documentation
+        run: yarn doc:api
+
+      - name: Build documentation
+        run: yarn doc:build
 
       - name: Upload documentation artifacts
         uses: actions/upload-pages-artifact@v3
