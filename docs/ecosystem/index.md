@@ -11,8 +11,8 @@ Have you built a neat automation script, a quirky bot, or an interesting chain o
 This script finds 3 posts mentioning "pizza" and replies, waiting 1 second between each reply.
 
 ```ts
-import { Trotsky } from "trotsky"
 import { AtpAgent } from "@atproto/api"
+import { Trotsky } from "trotsky"
 
 async function main() {
   const agent = new AtpAgent({ service: "https://bsky.social" })
@@ -36,7 +36,7 @@ This script stream posts mentiong "mapo tofu" and like them.
 
 ```ts
 import { AtpAgent } from '@atproto/api'
-import { Trotsky } from './dist/trotsky.js'
+import { Trotsky } from 'trotsky'
 
 async function main() {
   const agent = new AtpAgent({ service: 'https://bsky.social' })
