@@ -25,7 +25,7 @@ Trotsky is currently limited to the following features:
  **StepPosts** | :x: | Get a list of post by their URIs. |  
  **StepSearchPosts** | :white_check_mark: | Search posts. | ```Trotsky.init(agent).searchPosts({ q: "Mapo Tofu" }).each()``` 
  **StepTimeline** | :x: | Get the timeline. |  
- **Stream posts** | :white_check_mark: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPost().each()```
+ **StreamPosts** | :white_check_mark: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPost().each()```
 
  <small>:x: Not implemented :white_check_mark: Implemented</small>
 
