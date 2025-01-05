@@ -224,6 +224,17 @@ Represents a step for retrieving an actor's posts using the Bluesky API. Support
 </td></tr>
 <tr><td>
 
+[StepTap](./trotsky.steptap.md)
+
+
+</td><td>
+
+Represents a step that allows interception of the current [Step](./trotsky.step.md) instance for custom processing or side effects.
+
+
+</td></tr>
+<tr><td>
+
 [StepWait](./trotsky.stepwait.md)
 
 
@@ -528,6 +539,17 @@ Type for the parameter passed to the [StepActor](./trotsky.stepactor.md) class. 
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+[StepTapInterceptor](./trotsky.steptapinterceptor.md)
+
+
+</td><td>
+
+Defines the type for a function that intercepts a [Step](./trotsky.step.md) instance. The interceptor can be synchronous or asynchronous.
 
 
 </td></tr>

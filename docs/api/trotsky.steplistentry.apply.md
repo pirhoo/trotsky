@@ -7,8 +7,8 @@
 **Signature:**
 
 ```typescript
-apply(): never;
+apply(): Promise<void>;
 ```
 **Returns:**
 
-never
+Promise&lt;void&gt;

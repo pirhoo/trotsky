@@ -423,6 +423,20 @@ Adds a [StepStreamPosts](./trotsky.stepstreamposts.md) step.
 </td></tr>
 <tr><td>
 
+[tap(interceptor)](./trotsky.trotsky.tap.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Adds a [StepTap](./trotsky.steptap.md) step.
+
+
+</td></tr>
+<tr><td>
+
 [wait(duration)](./trotsky.trotsky.wait.md)
 
 

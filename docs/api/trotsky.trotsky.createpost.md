@@ -9,7 +9,7 @@ Adds a [StepCreatePost](./trotsky.stepcreatepost.md) step.
 **Signature:**
 
 ```typescript
-createPost(record: StepCreatePostParams): any;
+createPost(record: StepCreatePostParams): StepCreatePost<this>;
 ```
 
 ## Parameters
@@ -49,6 +49,6 @@ Parameters for creating a post.
 </tbody></table>
 **Returns:**
 
-any
+[StepCreatePost](./trotsky.stepcreatepost.md)<!-- -->&lt;this&gt;
 
 The new [StepCreatePost](./trotsky.stepcreatepost.md) instance.

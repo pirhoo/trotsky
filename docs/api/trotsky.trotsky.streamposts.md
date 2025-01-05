@@ -9,10 +9,10 @@ Adds a [StepStreamPosts](./trotsky.stepstreamposts.md) step.
 **Signature:**
 
 ```typescript
-streamPosts(): any;
+streamPosts<T = StepStreamPosts<this>>(): T;
 ```
 **Returns:**
 
-any
+T
 
 The new [StepStreamPosts](./trotsky.stepstreamposts.md) instance.

@@ -9,7 +9,7 @@ Adds a [StepActor](./trotsky.stepactor.md) step.
 **Signature:**
 
 ```typescript
-actor(param: Resolvable<StepActorParam>): StepActor<this, null, import("@atproto/api/dist/client/types/app/bsky/actor/defs").ProfileViewDetailed>;
+actor(param: Resolvable<StepActorParam>): StepActor<this>;
 ```
 
 ## Parameters
@@ -49,6 +49,6 @@ Parameters for the actor step.
 </tbody></table>
 **Returns:**
 
-[StepActor](./trotsky.stepactor.md)<!-- -->&lt;this, null, import("@atproto/api/dist/client/types/app/bsky/actor/defs").ProfileViewDetailed&gt;
+[StepActor](./trotsky.stepactor.md)<!-- -->&lt;this&gt;
 
 The new [StepActor](./trotsky.stepactor.md) instance.

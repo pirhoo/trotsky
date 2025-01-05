@@ -9,7 +9,7 @@ Adds a [StepPost](./trotsky.steppost.md) step.
 **Signature:**
 
 ```typescript
-post(uri: Resolvable<StepPostUri>): StepPost<this, null, import("@atproto/api/dist/client/types/app/bsky/feed/defs").PostView>;
+post(uri: Resolvable<StepPostUri>): StepPost<this>;
 ```
 
 ## Parameters
@@ -49,6 +49,6 @@ The post URI.
 </tbody></table>
 **Returns:**
 
-[StepPost](./trotsky.steppost.md)<!-- -->&lt;this, null, import("@atproto/api/dist/client/types/app/bsky/feed/defs").PostView&gt;
+[StepPost](./trotsky.steppost.md)<!-- -->&lt;this&gt;
 
 The new [StepPost](./trotsky.steppost.md) instance.

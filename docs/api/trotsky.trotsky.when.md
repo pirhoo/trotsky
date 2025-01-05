@@ -51,4 +51,4 @@ The predicate function.
 
 this
 
-The new [StepWhen](./trotsky.stepwhen.md) instance.
+The current [Trotsky](./trotsky.trotsky.md) instance.

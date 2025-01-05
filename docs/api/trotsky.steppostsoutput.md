@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-export type StepPostsOutput = AppBskyFeedGetPosts.OutputSchema["posts"];
+export type StepPostsOutput = AppBskyFeedDefs.PostView[];
 ```

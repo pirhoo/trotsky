@@ -9,7 +9,7 @@ Adds a [StepSearchPosts](./trotsky.stepsearchposts.md) step.
 **Signature:**
 
 ```typescript
-searchPosts(queryParams: QueryParams): StepSearchPosts<this, null, import("@atproto/api/dist/client/types/app/bsky/feed/defs").PostView[]>;
+searchPosts(queryParams: QueryParams): StepSearchPosts<this>;
 ```
 
 ## Parameters
@@ -49,6 +49,6 @@ Search parameters.
 </tbody></table>
 **Returns:**
 
-[StepSearchPosts](./trotsky.stepsearchposts.md)<!-- -->&lt;this, null, import("@atproto/api/dist/client/types/app/bsky/feed/defs").PostView\[\]&gt;
+[StepSearchPosts](./trotsky.stepsearchposts.md)<!-- -->&lt;this&gt;
 
 The new [StepSearchPosts](./trotsky.stepsearchposts.md) instance.
