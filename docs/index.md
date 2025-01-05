@@ -15,7 +15,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: API
-      link: /api/
+      link: /api/reference
 
 features:
   - title: Builder Pattern

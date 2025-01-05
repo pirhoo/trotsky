@@ -4,7 +4,7 @@ import { createInterface } from "readline"
 import { join, parse } from "path"
 import { exec } from "child_process"
 
-const API_OUTPUT_DIR = "./docs/api"
+const API_OUTPUT_DIR = "./docs/api/reference"
 const API_PACKAGES_DIR = "./temp"
 
 const EXEC_API_EXTRACTOR = "api-extractor run --local"

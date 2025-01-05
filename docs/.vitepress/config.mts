@@ -25,7 +25,7 @@ export default defineConfig({
     },
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
-      { text: 'API', link: '/api' }
+      { text: 'API', link: '/api/reference' }
     ],
     sidebar: [
       {
@@ -41,7 +41,7 @@ export default defineConfig({
       {
         text: 'API',
         items: [
-          { text: 'Reference', link: '/api' },
+          { text: 'Reference', link: '/api/reference' },
         ]
       }
     ],
