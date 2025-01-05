@@ -46,8 +46,9 @@ export default defineConfig({
       }
     ],
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/pirhoo/trotsky' },
-      { icon: 'bluesky', link: 'https://bsky.app/profile/trotsky.pirhoo.com' }
+      { icon: 'github', link: 'https://github.com/pirhoo/trotsky', ariaLabel: 'GitHub' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/trotsky.pirhoo.com', ariaLabel: 'Bluesky' },
+      { icon: 'npm', link: 'https://www.npmjs.com/package/trotsky', ariaLabel: 'NPM' }
     ],
     footer: {
       message: 'Released under the MIT License.',
