@@ -19,7 +19,7 @@ export default defineConfig({
     ['link', { rel: 'manifest', href: '/site.webmanifest' }]
   ],
   themeConfig: {
-    logo: './logo.svg',  
+    logo: './public/logo.svg',  
     search: {
       provider: 'local'
     },
