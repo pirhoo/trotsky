@@ -16,8 +16,9 @@ export class StepStreamPosts<P, C = unknown, O = StepPostOutput> extends StepStr
 
   async resolveOutput (message: JetstreamMessageCommit): Promise<O> {
     const commit = message.commit
+    const cid = commit.cid
+    const record = commit.record
     const uri = AtUri.make(message.did, commit.collection, commit.rkey).toString()
-    const { "data": { posts } } = await this.agent.getPosts({ "uris": [uri] })
-    return posts.shift() as O
+    return { uri, cid, record } as O
   }
 }

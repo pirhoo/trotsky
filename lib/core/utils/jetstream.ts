@@ -16,7 +16,7 @@ export interface JetstreamMessageCommit extends JetstreamMessageBase {
     "operation": "create" | "update" | "delete";
     "collection": string;
     "rkey": string;
-    "cid"?: string;
+    "cid": string;
     "record"?: Partial<PostRecord> | Partial<LikeRecord> | Partial<FollowRecord>;
   };
 }

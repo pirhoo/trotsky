@@ -1,4 +1,4 @@
-import type { AtUri,  AppBskyFeedGetPosts,  AppBskyFeedDefs,  AtpAgent } from "@atproto/api"
+import type { AtUri, AppBskyFeedGetPosts, AtpAgent } from "@atproto/api"
 
 import type { ParentConstraint } from "../trotsky"
 import type { Resolvable } from "./utils/resolvable"
@@ -7,7 +7,7 @@ import { resolveValue } from "./utils/resolvable"
 
 export type StepPostQueryParams = AppBskyFeedGetPosts.QueryParams
 export type StepPostUri = string | AtUri
-export type StepPostOutput = AppBskyFeedDefs.PostView
+export type StepPostOutput = { "uri": string; "cid": string; "record": object }
 
 export class StepPost<P = ParentConstraint, C = null, O extends StepPostOutput = StepPostOutput> extends PostMixins<P, C, O> {
   _uri: Resolvable<StepPostUri>
@@ -19,7 +19,7 @@ export class StepPost<P = ParentConstraint, C = null, O extends StepPostOutput =
 
   async apply () {
     const { "data": { posts } } = await this.agent.getPosts(await this.queryParams())
-    this.output = posts.shift() as O ?? null
+    this.output = (posts.length ? posts[posts.length - 1] : null) as O | null
   }
 
   async queryParams (): Promise<StepPostQueryParams> {
