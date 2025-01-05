@@ -18,7 +18,7 @@ await Trotsky.init(agent)
   .searchPosts({ q: "keyword" })
     .take(10)
     .each()
-      .reply({ text: "Hello! It's ${new Date()}" })
+      .reply({ text: "Hello!" })
       .wait(1000)
       .run()
 ```
