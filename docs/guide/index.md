@@ -3,7 +3,7 @@
 ## Installation
 
 - [Node.js](https://nodejs.org/) version 20 or higher.
-- Terminal for accessing Trotsky via its command line interface (CLI).
+- Terminal for executing your Trotsky script via its command line interface (CLI).
 
 Trotsky must be installed with your favorite package manager:
 
@@ -27,8 +27,6 @@ $ bun add trotsky
 ```
 
 :::
-
-> **Note**: Make sure you also install the [@atproto/api](https://www.npmjs.com/package/@atproto/api) package, as Trotsky depends on it for Bluesky interactions.
 
 ## Your first automation
 
