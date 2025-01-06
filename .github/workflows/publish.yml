@@ -14,10 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
     
-    env:
-      DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      REDIS_HOST: "localhost"
-    
     services:
       postgres:
         image: postgres
