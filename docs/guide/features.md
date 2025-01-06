@@ -21,6 +21,7 @@ Trotsky is currently limited to the following features:
  **StepActorUnmute** | :x: | Unmute an actor. |  
  **StepCreatePost** | :white_check_mark: | Create a post. | ```Trotsky.init(agent).post({ text: "Mapo Tofu is spicy 🌶️" })``` 
  **StepList** | :white_check_mark: | Get a list by its URI. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m")``` 
+ **StepListMembers** | :white_check_mark: | Get a list's members. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m").members().each()``` 
  **StepLists** | :x: | Get a list of list by their URIs. |
  **StepPost** | :white_check_mark: | Get a post by its URI. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")``` 
  **StepPostAuthor** | :white_check_mark: | Get a post author. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").author()``` 
