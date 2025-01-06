@@ -12,7 +12,8 @@ export class StepActorFollow<P = StepActor, C extends StepActorOutput = StepActo
   /**
    * Applies the step by performing a follow operation.
    * Requires the context to provide the `did` of the actor to follow.
-   * @throws Error if no context is found.
+   * @throws
+   * Error if no context is found.
    */
   async apply () {
     if (!this.context) {

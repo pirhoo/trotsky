@@ -9,18 +9,21 @@ import {
 
 /**
  * Type representing the output of the posts retrieved by {@link StepActorPosts}.
+ * @public
  */
-type StepActorPostsOutput = StepPostsOutput
+export type StepActorPostsOutput = StepPostsOutput
 
 /**
  * Type representing the query parameters for retrieving actor posts.
+ * @public
  */
-type StepActorPostsQueryParams = AppBskyFeedGetAuthorFeed.QueryParams
+export type StepActorPostsQueryParams = AppBskyFeedGetAuthorFeed.QueryParams
 
 /**
  * Type representing the cursor for paginated queries.
+ * @public
  */
-type StepActorPostsQueryParamsCursor = StepActorPostsQueryParams["cursor"] | undefined
+export type StepActorPostsQueryParamsCursor = StepActorPostsQueryParams["cursor"] | undefined
 
 /**
  * Represents a step for retrieving an actor's posts using the Bluesky API.
@@ -48,7 +51,8 @@ export class StepActorPosts<P = StepActor, C extends StepActorOutput = StepActor
    * Generates query parameters for retrieving posts, including the optional cursor.
    * @param cursor - The cursor for paginated queries.
    * @returns The query parameters for retrieving posts.
-   * @throws Error if no context is found.
+   * @throws
+   * Error if no context is found.
    */
   queryParams (cursor: StepActorPostsQueryParamsCursor): StepActorPostsQueryParams {
     if (!this.context) {

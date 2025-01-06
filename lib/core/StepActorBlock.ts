@@ -12,7 +12,8 @@ export class StepActorBlock<P = StepActor, C extends StepActorOutput = StepActor
   /**
    * Applies the step by performing a block operation.
    * Requires the context to provide the `did` of the actor to block.
-   * @throws Error if no context is found.
+   * @throws Error
+   * if no context is found.
    */
   async apply () {
     if (!this.context) {

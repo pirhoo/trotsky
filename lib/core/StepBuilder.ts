@@ -1,6 +1,10 @@
 import type AtpAgent from "@atproto/api"
 import Trotsky, { Step } from "../trotsky"
 
+/**
+ * Represents the configuration object for a {@link StepBuilder} instance.
+ * @public
+ */
 type StepBuilderConfig = object
 
 /**

@@ -10,6 +10,7 @@ import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
  * @typeParam P - The type of the parent constraint.
  * @typeParam C - The type of the context.
  * @typeParam O - The type of the output, defaults to `StepPostOutput`.
+ * @public
  *
  * @remarks
  * This class allows for the streaming and processing of posts as they are

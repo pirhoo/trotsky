@@ -3,6 +3,10 @@ import { Step, type StepBuilder } from "../trotsky"
 import { Resolvable, resolveValue } from "./utils/resolvable"
 
 
+/**
+ * Boolean values resolved by the {@link StepWhen} predicate.
+ * @public
+ */
 export type StepWhenPredicate = boolean
 
 /**
@@ -11,6 +15,7 @@ export type StepWhenPredicate = boolean
  * @typeParam P - The type of the parent constraint.
  * @typeParam C - The type of the context.
  * @typeParam O - The type of the output, defaults to `boolean`.
+ * @public
  *
  * @remarks
  * This step evaluates a predicate, which can be a boolean value or a resolvable that

@@ -8,18 +8,21 @@ import {
 
 /**
  * Type representing the output of the followings retrieved by {@link StepActorFollowings}.
+ * @public
  */
-type StepActorFollowingsOutput = AppBskyGraphGetFollows.OutputSchema["follows"]
+export type StepActorFollowingsOutput = AppBskyGraphGetFollows.OutputSchema["follows"]
 
 /**
  * Type representing the query parameters for retrieving followings.
+ * @public
  */
-type StepActorFollowingsQueryParams = AppBskyGraphGetFollows.QueryParams
+export type StepActorFollowingsQueryParams = AppBskyGraphGetFollows.QueryParams
 
 /**
  * Type representing the cursor for paginated queries.
+ * @public
  */
-type StepActorFollowingsQueryParamsCursor = StepActorFollowingsQueryParams["cursor"] | undefined
+export type StepActorFollowingsQueryParamsCursor = StepActorFollowingsQueryParams["cursor"] | undefined
 
 /**
  * Represents a step for retrieving an actor's followings using the Bluesky API.
@@ -45,7 +48,8 @@ export class StepActorFollowings<P = StepActor, C extends StepActorOutput = Step
    * Generates query parameters for retrieving followings, including the optional cursor.
    * @param cursor - The cursor for paginated queries.
    * @returns The query parameters for retrieving followings.
-   * @throws Error if no context is found.
+   * @throws 
+   * Error if no context is found.
    */
   queryParams (cursor: StepActorFollowingsQueryParamsCursor): StepActorFollowingsQueryParams {
     if (!this.context) {

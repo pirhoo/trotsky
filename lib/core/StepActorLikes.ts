@@ -9,18 +9,21 @@ import {
 
 /**
  * Type representing the output of the likes retrieved by {@link StepActorLikes}.
+ * @public
  */
-type StepActorLikesOutput = StepPostsOutput
+export type StepActorLikesOutput = StepPostsOutput
 
 /**
  * Type representing the query parameters for retrieving actor likes.
+ * @public
  */
-type StepActorLikesQueryParams = AppBskyFeedGetActorLikes.QueryParams
+export type StepActorLikesQueryParams = AppBskyFeedGetActorLikes.QueryParams
 
 /**
  * Type representing the cursor for paginated queries.
+ * @public
  */
-type StepActorLikesQueryParamsCursor = StepActorLikesQueryParams["cursor"] | undefined
+export type StepActorLikesQueryParamsCursor = StepActorLikesQueryParams["cursor"] | undefined
 
 /**
  * Represents a step for retrieving an actor's likes using the Bluesky API.
@@ -46,7 +49,8 @@ export class StepActorLikes<P = StepActor, C extends StepActorOutput = StepActor
    * Generates query parameters for retrieving likes, including the optional cursor.
    * @param cursor - The cursor for paginated queries.
    * @returns The query parameters for retrieving likes.
-   * @throws Error if no context is found.
+   * @throws
+   * Error if no context is found.
    */
   queryParams (cursor: StepActorLikesQueryParamsCursor): StepActorLikesQueryParams {
     if (!this.context) {

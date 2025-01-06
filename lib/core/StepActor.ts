@@ -8,12 +8,14 @@ import { resolveValue } from "./utils/resolvable"
 /**
  * Type for the parameter passed to the {@link StepActor} class.
  * Represents the identifier of an actor (e.g., handle or DID).
+ * @public
  */
 export type StepActorParam = string
 
 /**
  * Type for the output of the {@link StepActor} class.
  * Matches the schema of the actor profile from the Bluesky API.
+ * @public
  */
 export type StepActorOutput = AppBskyActorGetProfile.OutputSchema
 

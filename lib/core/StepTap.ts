@@ -4,6 +4,7 @@ import { Step, type StepBuilder } from "../trotsky"
 /**
  * Defines the type for a function that intercepts a {@link Step} instance.
  * The interceptor can be synchronous or asynchronous.
+ * @public
  */
 export type StepTapInterceptor =
   | ((step: Step) => unknown)
@@ -16,6 +17,7 @@ export type StepTapInterceptor =
  * @typeParam P - The type of the parent constraint.
  * @typeParam C - The type of the context.
  * @typeParam O - The type of the output, defaults to `null`.
+ * @public
  *
  * @remarks
  * The `StepTap` class enables the execution of a provided interceptor function,

@@ -15,6 +15,10 @@ export * from "./core/StepListEntry"
 export * from "./core/StepStream"
 export * from "./core/StepStreamEntry"
 
+// Mixins
+export * from "./core/mixins/ActorMixins"
+export * from "./core/mixins/PostMixins"
+
 // Streams
 export * from "./core/StepStreamPosts"
 
