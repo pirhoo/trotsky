@@ -8,7 +8,7 @@ Have you built a neat automation script, a quirky bot, or an interesting chain o
 
 ### Big Ben
 
-This script posts just like [Big Ben](https://x.com/big_ben_clock), every hour.
+This script posts just like [Big Ben](https://x.com/big_ben_clock), every hour:
 
 ```ts
 import { AtpAgent } from "@atproto/api"
@@ -36,7 +36,7 @@ main()
 
 ### Pizza Party
 
-This script finds 3 posts mentioning "pizza" and replies, waiting 1 second between each reply.
+This script finds 3 posts mentioning "pizza", replies and wait 1 second:
 
 ```ts
 import { AtpAgent } from "@atproto/api"
@@ -60,7 +60,7 @@ main()
 
 ### Mapo Tofu fan
 
-This script stream posts mentiong "mapo tofu" and like them.
+This script stream posts mentiong "mapo tofu" and like them:
 
 ```ts
 import { AtpAgent } from '@atproto/api'
