@@ -3,13 +3,39 @@
  * to facilitate interaction with the AT Protocol (ATProto) and Bluesky's social networking 
  * services. 
  * 
- * It offers a structured approach to building and executing sequences of 
- * operations—referred to as "steps"—that interact with various aspects of the protocol, 
- * such as managing user profiles, posts, likes, follows, and more. 
+ * It offers a structured approach to building and executing sequences of operations—referred 
+ * to as "steps"—that interact with various aspects of the protocol, such as reading user 
+ * profiles, posts, likes, follows, and more. 
  * 
- * By leveraging the schema 
- * definitions outlined in the AT Proto lexicons,  this package ensures type safety and 
- * consistency when interfacing with ATProto's decentralized social networking ecosystem.
+ * By leveraging the schema definitions outlined in the ATProto lexicons,this package 
+ * ensures type safety and consistency when interfacing with ATProto's decentralized social 
+ * networking ecosystem.
+ * 
+ * @remarks
+ * Although all classes and methods are documented and public, the package is intended for 
+ * use mainly throught the {@link Trotsky} class, which serves as the main entry point using
+ * a builder pattern to create and execute sequences of steps.
+ * 
+ * @example
+ * ```ts
+ * import { AtpAgent } from "@atproto/api"
+ * import { Trotsky } from "trotsky"
+ * 
+ * async function main() {
+ *  const agent = new AtpAgent({ service: "https://bsky.social" })
+ *  await agent.login({ identifier: 'trotsky.pirhoo.com', password: 'p4ssw0rd' })
+ * 
+ *  await Trotsky.init(agent)
+ *    .searchPosts({ q: "pizza" })
+ *      .take(3)
+ *      .each()
+ *        .reply({ text: "🍕 Pizza party! 🍕" })
+ *        .wait(1000)
+ *        .run()
+ * }
+ * 
+ * main()
+ * ```
  * 
  * @packageDocumentation
  */

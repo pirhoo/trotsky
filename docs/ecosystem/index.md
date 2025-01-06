@@ -18,13 +18,13 @@ async function main() {
   const agent = new AtpAgent({ service: "https://bsky.social" })
   await agent.login({ identifier: 'trotsky.pirhoo.com', password: 'p4ssw0rd' })
 
-  Trotsky.init(agent)
+  await Trotsky.init(agent)
     .searchPosts({ q: "pizza" })
       .take(3)
       .each()
         .reply({ text: "🍕 Pizza party! 🍕" })
         .wait(1000)
-        .end()
+        .run()
 }
 
 main()
