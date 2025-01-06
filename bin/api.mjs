@@ -64,6 +64,11 @@ async function rewrite () {
           line = ""
           breadcrumb = true
         }
+
+        // Add a new line after each table
+        if (line.match(/<\/table>/)) {
+          line += "\n"
+        }
         
         output.push(line)
       })
