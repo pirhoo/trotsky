@@ -13,6 +13,8 @@ import {
   StepWait, 
   StepPost, 
   StepCreatePost, 
+  StepList, 
+  StepListUri,
   StepSearchPosts, 
   StepStreamPosts, 
   StepTap, 
@@ -54,6 +56,15 @@ export class Trotsky extends StepBuilder  {
    */
   createPost (record: StepCreatePostParams): StepCreatePost<this> {
     return this.append(StepCreatePost<this>, record)
+  }
+
+  /**
+   * Adds a {@link StepList} step.
+   * @param uri - The list URI.
+   * @returns The new {@link StepList} instance.
+   */
+  list (uri: Resolvable<StepListUri>) {
+    return this.append(StepList, uri)
   }
 
   /**

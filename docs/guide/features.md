@@ -10,6 +10,7 @@ Trotsky is currently limited to the following features:
  **StepActorFollowers** | :white_check_mark: | Get an actor's followers. | ```Trotsky.init(agent).actor('bsky.app').followers().each()``` 
  **StepActorFollowings** | :white_check_mark: | Get an actor's followings | ```Trotsky.init(agent).actor('bsky.app').followings().each()``` 
  **StepActorLikes** | :white_check_mark: | Get an actor's likes. | ```Trotsky.init(agent).actor('bsky.app').likes().each()``` 
+ **StepActorLists** | :white_check_mark: | Get an actor's lists. | ```Trotsky.init(agent).actor('bsky.app').lists().each()``` 
  **StepActorMute** | :x: | Mute an actor. |  
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
  **StepActors** | :x: | Get a list of actors by their DIDs or handles. |  
@@ -18,6 +19,7 @@ Trotsky is currently limited to the following features:
  **StepActorUnfollow** | :white_check_mark: | Unfollow an actor. | ```Trotsky.init(agent).actor('bsky.app').unfollow()``` 
  **StepActorUnmute** | :x: | Unmute an actor. |  
  **StepCreatePost** | :white_check_mark: | Create a post. | ```Trotsky.init(agent).post({ text: "Mapo Tofu is spicy 🌶️" })``` 
+ **StepList** | :white_check_mark: | Get a list by its URI. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m")``` 
  **StepPost** | :white_check_mark: | Get a post by its URI. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")``` 
  **StepPostAuthor** | :white_check_mark: | Get a post author. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").author()``` 
  **StepPostLike** | :white_check_mark: | Like a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").like()``` 

@@ -1,4 +1,4 @@
-import type { AppBskyActorGetProfiles } from "@atproto/api"
+import type { AppBskyActorDefs } from "@atproto/api"
 
 import { StepBuilder, StepActorsEntry, StepBuilderList } from "../trotsky"
 
@@ -7,7 +7,7 @@ import { StepBuilder, StepActorsEntry, StepBuilderList } from "../trotsky"
  * Defines the output schema for a list of actors' profiles.
  * @typeParam StepActorsOutput - The output schema for actor profiles.
  */
-export type StepActorsOutput = AppBskyActorGetProfiles.OutputSchema["profiles"]
+export type StepActorsOutput = Partial<AppBskyActorDefs.ProfileView>[]
 
 /**
  * An abstract class that extends {@link StepBuilderList} to handle a list of actor profiles.

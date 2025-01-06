@@ -4,6 +4,7 @@ import {
   StepActorFollow, 
   StepActorFollowers, 
   StepActorFollowings, 
+  StepActorLists,
   StepActorLikes, 
   StepActorPosts, 
   StepActorUnblock, 
@@ -18,6 +19,7 @@ import {
  * @typeParam P - The parent step type.
  * @typeParam C - The context type.
  * @typeParam O - The output type.
+ * 
  * @public
  */
 export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
@@ -47,6 +49,15 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
    */
   likes (): StepActorLikes<this> {
     return this.append(StepActorLikes<this>)
+  }
+
+  /**
+   * Appends a step to fetch the lists of the current actor.
+   * 
+   * @returns The appended {@link StepActorLists} instance.
+   */
+  lists (): StepActorLists<this> {
+    return this.append(StepActorLists<this>)
   }
 
   /**
