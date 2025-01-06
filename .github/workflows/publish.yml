@@ -61,6 +61,9 @@ jobs:
 
       - name: Run tests
         run: yarn test --maxConcurrency=1
+        env:
+          DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+          REDIS_HOST: "localhost"
 
       - name: API documentation
         run: yarn doc:api

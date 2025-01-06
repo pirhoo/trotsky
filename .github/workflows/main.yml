@@ -10,10 +10,6 @@ jobs:
     strategy:
       matrix:
         node-version: ['20.x', '22.x']
-
-    env:
-      DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
-      REDIS_HOST: "localhost"
     
     services:
       postgres:
@@ -57,3 +53,6 @@ jobs:
 
       - name: Run tests
         run: yarn test --maxConcurrency=1
+        env:
+          DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+          REDIS_HOST: "localhost"
