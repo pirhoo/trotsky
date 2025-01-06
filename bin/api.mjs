@@ -39,7 +39,11 @@ async function rewrite () {
 
       const path = join(API_OUTPUT_DIR, file)
       const input = fsExtra.createReadStream(path)
-      const output = []
+      const output = [
+        '---',
+        'editLink: false',
+        '---',
+      ]
       const lines = createInterface({ input, "crlfDelay": Infinity })
 
       let title = false

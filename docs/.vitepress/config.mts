@@ -19,7 +19,12 @@ export default defineConfig({
     ['meta', { name: 'apple-mobile-web-app-title', content: 'Trotsky' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }]
   ],
+  lastUpdated: true,
   themeConfig: {
+    editLink: {
+      pattern: 'https://github.com/pirhoo/trotsky/tree/main/docs/:path',
+      text: 'Edit this page on GitHub'
+    },
     logo: '/logo.svg',  
     search: {
       provider: 'local'
