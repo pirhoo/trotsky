@@ -11,7 +11,37 @@ permissions:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+    
+    env:
+      DB_POSTGRES_URL: "postgresql://postgres:postgres@localhost:5432/postgres"
+      REDIS_HOST: "localhost"
+    
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout repository
@@ -31,9 +61,6 @@ jobs:
 
       - name: Run tests
         run: yarn test --maxConcurrency=1
-
-      - name: Build Trotsky
-        run: yarn build
 
       - name: API documentation
         run: yarn doc:api
