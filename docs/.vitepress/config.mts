@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { version } from '../../package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -46,7 +47,8 @@ export default defineConfig({
         ]
       },
       {
-        text: 'API',
+        text: `API <spann class="VPBadge info">${version}</span>`,
+        
         items: [
           { text: 'Reference', link: '/api/reference' },
         ]
