@@ -1,5 +1,15 @@
 /**
- * This is the main entry point for the Trotsky library.
+ * This package provides a comprehensive suite of TypeScript classes and utilities designed 
+ * to facilitate interaction with the AT Protocol (ATProto) and Bluesky's social networking 
+ * services. 
+ * 
+ * It offers a structured approach to building and executing sequences of 
+ * operations—referred to as "steps"—that interact with various aspects of the protocol, 
+ * such as managing user profiles, posts, likes, follows, and more. 
+ * 
+ * By leveraging the schema 
+ * definitions outlined in the AT Proto lexicons,  this package ensures type safety and 
+ * consistency when interfacing with ATProto's decentralized social networking ecosystem.
  * 
  * @packageDocumentation
  */
