@@ -1,6 +1,8 @@
-name: Trotsky Docs
+name: Trotsky Publish
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -19,9 +21,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
+
+      - name: Run linter
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test --maxConcurrency=1
 
       - name: Build Trotsky
         run: yarn build
@@ -39,3 +48,8 @@ jobs:
 
       - name: Deploy artifact to Github Pages
         uses: actions/deploy-pages@v4
+    
+      - name: Publish to NPM
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
