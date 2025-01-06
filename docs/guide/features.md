@@ -14,12 +14,14 @@ Trotsky is currently limited to the following features:
  **StepActorMute** | :x: | Mute an actor. |  
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
  **StepActors** | :x: | Get a list of actors by their DIDs or handles. |  
+ **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
  **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPost().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
  **StepActorUnfollow** | :white_check_mark: | Unfollow an actor. | ```Trotsky.init(agent).actor('bsky.app').unfollow()``` 
  **StepActorUnmute** | :x: | Unmute an actor. |  
  **StepCreatePost** | :white_check_mark: | Create a post. | ```Trotsky.init(agent).post({ text: "Mapo Tofu is spicy 🌶️" })``` 
  **StepList** | :white_check_mark: | Get a list by its URI. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m")``` 
+ **StepLists** | :x: | Get a list of list by their URIs. |
  **StepPost** | :white_check_mark: | Get a post by its URI. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")``` 
  **StepPostAuthor** | :white_check_mark: | Get a post author. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").author()``` 
  **StepPostLike** | :white_check_mark: | Like a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").like()``` 
@@ -27,8 +29,11 @@ Trotsky is currently limited to the following features:
  **StepPostRepost** | :white_check_mark: | Repost a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").repost()``` 
  **StepPosts** | :x: | Get a list of post by their URIs. |  
  **StepSearchPosts** | :white_check_mark: | Search posts. | ```Trotsky.init(agent).searchPosts({ q: "Mapo Tofu" }).each()``` 
- **StepTimeline** | :x: | Get the timeline. |  
+ **StepSearchStarterPacks** | :x: | Search starter packs. |
+ **StepStarterPack** | :x: | Get a start pack by its URI. | 
+ **StepStarterPacks** | :x: | Get a list of starter packs by their URIs. |
  **StepStreamPosts** | :test_tube: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPost().each()```
+ **StepTimeline** | :x: | Get the timeline. |  
 
  <small>:x: Not implemented :white_check_mark: Implemented :test_tube: Experimental</small>
 
