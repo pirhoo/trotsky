@@ -1,4 +1,6 @@
 import type AtpAgent from "@atproto/api"
+import cron from "node-cron"
+
 import Trotsky, { Step } from "../trotsky"
 
 /**
@@ -115,6 +117,15 @@ export abstract class StepBuilder {
   async runAll () {
     await this.applyAll()
     return this
+  }
+
+  /**
+   * Schedules the sequence to run at a given interval.
+   * @param expression - The cron {@link https://github.com/kelektiv/node-cron | expression} defining the schedule.
+   * @returns A cron job instance.
+   */
+  schedule (expression: string) {
+    return cron.schedule(expression, this.run.bind(this))
   }
 
   /**

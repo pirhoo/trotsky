@@ -4,7 +4,35 @@ Welcome to the **Trotsky Ecosystem** page—your one-stop hub for sharing ideas,
 
 Have you built a neat automation script, a quirky bot, or an interesting chain of steps with Trotsky yet? **We want to see it!** Feel free to share your code examples with us, etheir by openning an [issue on Github](https://github.com/pirhoo/trotsky/issues) or directly submitting a PR to edit this document.
 
-## Reply-bots
+## Bots
+
+### Big Ben
+
+This script posts just like [Big Ben](https://x.com/big_ben_clock), every hour.
+
+```ts
+import { AtpAgent } from "@atproto/api"
+import { Trotsky } from "trotsky"
+
+async function main() {
+  const agent = new AtpAgent({ service: "https://bsky.social" })
+  await agent.login({ identifier: 'trotsky.pirhoo.com', password: 'p4ssw0rd' })
+
+  Trotsky
+    .init(agent)
+    .createPost(function () {
+      const londonDate = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London', hour: 'numeric', hour12: false })
+      const hours = (parseInt(londonDate, 10) % 12) || 12
+      const text = 'BONG '.repeat(hours).trim()
+      return { text }
+    })
+    .schedule('0 * * * *')
+}
+
+main()
+```
+
+
 
 ### Pizza Party
 
