@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
-import { AppBskyFeedPost, AtpAgent } from "@atproto/api"
+import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
 import { Trotsky } from "../../lib/trotsky"
