@@ -1,6 +1,6 @@
 import { type AtpAgent } from "@atproto/api"
 
-import { Step, StepStreamEntry, type StepBuilder } from "../trotsky"
+import { Step, StepBuilderStreamEntry, type StepBuilder } from "../trotsky"
 import { type JetstreamMessage, type JetstreamMessageCommit, type JetstreamEventEmitter } from "./utils/jetstream"
 
 /**
@@ -13,31 +13,31 @@ import { type JetstreamMessage, type JetstreamMessageCommit, type JetstreamEvent
  * @typeParam O - The output type, defaulting to {@link JetstreamMessage}.
  * @public
  */
-export abstract class StepStream<P = StepBuilder, C = unknown, O = JetstreamMessage> extends Step<P, C, O> {
+export abstract class StepBuilderStream<P = StepBuilder, C = unknown, O = JetstreamMessage> extends Step<P, C, O> {
 
   /**
    * Holds the list of steps to be executed for each streamed entry.
    */
-  _steps: StepStreamEntry<this>[]
+  _steps: StepBuilderStreamEntry<this>[]
 
   /**
-   * Initializes the StepStream instance with the given agent and parent step.
+   * Initializes the StepBuilderStream instance with the given agent and parent step.
    * 
    * @param agent - The AT protocol agent used for API calls.
    * @param parent - The parent step in the chain.
    */
   constructor (agent: AtpAgent, parent: P) {
     super(agent, parent)
-    this._steps = [] as StepStreamEntry<this>[]
+    this._steps = [] as StepBuilderStreamEntry<this>[]
   }
   
   /**
    * Appends a new stream entry step to the current list and returns it.
    * 
-   * @returns The newly appended {@link StepStreamEntry} instance.
+   * @returns The newly appended {@link StepBuilderStreamEntry} instance.
    */
   each () {
-    return this.append(StepStreamEntry<this>)
+    return this.append(StepBuilderStreamEntry<this>)
   }
 
   /**

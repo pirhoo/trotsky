@@ -40,16 +40,14 @@
  * @packageDocumentation
  */
 
-// Top-level classes
+// Abstract and top-level classes
 export * from "./core/StepBuilder"
 export * from "./core/Trotsky"
-
-// Abstract classes
 export * from "./core/Step"
-export * from "./core/StepList"
-export * from "./core/StepListEntry"
-export * from "./core/StepStream"
-export * from "./core/StepStreamEntry"
+export * from "./core/StepBuilderList"
+export * from "./core/StepBuilderListEntry"
+export * from "./core/StepBuilderStream"
+export * from "./core/StepBuilderStreamEntry"
 
 // Mixins
 export * from "./core/mixins/ActorMixins"

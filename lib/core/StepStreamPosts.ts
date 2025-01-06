@@ -1,5 +1,5 @@
 import { AtUri } from "@atproto/api"
-import { StepPostsEntry, StepStream, type StepPostOutput } from "../trotsky"
+import { StepPostsEntry, StepBuilderStream, type StepPostOutput } from "../trotsky"
 import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
 
 /**
@@ -18,9 +18,9 @@ import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
  * API to listen for post events and process them in real-time. The stream can
  * use a lot of bandwidth since it processes every post event. 
  *
- * @see {@link StepStream}
+ * @see {@link StepBuilderStream}
  */
-export class StepStreamPosts<P, C = unknown, O = StepPostOutput> extends StepStream<P, C, O> {
+export class StepStreamPosts<P, C = unknown, O = StepPostOutput> extends StepBuilderStream<P, C, O> {
   _steps: StepPostsEntry<this>[] = []
 
   /**

@@ -1,15 +1,15 @@
-import type { StepList } from "../trotsky"
+import type { StepBuilderList } from "../trotsky"
 import { Step } from "../trotsky"
 
 /**
- * Represents an individual entry step within a {@link StepList}.
+ * Represents an individual entry step within a {@link StepBuilderList}.
  * 
- * @typeParam P - The parent type of this step, defaulting to {@link StepList}.
+ * @typeParam P - The parent type of this step, defaulting to {@link StepBuilderList}.
  * @typeParam C - The child context type, defaulting to `unknown`.
  * @typeParam O - The output type, defaulting to `unknown`.
  * @public
  */
-export class StepListEntry<P = StepList, C = unknown, O = unknown> extends Step<P, C, O> { 
+export class StepBuilderListEntry<P = StepBuilderList, C = unknown, O = unknown> extends Step<P, C, O> { 
 
   /**
    * Applies the logic for the step. This base implementation sets the output to `null`.

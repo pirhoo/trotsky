@@ -1,5 +1,5 @@
 import type AtpAgent from "@atproto/api"
-import { StepBuilder, StepList, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate } from "../trotsky"
+import { StepBuilder, StepBuilderList, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate } from "../trotsky"
 import { Resolvable } from "./utils/resolvable"
 
 /**
@@ -114,10 +114,10 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
   }
 
   /**
-   * Checks if this instance is part of a {@link StepList}.
+   * Checks if this instance is part of a {@link StepBuilderList}.
    */
-  get isStepListEntry (): boolean {
-    return this._parent instanceof StepList
+  get isStepBuilderListEntry (): boolean {
+    return this._parent instanceof StepBuilderList
   }
 
   get isStepWhen (): boolean {

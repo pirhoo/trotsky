@@ -1,6 +1,6 @@
 import type { AppBskyActorGetProfiles } from "@atproto/api"
 
-import { StepBuilder, StepActorsEntry, StepList } from "../trotsky"
+import { StepBuilder, StepActorsEntry, StepBuilderList } from "../trotsky"
 
 
 /**
@@ -10,7 +10,7 @@ import { StepBuilder, StepActorsEntry, StepList } from "../trotsky"
 export type StepActorsOutput = AppBskyActorGetProfiles.OutputSchema["profiles"]
 
 /**
- * An abstract class that extends {@link StepList} to handle a list of actor profiles.
+ * An abstract class that extends {@link StepBuilderList} to handle a list of actor profiles.
  * It defines a collection of steps dealing with actor entries (`StepActorsEntry`), 
  * which can be appended via the `each()` method.
  *
@@ -19,7 +19,7 @@ export type StepActorsOutput = AppBskyActorGetProfiles.OutputSchema["profiles"]
  * @typeParam O - The output type, extending {@link StepActorsOutput}, defaults to `StepActorsOutput`.
  * @public
  */
-export abstract class StepActors<P = StepBuilder, C = null, O extends StepActorsOutput = StepActorsOutput> extends StepList<P, C, O> {
+export abstract class StepActors<P = StepBuilder, C = null, O extends StepActorsOutput = StepActorsOutput> extends StepBuilderList<P, C, O> {
 
   /**
    * Stores the list of appended actor entries.

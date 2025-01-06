@@ -126,7 +126,7 @@ export abstract class StepBuilder {
       // Skip the rest of the steps if the current step is a StepWhen and its output is falsy
       if (step.isStepWhen && !step.output) break
 
-      if (!step.isStepListEntry) {
+      if (!step.isStepBuilderListEntry) {
         await step.applyAll()
       }
     }

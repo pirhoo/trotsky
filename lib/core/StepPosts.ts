@@ -1,7 +1,7 @@
 import type { AppBskyFeedDefs } from "@atproto/api"
 
 import type { StepBuilder } from "../trotsky"
-import { StepList, StepPostsEntry } from "../trotsky"
+import { StepBuilderList, StepPostsEntry } from "../trotsky"
 
 /**
  * Represents the output of a posts step, consisting of an array of post views.
@@ -17,7 +17,7 @@ export type StepPostsOutput = AppBskyFeedDefs.PostView[]
  * @typeParam O - The output type, defaulting to {@link StepPostsOutput}.
  * @public
  */
-export abstract class StepPosts<P = StepBuilder, C = null, O extends StepPostsOutput = StepPostsOutput> extends StepList<P, C, O> {
+export abstract class StepPosts<P = StepBuilder, C = null, O extends StepPostsOutput = StepPostsOutput> extends StepBuilderList<P, C, O> {
 
   /**
    * Holds the list of steps to be executed for each post entry.

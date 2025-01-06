@@ -3,20 +3,20 @@ import type { HeadersMap } from "@atproto/xrpc"
 
 import type { Resolvable } from "./utils/resolvable"
 import { resolveValue } from "./utils/resolvable"
-import { Step, StepListEntry, type StepBuilder } from "../trotsky"
+import { Step, StepBuilderListEntry, type StepBuilder } from "../trotsky"
 
 /**
  * Represents the cursor for pagination in a list schema.
  * @public
  */
-type StepListOutputSchemaCursor = string | undefined
+type StepBuilderListOutputSchemaCursor = string | undefined
 
 /**
  * Interface defining the schema for a paginated list output.
  * @public
  */
-interface StepListOutputSchema {
-  "cursor"?: StepListOutputSchemaCursor;
+interface StepBuilderListOutputSchema {
+  "cursor"?: StepBuilderListOutputSchemaCursor;
   "hitsTotal"?: number;
   [k: string]: unknown;
 }
@@ -25,32 +25,32 @@ interface StepListOutputSchema {
  * Interface representing the structure of a paginated response.
  * @public
  */
-interface StepListResponse {
+interface StepBuilderListResponse {
   "success": boolean;
   "headers": HeadersMap;
-  "data": StepListOutputSchema;
+  "data": StepBuilderListOutputSchema;
 }
 
 /**
  * Represents the output of a list step as an array of items.
  * @public
  */
-export type StepListOutput = unknown[]
+export type StepBuilderListOutput = unknown[]
 
 /**
  * Abstract class representing a step that processes paginated lists.
  * 
  * @typeParam P - The parent type of the step, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `unknown`.
- * @typeParam O - The output type of the step, defaulting to {@link StepListOutput}.
+ * @typeParam O - The output type of the step, defaulting to {@link StepBuilderListOutput}.
  * @public
  */
-export abstract class StepList<P = StepBuilder, C = unknown, O extends StepListOutput = StepListOutput> extends Step<P, C, O> { 
+export abstract class StepBuilderList<P = StepBuilder, C = unknown, O extends StepBuilderListOutput = StepBuilderListOutput> extends Step<P, C, O> { 
 
   /**
    * Holds the list of steps to be executed for each entry in the list.
    */
-  _steps: StepListEntry<this>[]
+  _steps: StepBuilderListEntry<this>[]
 
   /**
    * Number of items to take from the list. Defaults to `Infinity`.
@@ -63,14 +63,14 @@ export abstract class StepList<P = StepBuilder, C = unknown, O extends StepListO
   _skip: Resolvable<number> = 0
 
   /**
-   * Initializes the StepList with the provided agent and parent step.
+   * Initializes the StepBuilderList with the provided agent and parent step.
    * 
    * @param agent - The AT protocol agent used for API calls.
    * @param parent - The parent step in the chain.
    */
   constructor (agent: AtpAgent, parent: P) {
     super(agent, parent)
-    this._steps = [] as StepListEntry<this>[]
+    this._steps = [] as StepBuilderListEntry<this>[]
   }
 
   /**
@@ -98,10 +98,10 @@ export abstract class StepList<P = StepBuilder, C = unknown, O extends StepListO
   /**
    * Appends a new entry processing step to the list.
    * 
-   * @returns The appended {@link StepListEntry} instance.
+   * @returns The appended {@link StepBuilderListEntry} instance.
    */
   each () {
-    return this.append(StepListEntry<this>)
+    return this.append(StepBuilderListEntry<this>)
   }
 
   /**
@@ -135,9 +135,9 @@ export abstract class StepList<P = StepBuilder, C = unknown, O extends StepListO
    * @param fn - The function to fetch paginated data, taking the current cursor as input.
    * @returns A promise that resolves to an array of items after applying skip and take logic.
    */
-  async paginate<T, R extends StepListResponse>(attribute: string, fn: (cursor: StepListOutputSchemaCursor) => Promise<R>): Promise<T> {
+  async paginate<T, R extends StepBuilderListResponse>(attribute: string, fn: (cursor: StepBuilderListOutputSchemaCursor) => Promise<R>): Promise<T> {
     let records = []
-    let cursor: StepListOutputSchemaCursor
+    let cursor: StepBuilderListOutputSchemaCursor
 
     const skip = await resolveValue<number>(this, this._skip)
     const take = await resolveValue<number>(this, this._take)
