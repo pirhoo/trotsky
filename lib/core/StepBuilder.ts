@@ -32,6 +32,7 @@ export abstract class StepBuilder {
   /**
    * Updates the agent instance.
    * @param agent - The new {@link AtpAgent} instance.
+   * 
    * @returns The current {@link Trotsky} instance.
    */
   withAgent (agent: AtpAgent) {
@@ -42,6 +43,7 @@ export abstract class StepBuilder {
   /**
    * Retreive the configuration value for a given key.
    * @param key - The configuration key.
+   * @returns The configuration value.
    */
   config (key: string): unknown
 
@@ -49,12 +51,14 @@ export abstract class StepBuilder {
    * Updates the configuration value for a given key.
    * @param key - The configuration key.
    * @param value - The new value.
+   * @returns The current {@link StepBuilder} instance.
    */
   config (key: string, value: unknown): this
 
   /**
    * Updates the configuration object.
    * @param config - The new configuration object.
+   * @returns The current {@link StepBuilder} instance.
    */
   config (config: StepBuilderConfig): this
 
