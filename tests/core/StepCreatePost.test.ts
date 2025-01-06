@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
-import { AtpAgent } from "@atproto/api"
+import { AppBskyFeedPost, AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
 import { Trotsky } from "../../lib/trotsky"
@@ -28,6 +28,20 @@ describe("StepPost", () => {
 
   test("create a post", async () => {
     const post = Trotsky.init(agent).createPost({ "text": "Dan Dan Noodle is my favorite meal" })
+    await post.run()
+    expect(post.output).toHaveProperty("uri")
+    expect(post.output).toHaveProperty("cid")
+  })
+
+  test("create a post with a function", async () => {
+    const post = Trotsky.init(agent).createPost(() => ({ "text": "Dan Dan Noodle is my favorite meal" }))
+    await post.run()
+    expect(post.output).toHaveProperty("uri")
+    expect(post.output).toHaveProperty("cid")
+  })
+
+  test("create a post with a promise", async () => {
+    const post = Trotsky.init(agent).createPost(async () => ({ "text": "Dan Dan Noodle is my favorite meal" }))
     await post.run()
     expect(post.output).toHaveProperty("uri")
     expect(post.output).toHaveProperty("cid")
