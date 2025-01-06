@@ -1,4 +1,4 @@
-import type { AtUri, AppBskyFeedGetPosts, AtpAgent } from "@atproto/api"
+import type { AtUri, AppBskyFeedGetPosts, AtpAgent, AppBskyActorDefs } from "@atproto/api"
 
 import type { StepBuilder } from "../trotsky"
 import type { Resolvable } from "./utils/resolvable"
@@ -7,7 +7,7 @@ import { resolveValue } from "./utils/resolvable"
 
 export type StepPostQueryParams = AppBskyFeedGetPosts.QueryParams
 export type StepPostUri = string | AtUri
-export type StepPostOutput = { "uri": string; "cid": string; "record": object }
+export type StepPostOutput = { "uri": string; "cid": string; "record": object; "author": AppBskyActorDefs.ProfileViewBasic  }
 
 export class StepPost<P = StepBuilder, C = null, O extends StepPostOutput = StepPostOutput> extends PostMixins<P, C, O> {
   _uri: Resolvable<StepPostUri>
