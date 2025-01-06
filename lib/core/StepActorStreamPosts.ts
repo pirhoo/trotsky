@@ -10,7 +10,7 @@ import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
 export type StepActorStreamPostsOutput = JetstreamMessageCommit & { "record": Partial<PostRecord> }
 
 /**
- * @experimenjtal
+ * @experimental
  * 
  * A specialized step that extends {@link StepStreamPosts} to stream an actor's posts.
  * It uses a Jetstream-based event emitter filtered by the actor's DID.
