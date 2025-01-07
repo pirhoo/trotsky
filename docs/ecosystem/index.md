@@ -8,7 +8,7 @@ Have you built a neat automation script, a quirky bot, or an interesting chain o
 
 ### Big Ben
 
-This script posts just like [Big Ben](https://x.com/big_ben_clock), every hour:
+This script posts just like [Big Ben](https://bsky.app/profile/bigbenbong.bsky.social) (largely inspired by [Big Ben Clock on X](https://x.com/big_ben_clock)), every hour:
 
 ```ts
 import { AtpAgent } from "@atproto/api"
