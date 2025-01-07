@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, jest, test } from "@jest/globals
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, followsSeed } from "@atproto/dev-env"
 
-import { Trotsky } from "../../lib/trotsky"
+import { StepTap, Trotsky } from "../../lib/trotsky"
 
 describe("Step", () => {
   let network: TestNetwork
@@ -25,6 +25,13 @@ describe("Step", () => {
 
   afterAll(async () => {
     await network.close()
+  })
+
+  test("clones it", () => {
+    const tap = jest.fn()
+    const clone = new StepTap(agent, null, tap).clone()
+    expect(clone).toBeInstanceOf(StepTap)
+    expect(clone).toHaveProperty("_interceptor", tap)
   })
 
   test("call tap for each of Bob's followers", async () => {

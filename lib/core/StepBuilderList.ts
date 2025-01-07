@@ -74,6 +74,15 @@ export abstract class StepBuilderList<P = StepBuilder, C = unknown, O extends St
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(...rest).skip(this._skip).take(this._take)
+  }
+
+  /**
    * Sets the number of items to take from the list.
    * 
    * @param take - The number of items to take, resolved at runtime if necessary.

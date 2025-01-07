@@ -56,6 +56,15 @@ export class StepPostReply<P = StepPost, C extends StepPostOutput = StepPostOutp
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._record, ...rest)
+  }
+
+  /**
    * Applies the step logic to create a reply to the post provided in the context.
    * The resulting URI and CID of the reply are stored in the output.
    * 

@@ -51,6 +51,15 @@ export class StepCreatePost<P = StepBuilder, C = null, O extends StepCreatePostO
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._record, ...rest)
+  }
+
+  /**
    * Executes the create-post step by sending a request to the Bluesky service
    * and assigning the returned URI and CID to `this.output`.
    */

@@ -48,6 +48,15 @@ export class StepSearchPosts<P, C = null, O extends StepSearchPostsOutput = Step
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._queryParams, ...rest)
+  }
+
+  /**
    * Applies the pagination logic to retrieve posts based on the search parameters.
    * Results are stored in the `output` property.
    * 

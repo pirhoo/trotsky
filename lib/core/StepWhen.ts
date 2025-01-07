@@ -38,6 +38,15 @@ export class StepWhen<P = StepBuilder, C = unknown, O = boolean> extends Step<P,
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._predicate, ...rest)
+  }
+
+  /**
    * Evaluates the predicate and sets the output to its result.
    */
   async apply (): Promise<void> {

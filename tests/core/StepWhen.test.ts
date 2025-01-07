@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
-import { Trotsky } from "../../lib/trotsky"
+import { StepWhen, Trotsky } from "../../lib/trotsky"
 
 describe("StepWhen", () => {
   let network: TestNetwork
@@ -27,6 +27,12 @@ describe("StepWhen", () => {
 
   afterAll(async () => {
     await network.close()
+  })
+
+  test("clones it", () => {
+    const clone = new StepWhen(agent, null, true).clone()
+    expect(clone).toBeInstanceOf(StepWhen)
+    expect(clone).toHaveProperty("_predicate", true)
   })
 
   test("get truthy output with a primitive true", async () => {

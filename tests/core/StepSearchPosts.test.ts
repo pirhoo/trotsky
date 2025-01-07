@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
+import { afterAll, beforeAll, describe, expect, jest, test } from "@jest/globals"
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
@@ -23,6 +23,12 @@ describe("StepSearchPosts", () => {
     // For some reason the AppView schema is not being dropped
     await network.bsky.db.db.schema.dropSchema("appview_step_search_posts").cascade().execute()
     await network.close()
+  })
+
+  test("clones it", () => {
+    const clone = new StepSearchPosts(agent, null, { "q": "bar" }).clone()
+    expect(clone).toBeInstanceOf(StepSearchPosts)
+    expect(clone).toHaveProperty("_queryParams", expect.objectContaining({ "q": "bar" }))
   })
 
   test("search 2 posts for \"foo\"", async () => {

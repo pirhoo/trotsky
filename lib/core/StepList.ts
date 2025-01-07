@@ -49,6 +49,15 @@ export class StepList<P = StepBuilder, C = null, O extends StepListOutput = Step
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._uri, ...rest)
+  }
+
+  /**
    * Applies the step logic to retrieve the list and sets the output to the retrieved list's data.
    * If no lists are found, the output is set to `null`.
    * 

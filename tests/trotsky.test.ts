@@ -73,4 +73,9 @@ describe("Trotsky", () => {
     expect(trotsky.flattenSteps[2]).toBeInstanceOf(StepPostReply)
     expect(trotsky.flattenSteps[3]).toBeInstanceOf(StepWait)
   })
+
+  test("clones it", () => {
+    expect(Trotsky.init(agent).clone()).toBeInstanceOf(Trotsky)
+    expect(Trotsky.init(agent).clone().agent).toBe(agent)
+  })
 })

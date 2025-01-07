@@ -117,6 +117,15 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
     return this._config[keyOrconfig] ?? (<Step> this.back()).config(keyOrconfig)
   }
 
+  /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the constructor.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._parent, ...rest)
+  }
+
 
   /**
    * Retrieves the parent object of this instance.

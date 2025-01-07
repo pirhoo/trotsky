@@ -87,6 +87,22 @@ export abstract class StepBuilder {
   }
 
   /**
+   * Clones the current instance, including all steps and configuration.
+   * 
+   * @param rest - Additional arguments to pass to the constructor.
+   * @returns A new instance of the current class.
+   */
+  clone (...rest: unknown[]): this {
+    type Constructor<T> = new (...args: unknown[]) => T
+    const Constructor = this.constructor as Constructor<this>
+    const clone = new Constructor(this.agent, ...rest) as this
+    for (const step of this.steps) {
+      clone.push(step.clone() as Step<this>)
+    }
+    return clone
+  }
+
+  /**
    * Appends a new step to the sequence.
    * @param type - The step class.
    * @param args - Arguments for the step.
@@ -94,8 +110,18 @@ export abstract class StepBuilder {
    */
   append<Type extends Step<this>>(type: new (agent: AtpAgent, parent: this, ...args) => Type, ...args: unknown[]): Type {
     const step = new type(this.agent, this, ...args)
-    this._steps.push(step)
+    this.push(step)
     return step
+  }
+
+  /**
+   * Pushes a step to the sequence.
+   * @param step - The step instance.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  push (step: Step<this>) {
+    this._steps.push(step)
+    return this
   }
 
   /**
@@ -172,5 +198,4 @@ export abstract class StepBuilder {
   get agent (): AtpAgent {
     return this._agent
   }
-  
 }

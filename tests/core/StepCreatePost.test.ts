@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
-import { Trotsky } from "../../lib/trotsky"
+import { StepCreatePost, Trotsky } from "../../lib/trotsky"
 
 describe("StepPost", () => {
   let network: TestNetwork
@@ -24,6 +24,12 @@ describe("StepPost", () => {
     // For some reason the AppView schema is not being dropped
     await network.bsky.db.db.schema.dropSchema("appview_step_create_post").cascade().execute()
     await network.close()
+  })
+
+  test("clones it", () => {
+    const clone = new StepCreatePost(agent, null, { "text": "foo" }).clone()
+    expect(clone).toBeInstanceOf(StepCreatePost)
+    expect(clone).toHaveProperty("_record", expect.objectContaining({ "text": "foo" }))
   })
 
   test("create a post", async () => {

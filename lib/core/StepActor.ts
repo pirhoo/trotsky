@@ -43,6 +43,15 @@ export class StepActor<P = StepBuilder, C = null, O extends StepActorOutput = St
   }
 
   /**
+   * Clones the current step and returns a new instance with the same parameters.
+   * @param rest - Additional parameters to pass to the cloned step. This is useful for child class overriding the clone.
+   * @returns A new {@link StepActor} instance.
+   */
+  override clone (...rest: unknown[]) {
+    return super.clone(this._param, ...rest)
+  }
+
+  /**
    * Applies the step by resolving the actor parameter and fetching the actor's profile.
    * Sets the profile data as the output of this step.
    * @returns A promise that resolves when the step is complete.
