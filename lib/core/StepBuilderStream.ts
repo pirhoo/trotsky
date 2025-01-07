@@ -93,7 +93,10 @@ export abstract class StepBuilderStream<P = StepBuilder, C = unknown, O = Jetstr
     if ((<JetstreamMessageCommit>message)?.commit?.operation === "create") {
       for (const step of this.steps) {
         const record = await this.resolveOutput(message)
-        await step.withOutput(record).applyAll()
+        // We clone the step to avoid modifying the original instance
+        // so each step can have its own output context without
+        // interfering with other steps.
+        await step.clone().withOutput(record).applyAll()
       }
     }
   }
