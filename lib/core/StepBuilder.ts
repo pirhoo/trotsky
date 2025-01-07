@@ -7,7 +7,7 @@ import Trotsky, { Step } from "../trotsky"
  * Represents the configuration object for a {@link StepBuilder} instance.
  * @public
  */
-type StepBuilderConfig = object
+export type StepBuilderConfig = object
 
 /**
  * Represents a builder for a sequence of steps. This class is used internally by the {@link Trotsky} framework. 

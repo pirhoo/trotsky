@@ -1,5 +1,5 @@
 import type AtpAgent from "@atproto/api"
-import { StepBuilder, StepBuilderList, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate } from "../trotsky"
+import { StepBuilder, StepBuilderList, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate, type StepBuilderConfig } from "../trotsky"
 import { Resolvable } from "./utils/resolvable"
 
 /**
@@ -72,6 +72,49 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
   tap (interceptor: StepTapInterceptor) {
     this.append(StepTap<this>, interceptor)
     return this
+  }
+
+  /**
+   * Retreive the configuration value for a given key on the current 
+   * step or inherite the value from the parent step.
+   * @param key - The configuration key.
+   * @returns The configuration value.
+   */
+  config (key: string): unknown
+
+  /**
+   * Updates the configuration value for a given key on the current step.
+   * @param key - The configuration key.
+   * @param value - The new value.
+   * @returns The current {@link Step} instance.
+   */
+  config (key: string, value: unknown): this
+
+  /**
+   * Updates the configuration object on the current step.
+   * @param config - The new configuration object.
+   * @returns The current {@link Step} instance.
+   */
+  config (config: StepBuilderConfig): this
+
+  /**
+   * Retrieves or updates the configuration value for a given key.
+   * @param keyOrconfig - The configuration key or object.
+   * @param value - The new value.
+   * @returns The current {@link Step} instance if updating, or the configuration value if retrieving.
+   * @remarks If the first argument is an object, it will be merged with the existing configuration.
+   */
+  config (keyOrconfig: string | StepBuilderConfig, value?: unknown): this | unknown {
+
+    if (keyOrconfig instanceof Object) {
+      return super.config(keyOrconfig)
+    }
+
+    if (value !== undefined) {
+      return super.config(keyOrconfig, value)
+    }
+
+    return this._config[keyOrconfig] ?? (<Step> this.back()).config(keyOrconfig)
   }
 
 
