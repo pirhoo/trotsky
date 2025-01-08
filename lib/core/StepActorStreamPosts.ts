@@ -25,9 +25,9 @@ export class StepActorStreamPosts<P, C extends StepActorOutput = StepActorOutput
    * Provides an event emitter that listens for "app.bsky.feed.post" events associated with this actor.
    * Throws an error if no context (i.e., actor DID) is available.
    *
-   * @returns The event emitter for streaming actor-specific posts.
+   * @returns A promise resolving to the Jetstream event emitter.
    */
-  get eventEmitter () {
+  async buildEventEmitter () {
     if (!this.context) {
       throw new Error("No context found for StepActorStreamPosts")
     }

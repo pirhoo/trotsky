@@ -1,8 +1,9 @@
 import type { Did, FollowRecord, LikeRecord, PostRecord } from "@atproto/api"
 import WebSocket from "ws"
 import EventEmitter from "events"
+import { decompress } from "@skhaz/zstd"
 
-import { decompressJetstreamZstd } from "./zstd"
+import { downloadJetstreamZstdDict } from "./zstd"
 
 /**
  * Base structure for a Jetstream message.
@@ -112,20 +113,21 @@ export function jetstreamUrl (
  * @param maxMessageSizeBytes - The maximum size of messages to process.
  * @returns A {@link JetstreamEventEmitter} instance.
  */
-export function buildEventEmitter (
+export async function buildEventEmitter (
   wantedCollections: string[] = [],
   wantedDids: string[] = [],
   maxMessageSizeBytes = 0
-): JetstreamEventEmitter {
+): Promise<JetstreamEventEmitter> {
   const eventEmitter: JetstreamEventEmitter = new EventEmitter()
   
   try {
     const url = jetstreamUrl(wantedCollections, wantedDids, maxMessageSizeBytes)
     const ws = new WebSocket(url)
+    const dict = await downloadJetstreamZstdDict()
 
     ws.on("message", async (buffer: Buffer<ArrayBufferLike>) => {
       try {
-        const data = await decompressJetstreamZstd(buffer)
+        const data = await decompress(buffer, { dict })
         const message = JSON.parse(data.toString()) as JetstreamMessage
         eventEmitter.emit("message", message)
       } catch {

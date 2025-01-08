@@ -41,9 +41,11 @@ export abstract class StepBuilderStream<P = StepBuilder, C = unknown, O = Jetstr
   }
 
   /**
-   * Abstract getter for the Jetstream event emitter. Must be implemented by subclasses.
+   * Build the Jetstream event emitter. Must be implemented by subclasses.
+   * 
+   * @returns A promise resolving to the Jetstream event emitter.
    */
-  abstract get eventEmitter (): JetstreamEventEmitter
+  abstract buildEventEmitter (): Promise<JetstreamEventEmitter>
 
   /**
    * Resolves the output of the current step from the given message.
@@ -64,13 +66,14 @@ export abstract class StepBuilderStream<P = StepBuilder, C = unknown, O = Jetstr
    */
   async apply (): Promise<void> {
     const { "default": PQueue } = await import("p-queue")
+    const eventEmitter = await this.buildEventEmitter()
 
     return new Promise((_resolve, reject) => {
       // Create a queue to ensure sequential message processing
       const queue = new PQueue()
       
       // Listen to events from the event emitter
-      this.eventEmitter
+      eventEmitter
         .on("error", reject)         
         .on("message", async (message) => {
           try {

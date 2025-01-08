@@ -1,6 +1,6 @@
 import { AtUri } from "@atproto/api"
 import { StepPostsEntry, StepBuilderStream, type StepPostOutput } from "../trotsky"
-import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
+import { buildEventEmitter, JetstreamEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
 
 /**
  * @experimental
@@ -35,9 +35,9 @@ export class StepStreamPosts<P, C = unknown, O = StepPostOutput> extends StepBui
   /**
    * Builds and returns an event emitter configured for post events.
    *
-   * @returns The event emitter instance.
+   * @returns A promise that resolves to the event emitter.
    */
-  get eventEmitter () {
+  buildEventEmitter (): Promise<JetstreamEventEmitter> {
     return buildEventEmitter(["app.bsky.feed.post"])
   }
 
