@@ -10,6 +10,7 @@ import type { Resolvable } from "./utils/resolvable"
 
 import { 
   StepActor, 
+  StepActors,
   StepWait, 
   StepPost, 
   StepCreatePost, 
@@ -19,7 +20,8 @@ import {
   StepStreamPosts, 
   StepTap, 
   StepWhen, 
-  StepBuilder
+  StepBuilder,
+  StepActorsParam
 } from "../trotsky"
 
 /**
@@ -38,6 +40,15 @@ export class Trotsky extends StepBuilder  {
    */
   actor (param: Resolvable<StepActorParam>): StepActor<this> {
     return this.append(StepActor<this>, param)
+  }
+
+  /**
+   * Adds a {@link StepActors} step.
+   * @param param - Parameters for the actors step.
+   * @returns The new {@link StepActors} instance.
+   */
+  actors (param: Resolvable<StepActorsParam>): StepActors<this> {
+    return this.append(StepActors<this>, param)
   }
 
   /**

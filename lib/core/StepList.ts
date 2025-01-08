@@ -33,6 +33,7 @@ export class StepList<P = StepBuilder, C = null, O extends StepListOutput = Step
 
   /**
    * The URI of the list to retrieve, which can be resolved dynamically at runtime.
+   * @internal
    */
   _uri: Resolvable<StepListUri>
 

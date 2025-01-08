@@ -13,7 +13,7 @@ Trotsky is currently limited to the following features:
  **StepActorLists** | :white_check_mark: | Get an actor's lists. | ```Trotsky.init(agent).actor('bsky.app').lists().each()``` 
  **StepActorMute** | :x: | Mute an actor. |  
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
- **StepActors** | :x: | Get a list of actors by their DIDs or handles. |  
+ **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. |  
  **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
  **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPost().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
