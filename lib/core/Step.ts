@@ -26,6 +26,16 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
   }
 
   /**
+   * Sets the parent.
+   * @param context - The parent object.
+   * @returns The current {@link Trotsky} instance.
+   */
+  withParent (parent: P) {
+    this._parent = parent
+    return this
+  }
+
+  /**
    * Sets the context.
    * @param context - The context object.
    * @returns The current {@link Trotsky} instance.

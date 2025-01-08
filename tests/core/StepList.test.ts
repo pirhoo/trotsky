@@ -52,6 +52,7 @@ describe("StepList", () => {
     const clone = trotsky.clone()
     expect(clone.steps).toHaveLength(1)
     expect(clone.steps[0]).toBeInstanceOf(StepList)
+    expect(clone.steps[0]._parent === clone).toBeTruthy()
     expect(clone.flattenSteps).toHaveLength(3)
     expect(clone.flattenSteps[0]).toBeInstanceOf(StepList)
     expect(clone.flattenSteps[1]).toBeInstanceOf(StepListMembers)

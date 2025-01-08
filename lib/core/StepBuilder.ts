@@ -99,7 +99,9 @@ export abstract class StepBuilder {
     const clone = new Constructor(this.agent, ...rest) as this
     // Then, clone the child steps
     for (const step of this.steps) {
-      clone.push(step.clone() as Step<this>)
+      // When cloning the child step, we must also set its parent
+      // or its going to use the original parent of the step.
+      clone.push(step.clone().withParent(clone) as Step<this>)
     }
     // Finally, clone the config (and return the new instance)
     return clone.config({ ...this._config })
