@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, jest, test } from "@jest/globals"
+import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed } from "@atproto/dev-env"
 
