@@ -126,7 +126,6 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
     return super.clone(this._parent, ...rest)
   }
 
-
   /**
    * Retrieves the parent object of this instance.
    * @returns The parent object.

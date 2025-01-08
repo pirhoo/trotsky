@@ -2,7 +2,7 @@ import { afterAll, beforeAll, describe, expect, test } from "@jest/globals"
 import { AtpAgent } from "@atproto/api"
 import { TestNetwork, SeedClient, usersSeed, RecordRef } from "@atproto/dev-env"
 
-import { StepList, StepListMembers, Trotsky } from "../../lib/trotsky"
+import { StepList, StepListMembers, StepWhen, Trotsky } from "../../lib/trotsky"
 
 describe("StepList", () => {
   let network: TestNetwork
@@ -39,11 +39,38 @@ describe("StepList", () => {
     expect(clone).toHaveProperty("_uri", "at://did/repo/rkey")
   })
 
-  test("clones it child steps", () => {
+  test("clones its child steps", () => {
     const list = new StepList(agent, null, "at://did/repo/rkey")
     const clone = list.members().back().clone()
     expect(clone.steps).toHaveLength(1)
     expect(clone.steps[0]).toBeInstanceOf(StepListMembers)
+    expect(clone.steps[0]).toHaveProperty("_parent", clone)
+  })
+
+  test("clones its grand-child steps", () => {
+    const trotsky = Trotsky.init(agent).list("at://did/repo/rkey").members().when(true).end()
+    const clone = trotsky.clone()
+    expect(clone.steps).toHaveLength(1)
+    expect(clone.steps[0]).toBeInstanceOf(StepList)
+    expect(clone.flattenSteps).toHaveLength(3)
+    expect(clone.flattenSteps[0]).toBeInstanceOf(StepList)
+    expect(clone.flattenSteps[1]).toBeInstanceOf(StepListMembers)
+    expect(clone.flattenSteps[2]).toBeInstanceOf(StepWhen)
+  })
+
+  test("clones its grand-child steps with the same config", () => {
+    const trotsky = Trotsky.init(agent).config("foo", "foo").list("at://did/repo/rkey").end()
+    const clone = trotsky.clone()
+    expect(trotsky.config("foo")).toBe("foo")
+    expect(clone.config("foo")).toBe("foo")
+  })
+
+  test("clones its grand-child steps with the same config but a unqiue reference", () => {
+    const trotsky = Trotsky.init(agent).config("foo", "foo").list("at://did/repo/rkey").end()
+    const clone = trotsky.clone()
+    clone.config("foo", "changed")
+    expect(trotsky.config("foo")).toBe("foo")
+    expect(clone.config("foo")).toBe("changed")
   })
 
   test("should get a list", async () => {

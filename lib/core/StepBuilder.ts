@@ -93,13 +93,16 @@ export abstract class StepBuilder {
    * @returns A new instance of the current class.
    */
   clone (...rest: unknown[]): this {
+    // First, clone the instance
     type Constructor<T> = new (...args: unknown[]) => T
     const Constructor = this.constructor as Constructor<this>
     const clone = new Constructor(this.agent, ...rest) as this
+    // Then, clone the child steps
     for (const step of this.steps) {
       clone.push(step.clone() as Step<this>)
     }
-    return clone
+    // Finally, clone the config (and return the new instance)
+    return clone.config({ ...this._config })
   }
 
   /**
