@@ -8,7 +8,7 @@ import type { Step } from "../../trotsky"
  *
  * @typeParam T - The type of the resolvable value.
  */
-export type Resolvable<T> = T | Promise<T> | ((step: Step) => T) | ((step: Step) => Promise<T>)
+export type Resolvable<T> = T | Promise<T> | ((step: Step) => T | Promise<T>)
 
 /**
  * Resolves a given {@link Resolvable} input into its final value.
