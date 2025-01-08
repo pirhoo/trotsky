@@ -3,6 +3,7 @@ import type { QueryParams } from "@atproto/api/src/client/types/app/bsky/feed/se
 
 import type { StepActorParam } from "./StepActor"
 import type { StepPostUri } from "./StepPost"
+import type { StepPostsUris } from "./StepPosts"
 import type { StepCreatePostParams } from "./StepCreatePost"
 import type { StepWhenPredicate } from "./StepWhen"
 import type { StepTapInterceptor } from "./StepTap"
@@ -12,7 +13,7 @@ import {
   StepActor, 
   StepActors,
   StepWait, 
-  StepPost, 
+  StepPost,
   StepCreatePost, 
   StepList, 
   StepListUri,
@@ -21,7 +22,8 @@ import {
   StepTap, 
   StepWhen, 
   StepBuilder,
-  StepActorsParam
+  StepActorsParam,
+  StepPosts
 } from "../trotsky"
 
 /**
@@ -58,6 +60,15 @@ export class Trotsky extends StepBuilder  {
    */
   post (uri: Resolvable<StepPostUri>): StepPost<this> {
     return this.append(StepPost<this>, uri)
+  }
+
+  /**
+   * Adds a {@link StepPosts} step.
+   * @param uris - The post URIs.
+   * @returns The new {@link StepPosts} instance.
+   */
+  posts (uris: Resolvable<StepPostsUris>): StepPosts<this> {
+    return this.append(StepPosts<this>, uris)
   }
 
   /**

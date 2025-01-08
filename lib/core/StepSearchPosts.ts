@@ -53,7 +53,9 @@ export class StepSearchPosts<P, C = null, O extends StepSearchPostsOutput = Step
    * @returns A new {@link StepActor} instance.
    */
   override clone (...rest: unknown[]) {
-    return super.clone(this._queryParams, ...rest)
+    const step = super.clone(...rest)
+    step._queryParams = this._queryParams
+    return step
   }
 
   /**
