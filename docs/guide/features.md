@@ -13,7 +13,7 @@ Trotsky is currently limited to the following features:
  **StepActorLists** | :white_check_mark: | Get an actor's lists. | ```Trotsky.init(agent).actor('bsky.app').lists().each()``` 
  **StepActorMute** | :x: | Mute an actor. |  
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
- **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. |  
+ **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. | ```Trotsky.init(agent).actors(['bsky.app', 'trotsky.pirhoo.com']).each()``` 
  **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
  **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPost().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
@@ -28,7 +28,7 @@ Trotsky is currently limited to the following features:
  **StepPostLike** | :white_check_mark: | Like a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").like()``` 
  **StepPostReply** | :white_check_mark: | Reply to a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").reply({ text: "Well done!" })``` 
  **StepPostRepost** | :white_check_mark: | Repost a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").repost()``` 
- **StepPosts** | :x: | Get a list of post by their URIs. |  
+ **StepPosts** | :white_check_mark: | Get a list of post by their URIs. |  ```Trotsky.init(agent).posts(["at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l"]).each()``` 
  **StepSearchPosts** | :white_check_mark: | Search posts. | ```Trotsky.init(agent).searchPosts({ q: "Mapo Tofu" }).each()``` 
  **StepSearchStarterPacks** | :x: | Search starter packs. |
  **StepStarterPack** | :x: | Get a start pack by its URI. | 
