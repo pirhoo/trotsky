@@ -108,6 +108,15 @@ export abstract class StepBuilder {
   }
 
   /**
+   * Clears all steps from the sequence.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  clear () {
+    this._steps = []
+    return this
+  }
+
+  /**
    * Appends a new step to the sequence.
    * @param type - The step class.
    * @param args - Arguments for the step.
@@ -120,12 +129,26 @@ export abstract class StepBuilder {
   }
 
   /**
+   * Adds a step to the sequence.
+   * @param stepOrIndex - The step instance or index to remove.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  slice (stepOrIndex: Step<this> | number) {
+    this._steps = this._steps.filter((step, index) => {
+      return stepOrIndex instanceof Step ? step !== stepOrIndex : index !== stepOrIndex
+    })
+    return this
+  }
+
+  /**
    * Pushes a step to the sequence.
    * @param step - The step instance.
    * @returns The current {@link StepBuilder} instance.
    */
-  push (step: Step<this>) {
-    this._steps.push(step)
+  push (...steps: Step<this>[]) {
+    for (const step of steps) {
+      this._steps.push(step)
+    }
     return this
   }
 
