@@ -7,18 +7,15 @@ import { PostMixins } from "./mixins/PostMixins"
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepPosts}.
  * @typeParam C - The context type, defaulting to {@link StepPostsOutput}.
- * @typeParam O - The output type, defaulting to `null`.
+ * @typeParam O - The output type, defaulting to `unknown`.
  * @public
  */
-export class StepPostsEntry<P = StepPosts, C extends StepPostsOutput = StepPostsOutput, O = null> extends PostMixins<P, C, O> {
-
+export class StepPostsEntry<P = StepPosts, C extends StepPostsOutput = StepPostsOutput, O = unknown> extends PostMixins<P, C, O> {
+  
   /**
-   * Applies the logic for the step. This base implementation sets the output to `null`.
-   * 
+   * Applies the step's logic but do nothing by default. This method is 
+   * usually be overridden by child classes but will not throw an error if not.
    * @override
-   * @returns A promise that resolves when the step is applied.
    */
-  async apply (): Promise<void> {
-    this.output = null
-  }
+  async apply (): Promise<void> { }
 }

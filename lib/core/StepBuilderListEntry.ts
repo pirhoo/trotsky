@@ -12,12 +12,9 @@ import { Step } from "../trotsky"
 export class StepBuilderListEntry<P = StepBuilderList, C = unknown, O = unknown> extends Step<P, C, O> { 
 
   /**
-   * Applies the logic for the step. This base implementation sets the output to `null`.
-   * 
+   * Applies the step's logic but do nothing by default. This method is 
+   * usually be overridden by child classes but will not throw an error if not.
    * @override
-   * @returns A promise that resolves when the step is applied.
    */
-  async apply (): Promise<void> {
-    this.output = null
-  }
+  async apply (): Promise<void> { }
 }

@@ -5,18 +5,15 @@ import { ListMixins, type StepLists, type StepListsOutput } from "../trotsky"
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepLists}.
  * @typeParam C - The context type, defaulting to {@link StepListsOutput}.
- * @typeParam O - The output type, defaulting to `null`.
+ * @typeParam O - The output type, defaulting to `unknown`.
  * @public
  */
-export class StepListsEntry<P = StepLists, C extends StepListsOutput = StepListsOutput, O = null> extends ListMixins<P, C, O> {
+export class StepListsEntry<P = StepLists, C extends StepListsOutput = StepListsOutput, O = unknown> extends ListMixins<P, C, O> {
 
   /**
-   * Applies the logic for the step. This base implementation sets the output to `null`.
-   * 
+   * Applies the step's logic but do nothing by default. This method is 
+   * usually be overridden by child classes but will not throw an error if not.
    * @override
-   * @returns A promise that resolves when the step is applied.
    */
-  async apply (): Promise<void> {
-    this.output = null
-  }
+  async apply (): Promise<void> { }
 }
