@@ -1,6 +1,6 @@
 import type { AppBskyActorDefs, AtpAgent } from "@atproto/api"
 
-import { StepBuilder, StepActorsEntry, StepBuilderList } from "../trotsky"
+import { StepBuilder, StepActorsEntry, StepBuilderList, StepBuilderListIterator } from "../trotsky"
 import { Resolvable, resolveValue } from "./utils/resolvable"
 
 
@@ -69,8 +69,8 @@ export class StepActors<P = StepBuilder, C = null, O extends StepActorsOutput = 
    *
    * @returns A new step entry configured for actor processing.
    */
-  each (): StepActorsEntry<this> {
-    return this.append(StepActorsEntry<this>)
+  each (iterator?: StepBuilderListIterator): StepActorsEntry<this> {
+    return this.withIterator(iterator).append(StepActorsEntry<this>)
   }
 
   /**

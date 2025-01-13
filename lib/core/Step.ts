@@ -30,8 +30,8 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
    * @param context - The parent object.
    * @returns The current {@link Trotsky} instance.
    */
-  withParent (parent: P) {
-    this._parent = parent
+  withParent (parent: StepBuilder) {
+    this._parent = parent as P
     return this
   }
 
@@ -149,7 +149,7 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
    * @returns The top-level {@link Trotsky} instance.
    */
   end (): StepBuilder {
-    if (this.isTrotsky) {
+    if (this.isTrotsky || !this._parent) {
       return this
     }
 
@@ -183,7 +183,7 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
 
   get isStepWhen (): boolean {
     return this instanceof StepWhen
-  }  
+  }
 
   /**
    * Retrieves or sets the current context.

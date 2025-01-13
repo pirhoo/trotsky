@@ -50,13 +50,15 @@ describe("StepList", () => {
   test("clones its grand-child steps", () => {
     const trotsky = Trotsky.init(agent).list("at://did/repo/rkey").members().when(true).end()
     const clone = trotsky.clone()
-    expect(clone.steps).toHaveLength(1)
+    
+    expect(clone.steps).toHaveLength(1)    
     expect(clone.steps[0]).toBeInstanceOf(StepList)
     expect(clone.steps[0]._parent === clone).toBeTruthy()
-    expect(clone.flattenSteps).toHaveLength(3)
+
     expect(clone.flattenSteps[0]).toBeInstanceOf(StepList)
     expect(clone.flattenSteps[1]).toBeInstanceOf(StepListMembers)
     expect(clone.flattenSteps[2]).toBeInstanceOf(StepWhen)
+    expect(clone.flattenSteps).toHaveLength(3)
   })
 
   test("clones its grand-child steps with the same config", () => {
