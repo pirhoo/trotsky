@@ -1,6 +1,6 @@
 import type { AppBskyFeedDefs, AtpAgent, AtUri } from "@atproto/api"
 
-import { StepBuilderList, StepPostsEntry, type StepBuilder } from "../trotsky"
+import { StepBuilderList, StepBuilderListIterator, StepPostsEntry, type StepBuilder } from "../trotsky"
 import { Resolvable, resolveValue } from "./utils/resolvable"
 
 /**
@@ -62,10 +62,11 @@ export class StepPosts<P = StepBuilder, C = null, O extends StepPostsOutput = St
   /**
    * Appends a new post entry step to the current list and returns it.
    * 
+   * @param iterator - Optional iterator function to be executed for each item in the list.
    * @returns The newly appended {@link StepPostsEntry} instance.
    */
-  each (): StepPostsEntry<this> {
-    return this.append(StepPostsEntry<this>)
+  each (iterator?: StepBuilderListIterator): StepPostsEntry<this> {
+    return this.withIterator(iterator).append(StepPostsEntry<this>)
   }
 
   /**

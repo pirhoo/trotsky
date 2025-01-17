@@ -15,7 +15,7 @@ describe("StepBuilderList", () => {
 
     async applyPagination (): Promise<void> { /** Empty implementation of abstract method */ }
 
-    each (iterator: StepBuilderListIterator = null) {
+    each (iterator?: StepBuilderListIterator) {
       return this.withIterator(iterator).append(StepTestListEntry<this>)
     }
   }

@@ -70,7 +70,7 @@ export abstract class StepBuilderList<P = StepBuilder, C = unknown, O extends St
   /**
    * Optional tterator function to be executed for each item in the list.
    */
-  _iterator: StepBuilderListIterator = null
+  _iterator?: StepBuilderListIterator
 
   /**
    * Clones the current step and returns a new instance with the same parameters.
@@ -113,7 +113,7 @@ export abstract class StepBuilderList<P = StepBuilder, C = unknown, O extends St
    * @param iterator - The iterator function to be executed.
    * @returns The current instance for method chaining.
    */
-  withIterator (iterator: StepBuilderListIterator = null) {
+  withIterator (iterator?: StepBuilderListIterator) {
     if (iterator) {
       this._iterator = iterator
     }
@@ -127,7 +127,7 @@ export abstract class StepBuilderList<P = StepBuilder, C = unknown, O extends St
    * @param iterator - Optional iterator function to be executed for each item in the list.
    * @returns The appended {@link StepBuilderListEntry} instance.
    */
-  each (iterator: StepBuilderListIterator = null) {
+  each (iterator?: StepBuilderListIterator) {
     return this.withIterator(iterator).append(StepBuilderListEntry<this>)
   }
 

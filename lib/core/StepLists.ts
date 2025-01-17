@@ -1,6 +1,6 @@
 import type { AppBskyGraphGetLists } from "@atproto/api"
 
-import { StepBuilderList, StepListsEntry, type StepBuilder } from "../trotsky"
+import { StepBuilderList, StepBuilderListIterator, StepListsEntry, type StepBuilder } from "../trotsky"
 
 /**
  * Represents the output of a Lists step, consisting of an array of List views.
@@ -26,9 +26,10 @@ export abstract class StepLists<P = StepBuilder, C = null, O extends StepListsOu
   /**
    * Appends a new List entry step to the current list and returns it.
    * 
+   * @param iterator - Optional iterator function to be executed for each item in the list.
    * @returns The newly appended {@link StepListsEntry} instance.
    */
-  each (): StepListsEntry<this> {
-    return this.append(StepListsEntry<this>)
+  each (iterator?: StepBuilderListIterator): StepListsEntry<this> {
+    return this.withIterator(iterator).append(StepListsEntry<this>)
   }
 }
