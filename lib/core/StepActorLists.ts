@@ -24,7 +24,7 @@ export type StepActorListsQueryParams = AppBskyGraphGetLists.QueryParams
 export type StepActorListsQueryParamsCursor = StepActorListsQueryParams["cursor"] | undefined
 
 /**
- * A step that retrieves the lists associated with a specific actor, extending the {@link StepLists} functionality.
+ * Represents step for retrieving the lists associated with a specific actor, extending the {@link StepLists} functionality.
  * 
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context type, defaulting to {@link StepActorOutput}.

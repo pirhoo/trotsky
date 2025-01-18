@@ -22,7 +22,7 @@ export type StepListUri = string | AtUri
 export type StepListOutput = AppBskyGraphDefs.ListView
 
 /**
- * A step for retrieving a list by its URI.
+ * Represents a step for retrieving a list by its URI.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `null`.

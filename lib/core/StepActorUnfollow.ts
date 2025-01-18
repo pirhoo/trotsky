@@ -2,7 +2,7 @@ import matchProperty from "./utils/matchProperty"
 import { Step, StepActor, type StepActorOutput } from "../trotsky"
 
 /**
- * A step that unfollows the current actor (if followed).
+ * Represents step that unfollows the current actor (if followed).
  * 
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context or child output type, defaulting to {@link StepActorOutput}.

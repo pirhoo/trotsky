@@ -29,7 +29,7 @@ export interface StepPostReplyRef {
 export type StepPostReplyOutput = StepPostReplyRecordRef
 
 /**
- * A step for replying to a specific post.
+ * Represents a step for replying to a specific post.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.

@@ -3,7 +3,7 @@ import type { AtpAgent } from "@atproto/api"
 import { Step, type StepBuilder } from "../trotsky"
 
 /**
- * A step that introduces a delay before proceeding to the next step.
+ * Represents step that introduces a delay before proceeding to the next step.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The context type, defaulting to `null`.

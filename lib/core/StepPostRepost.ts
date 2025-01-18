@@ -7,7 +7,7 @@ import { Step, type StepPost, type StepPostOutput } from "../trotsky"
 export type StepPostRepostOutput = { "uri": string; "cid": string }
 
 /**
- * A step for reposting a specific post.
+ * Represents a step for reposting a specific post.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.

@@ -4,7 +4,7 @@ import matchProperty from "./utils/matchProperty"
 import { Step, type StepActor, type StepActorOutput } from "../trotsky"
 
 /**
- * A step that unblocks the current actor (if blocked).
+ * Represents step that unblocks the current actor (if blocked).
  * 
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context or child output type, defaulting to {@link StepActorOutput}.

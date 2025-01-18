@@ -7,7 +7,7 @@ import { StepActor, type StepActorOutput, type StepPost, type StepPostOutput } f
 export type StepPostAuthorOutput = StepActorOutput
 
 /**
- * A step for retrieving the profile of the author of a specific post.
+ * Represents a step for retrieving the profile of the author of a specific post.
  * Extends {@link StepActor} to reuse actor-related logic.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.

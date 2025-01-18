@@ -7,7 +7,7 @@ import { Step, type StepPost, type StepPostOutput } from "../trotsky"
 export type StepPostLikeOutput = { "uri": string; "cid": string }
 
 /**
- * A step for liking a specific post.
+ * Represents a step for liking a specific post.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.

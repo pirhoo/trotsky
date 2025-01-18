@@ -21,7 +21,7 @@ export type StepSearchPostsQueryParams = AppBskyFeedSearchPosts.QueryParams
 export type StepSearchPostsQueryParamsCursor = StepSearchPostsQueryParams["cursor"] | undefined
 
 /**
- * A step for searching posts on Bluesky, with support for pagination.
+ * Represents a step for searching posts on Bluesky, with support for pagination.
  * 
  * @typeParam P - The parent type of this step.
  * @typeParam C - The child context type, defaulting to `null`.

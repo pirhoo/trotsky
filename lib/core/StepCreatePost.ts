@@ -25,7 +25,7 @@ export type StepCreatePostOutput = { "uri": string; "cid": string }
 export type ResolvableStepCreatePostParams = Resolvable<StepCreatePostParams>
 
 /**
- * A step that creates a new post on Bluesky using the specified record parameters.
+ * Represents step that creates a new post on Bluesky using the specified record parameters.
  * 
  * @typeParam P - The parent step type, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `null`.

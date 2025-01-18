@@ -28,7 +28,7 @@ export type StepPostOutput = {
 }
 
 /**
- * A step for retrieving a post by its URI.
+ * Represents a step for retrieving a post by its URI.
  * Extends {@link PostMixins} for post-related operations.
  * 
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
