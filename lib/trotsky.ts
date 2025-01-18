@@ -99,6 +99,7 @@ export * from "./core/StepListMembers"
 export * from "./core/StepTap"
 export * from "./core/StepWait"
 export * from "./core/StepWhen"
+export * from "./core/StepSave"
 
 // Main entry point class
 export { Trotsky as default } from "./core/Trotsky"

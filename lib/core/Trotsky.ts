@@ -23,7 +23,9 @@ import {
   StepWhen, 
   StepBuilder,
   StepActorsParam,
-  StepPosts
+  StepPosts,
+  StepSave,
+  StepSavePath
 } from "../trotsky"
 
 /**
@@ -104,6 +106,16 @@ export class Trotsky extends StepBuilder  {
    */
   streamPosts<T = StepStreamPosts<this>>(): T {
     return this.append(StepStreamPosts<this>) as T
+  }
+
+  /**
+   * Adds a {@link StepSave} step.
+   * @param path - The path of the JSON file to save the output. If not provided, the file path will be created using the current step name.
+   * @returns The current {@link Trotsky} instance.
+   */
+  save (path: StepSavePath = null) {
+    this.append(StepSave<this>, path)
+    return this
   }
 
   /**

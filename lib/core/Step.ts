@@ -1,5 +1,5 @@
 import type AtpAgent from "@atproto/api"
-import { StepBuilder, StepBuilderList, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate, type StepBuilderConfig } from "../trotsky"
+import { StepBuilder, StepBuilderList, StepSave, StepSavePath, StepTap, StepTapInterceptor, StepWait, StepWhen, StepWhenPredicate, type StepBuilderConfig } from "../trotsky"
 import { Resolvable } from "./utils/resolvable"
 
 /**
@@ -81,6 +81,16 @@ export abstract class Step<P = StepBuilder, C = unknown, O = unknown> extends St
    */
   tap (interceptor: StepTapInterceptor) {
     this.append(StepTap<this>, interceptor)
+    return this
+  }
+
+  /**
+   * Adds a {@link StepSave} step.
+   * @param path - The path of the JSON file to save the output. If not provided, the file path will be created using the current step name.
+   * @returns The current {@link Step} instance.
+   */
+  save (path: StepSavePath = null) {
+    this.append(StepSave<this>, path)
     return this
   }
 

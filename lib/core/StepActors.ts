@@ -78,7 +78,7 @@ export class StepActors<P = StepBuilder, C = null, O extends StepActorsOutput = 
    * Sets the profile data as the output of this step.
    * @returns A promise that resolves when the step is complete.
    */
-  async applyPagination (): Promise<void> {    
+  async applyPagination (): Promise<void> {   
     const actors = await resolveValue<StepActorsParam>(this, this._param)
     const { data } = await this.agent.app.bsky.actor.getProfiles({ actors })
     this.output = data.profiles as O 
