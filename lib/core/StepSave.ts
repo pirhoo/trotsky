@@ -3,6 +3,10 @@ import type { AtpAgent } from "@atproto/api"
 
 import { Step, type StepBuilder } from "../trotsky"
 
+/**
+ * Type representing the path of the JSON file to save the output.
+ * @public
+ */
 export type StepSavePath = string | null
 
 /**

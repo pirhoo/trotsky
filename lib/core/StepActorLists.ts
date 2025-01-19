@@ -2,7 +2,7 @@ import { AppBskyGraphGetLists } from "@atproto/api"
 import { StepLists, type StepActor, type StepListsOutput, type StepActorOutput } from "../trotsky"
 
 /**
- * Represents the output type for the {@link StepActorLists} step, which is an array 
+ * Type representing the output type for the {@link StepActorLists} step, which is an array 
  * of lists associated with an actor.
  * 
  * @public
@@ -10,14 +10,14 @@ import { StepLists, type StepActor, type StepListsOutput, type StepActorOutput }
 export type StepActorListsOutput = StepListsOutput
 
 /**
- * Represents the query parameters for retrieving an actor's lists.
+ * Type representing the query parameters for retrieving an actor's lists.
  * 
  * @public
  */
 export type StepActorListsQueryParams = AppBskyGraphGetLists.QueryParams
 
 /**
- * Represents the cursor type for paginated queries when retrieving an actor's lists.
+ * Type representing the cursor type for paginated queries when retrieving an actor's lists.
  * 
  * @public
  */

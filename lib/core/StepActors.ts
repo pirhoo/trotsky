@@ -13,7 +13,7 @@ import { Resolvable, resolveValue } from "./utils/resolvable"
 export type StepActorsParam = string[]
 
 /**
- * Defines the output schema for a list of actors' profiles.
+ * Type representing the output schema for a list of actors' profiles.
  * @public
  */
 export type StepActorsOutput = Partial<AppBskyActorDefs.ProfileView>[]

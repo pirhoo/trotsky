@@ -4,13 +4,13 @@ import type { Resolvable } from "../utils/resolvable"
 import { Step, StepPostAuthor, StepPostLike, StepPostReply, StepPostRepost } from "../../trotsky"
 
 /**
- * Represents the parameters for a post reply, including text and optional additional metadata.
+ * Type representing the parameters for a post reply, including text and optional additional metadata.
  * @public
  */
 export type PostReplyParams = Partial<AppBskyFeedPost.Record> & { "text": string }
 
 /**
- * Represents a value that can be resolved into {@link PostReplyParams}.
+ * Type representing a value that can be resolved into {@link PostReplyParams}.
  * @public
  */
 export type ResolvablePostReplyParams = Resolvable<PostReplyParams>

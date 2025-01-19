@@ -18,7 +18,7 @@ export type StepCreatePostParams = Partial<AppBskyFeedPost.Record> & Omit<AppBsk
 export type StepCreatePostOutput = { "uri": string; "cid": string }
 
 /**
- * Represents a {@link StepCreatePostParams} type
+ * Type representing a {@link StepCreatePostParams} type
  * that may be resolved dynamically at runtime.
  * @public
  */
