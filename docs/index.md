@@ -7,7 +7,8 @@ hero:
   text: Automate your Bluesky agents.
   tagline: Trotsky is a type-safe library to build automation at the top of ATProto/Bluesky API.
   image:
-    src: /logo-hero.svg
+    light: /logo-square-light.svg
+    dark: /logo-square-dark.svg
     alt: Trotsky
   actions:
     - theme: brand
