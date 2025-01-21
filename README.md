@@ -11,11 +11,11 @@
 
 |      | Status |
 | ---: | :--- |
-| **CI checks** | [![Github Actions](https://img.shields.io/github/actions/workflow/status/pirhoo/trotsky/main.yml?style=shield)](https://github.com/pirhoo/trotsky/actions/workflows/main.yml) |
-| **Latest version** | [![Latest version](https://img.shields.io/npm/v/trotsky?style=shield&color=success)](https://www.npmjs.com/package/trotsky) |
-|   **Release date** | [![Release date](https://img.shields.io/npm/last-update/trotsky?style=shield&color=success)](https://github.com/pirhoo/trotsky/releases) |
-|    **Open issues** | [![Open issues](https://img.shields.io/github/issues/pirhoo/trotsky?style=shield&color=success)](https://github.com/ICIJ/datashare/issues/) |
-|  **Documentation** | [![Documentation](https://img.shields.io/badge/Documentation-b92e2e)](https://trotsky.pirhoo.com) |
+| **CI checks** | [![Github Actions](https://img.shields.io/github/actions/workflow/status/pirhoo/trotsky/main.yml?style=flat-square)](https://github.com/pirhoo/trotsky/actions/workflows/main.yml) |
+| **Latest version** | [![Latest version](https://img.shields.io/npm/v/trotsky?style=flat-square&color=success)](https://www.npmjs.com/package/trotsky) |
+|   **Release date** | [![Release date](https://img.shields.io/npm/last-update/trotsky?style=flat-square&color=success)](https://github.com/pirhoo/trotsky/releases) |
+|    **Open issues** | [![Open issues](https://img.shields.io/github/issues/pirhoo/trotsky?style=flat-square&color=success)](https://github.com/ICIJ/datashare/issues/) |
+|  **Documentation** | [![Documentation](https://img.shields.io/badge/Documentation-b92e2e?style=flat-square)](https://trotsky.pirhoo.com) |
 
 </div>
 
