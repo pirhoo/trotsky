@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/public/logo-hero.svg" width="150">
+  <img src="./docs/public/logo-square-light.svg" width="150">
 </p>
 
 <h1 align="center">Trotsky</h1>
