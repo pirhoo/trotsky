@@ -13,7 +13,7 @@
 | ---: | :--- |
 | **CI checks** | [![Github Actions](https://img.shields.io/github/actions/workflow/status/pirhoo/trotsky/main.yml?style=flat-square)](https://github.com/pirhoo/trotsky/actions/workflows/main.yml) |
 | **Latest version** | [![Latest version](https://img.shields.io/npm/v/trotsky?style=flat-square&color=success)](https://www.npmjs.com/package/trotsky) |
-|   **Release date** | [![Release date](https://img.shields.io/npm/last-update/trotsky?style=flat-square&color=success)](https://github.com/pirhoo/trotsky/releases) |
+|   **Release date** | [![Release date](https://img.shields.io/npm/last-update/trotsky?style=flat-square&color=success)](https://github.com/pirhoo/trotsky/releases/latest) |
 |    **Open issues** | [![Open issues](https://img.shields.io/github/issues/pirhoo/trotsky?style=flat-square&color=success)](https://github.com/ICIJ/datashare/issues/) |
 |  **Documentation** | [![Guide](https://img.shields.io/badge/Guide-b92e2e?style=flat-square)](https://trotsky.pirhoo.com/guide/getting-started.html) [![API](https://img.shields.io/badge/API-b92e2e?style=flat-square)](https://trotsky.pirhoo.com/api/reference/) |
 
