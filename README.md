@@ -1,17 +1,23 @@
 <p align="center">
-  <img src="./docs/public/logo-square-light.svg" width="150">
+  <a href="https://trotsky.pirhoo.com"  align="center">
+    <img src="./docs/public/logo-square-light.svg" width="150">
+  </a>
+  <br>
 </p>
-
 <h1 align="center">Trotsky</h1>
+<p align="center"><strong>A type-safe library to build automation at the top of ATProto/Bluesky API.<strong></p>
 
-<p align="center">
-<a href="https://trotsky.pirhoo.com">Documentation</a> |
-<a href="https://trotsky.pirhoo.com/guide/why">Why Trotsky</a> |
-<a href="https://trotsky.pirhoo.com/examples">Examples</a> |
-<a href="https://trotsky.pirhoo.com/api">API</a>
-</p>
+<div align="center">
 
-A type-safe library to build automation at the top of ATProto/Bluesky API.
+|      | Status |
+| ---: | :--- |
+| **CI checks** | [![Github Actions](https://img.shields.io/github/actions/workflow/status/pirhoo/trotsky/main.yml?style=shield)](https://github.com/pirhoo/trotsky/actions/workflows/main.yml) |
+| **Latest version** | [![Latest version](https://img.shields.io/npm/v/trotsky?style=shield&color=success)](https://www.npmjs.com/package/trotsky) |
+|   **Release date** | [![Release date](https://img.shields.io/npm/last-update/trotsky?style=shield&color=success)](https://github.com/pirhoo/trotsky/releases) |
+|    **Open issues** | [![Open issues](https://img.shields.io/github/issues/pirhoo/trotsky?style=shield&color=success)](https://github.com/ICIJ/datashare/issues/) |
+|  **Documentation** | [![Documentation](https://img.shields.io/badge/Documentation-b92e2e)](https://trotsky.pirhoo.com) |
+
+</div>
 
 ## Features
 
