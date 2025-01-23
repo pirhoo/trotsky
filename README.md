@@ -4,7 +4,7 @@
     <img src="./docs/public/logo-square-light.svg" width="150">
   </a>
 </p>
-<p align="center"><strong>A type-safe library to build automation at the top of ATProto/Bluesky API.<strong></p>
+<p align="center"><strong>A type-safe library to build automation at the top of ATProto/Bluesky API.</strong></p>
 
 <div align="center">
 
