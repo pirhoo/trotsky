@@ -17,7 +17,14 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['meta', { name: 'apple-mobile-web-app-title', content: 'Trotsky' }],
-    ['link', { rel: 'manifest', href: '/site.webmanifest' }]
+    ['link', { rel: 'manifest', href: '/site.webmanifest' }],
+    ['meta', { property: 'og:title', content: 'Trotsky' } ],
+    ['meta', { property: 'og:description', content: 'A type-safe library to build automation at the top of ATProto/Bluesky API.' } ],
+    ['meta', { property: 'og:image', content: 'https://trotsky.pirhoo.com/og.png' } ],
+    ['meta', { property: 'og:url', content: 'https://trotsky.pirhoo.com' } ],
+    ['meta', { property: 'og:type', content: 'website' } ],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:image', content: 'https://trotsky.pirhoo.com/og.png' }]
   ],
   lastUpdated: true,
   themeConfig: {
