@@ -51,7 +51,7 @@ async function main() {
 
   await Trotsky
     .init(agent)
-    .searchPost({ q: 'trotsky' })
+    .searchPosts({ q: 'trotsky' })
       .take(5)
       .each()
         .like()
@@ -72,7 +72,7 @@ async function main() {
 
   await Trotsky
     .init(agent)
-    .searchPost({ q: 'trotsky' })
+    .searchPosts({ q: 'trotsky' })
       .take(5)
       .each()
         .like()
