@@ -84,6 +84,7 @@ export class StepPostReply<P = StepPost, C extends StepPostOutput = StepPostOutp
     const createdAt = new Date().toISOString()
     const reply = this.replyParams()
     return {
+      $type: "app.bsky.feed.post",
       createdAt,
       reply,
       ...params
