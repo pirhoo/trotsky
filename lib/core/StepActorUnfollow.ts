@@ -1,5 +1,6 @@
-import matchProperty from "./utils/matchProperty"
 import { Step, StepActor, type StepActorOutput } from "../trotsky"
+import { isRelationship } from "@atproto/api/dist/client/types/app/bsky/graph/defs"
+import { AppBskyGraphDefs } from "@atproto/api"
 
 /**
  * Represents step that unfollows the current actor (if followed).
@@ -28,9 +29,10 @@ export class StepActorUnfollow<P = StepActor, C extends StepActorOutput = StepAc
     const actor = this.agent.did!
     const others = [this.context.did]
     const { "data": { relationships } } = await this.agent.app.bsky.graph.getRelationships({ actor, others })
-    const relationship = relationships.find(matchProperty("did", this.context.did))
-    // if the relationship does not exist, there is nothing to do
-    if (!relationship?.following) return
-    await this.agent.deleteFollow(relationship.following as string)
+    const relationship = relationships.filter(isRelationship).pop() as AppBskyGraphDefs.Relationship
+    // Ensure the current actor is following the context actor before unfollowing
+    if (relationship?.following) {
+      await this.agent.deleteFollow(relationship.following)
+    }
   }
 }

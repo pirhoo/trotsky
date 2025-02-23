@@ -1,6 +1,5 @@
 import { AtUri } from "@atproto/api"
 
-import matchProperty from "./utils/matchProperty"
 import { Step, type StepActor, type StepActorOutput } from "../trotsky"
 
 /**
@@ -28,11 +27,11 @@ export class StepActorUnblock<P = StepActor, C extends StepActorOutput = StepAct
     }
     
     const { "data": { blocks } } = await this.agent.app.bsky.graph.getBlocks()
-    const block = blocks.find(matchProperty("did", this.context.did))
+    const block = blocks.find(({ did }) => did === this.context.did)
     // If the block does not exist, there is nothing to do
     if (!block?.viewer?.blocking) return
 
-    const repo = this.agent.did
+    const repo = this.agent.did!
     const { rkey } = new AtUri(block.viewer.blocking)
     await this.agent.app.bsky.graph.block.delete({ repo, rkey })
   }
