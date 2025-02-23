@@ -17,7 +17,6 @@ type StepBuilderListOutputSchemaCursor = string | undefined
 interface StepBuilderListOutputSchema {
   "cursor"?: StepBuilderListOutputSchemaCursor;
   "hitsTotal"?: number;
-  [k: string]: unknown;
 }
 
 /**
