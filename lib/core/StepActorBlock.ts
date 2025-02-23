@@ -20,7 +20,7 @@ export class StepActorBlock<P = StepActor, C extends StepActorOutput = StepActor
       throw new Error("No context found for StepActorBlock")
     }
 
-    const repo = this.agent.did
+    const repo = this.agent.did!
     const subject = this.context.did
     const createdAt = new Date().toISOString()
     await this.agent.app.bsky.graph.block.create({ repo }, { subject, createdAt })
