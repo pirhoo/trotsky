@@ -1,4 +1,4 @@
-import { type PostRecord } from "@atproto/api"
+import { type AppBskyFeedPostRecord } from "@atproto/api"
 import { StepStreamPosts, type StepActorOutput } from "../trotsky"
 import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
 
@@ -7,7 +7,7 @@ import { buildEventEmitter, JetstreamMessageCommit } from "./utils/jetstream"
  * Typically represents the streamed output of a single post event.
  * @public
  */
-export type StepActorStreamPostsOutput = JetstreamMessageCommit & { "record": Partial<PostRecord> }
+export type StepActorStreamPostsOutput = JetstreamMessageCommit & { "record": Partial<AppBskyFeedPostRecord> }
 
 /**
  * @experimental
