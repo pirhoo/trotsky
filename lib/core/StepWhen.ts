@@ -20,6 +20,31 @@ export type StepWhenPredicate = boolean
  * @remarks
  * This step evaluates a predicate, which can be a boolean value or a resolvable that
  * resolves to a boolean. The result of the predicate evaluation is stored in the output.
+ *
+ * @example
+ * Filter posts by like count:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript" })
+ *   .take(20)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 10)
+ *   .like()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Conditional following:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("myhandle.bsky.social")
+ *   .followers()
+ *   .each()
+ *   .when((step) => !step?.context?.viewer?.following)
+ *   .follow()
+ *   .wait(2000)
+ *   .run()
+ * ```
  */
 export class StepWhen<P = StepBuilder, C = unknown, O = boolean> extends Step<P, C, O> {
   private _predicate: Resolvable<StepWhenPredicate>

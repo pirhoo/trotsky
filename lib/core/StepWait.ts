@@ -4,10 +4,34 @@ import { Step, type StepBuilder } from "../trotsky"
 
 /**
  * Represents step that introduces a delay before proceeding to the next step.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to `null`.
+ *
+ * @example
+ * Add a delay between actions:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript" })
+ *   .take(5)
+ *   .each()
+ *   .like()
+ *   .wait(2000) // Wait 2 seconds between likes
+ *   .run()
+ * ```
+ *
+ * @example
+ * Rate limit API calls:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actors(["alice.bsky.social", "bob.bsky.social", "carol.bsky.social"])
+ *   .each()
+ *   .follow()
+ *   .wait(3000) // Wait 3 seconds between follows
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepWait<P = StepBuilder, C = null, O = null> extends Step<P, C, O> {

@@ -4,10 +4,34 @@ import { AppBskyGraphDefs } from "@atproto/api"
 
 /**
  * Represents step that unfollows the current actor (if followed).
- * 
+ *
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context or child output type, defaulting to {@link StepActorOutput}.
  * @typeParam O - The output type produced by this step, defaulting to `null`.
+ *
+ * @example
+ * Unfollow a specific actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("user.bsky.social")
+ *   .unfollow()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Unfollow accounts that don't follow you back:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("myhandle.bsky.social")
+ *   .followings()
+ *   .each()
+ *   .when((step) => !step?.context?.viewer?.followedBy)
+ *   .tap((step) => console.log(`Unfollowing: ${step.context.handle}`))
+ *   .unfollow()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorUnfollow<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {

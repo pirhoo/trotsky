@@ -25,11 +25,40 @@ export type StepActorListsQueryParamsCursor = StepActorListsQueryParams["cursor"
 
 /**
  * Represents step for retrieving the lists associated with a specific actor, extending the {@link StepLists} functionality.
- * 
+ *
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context type, defaulting to {@link StepActorOutput}.
  * @typeParam O - The output type, defaulting to {@link StepActorListsOutput}.
- * 
+ *
+ * @example
+ * Get all lists created by an actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("alice.bsky.social")
+ *   .lists()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`List: ${step.context.name}`)
+ *     console.log(`Purpose: ${step.context.purpose}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Get members of all lists from an actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("alice.bsky.social")
+ *   .lists()
+ *   .each()
+ *   .members()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(step.context.handle)
+ *   })
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorLists<P = StepActor, C extends StepActorOutput = StepActorOutput, O extends StepListsOutput = StepActorListsOutput> extends StepLists<P, C, O> {

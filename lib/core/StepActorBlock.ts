@@ -2,9 +2,33 @@ import { Step, type StepActor, type StepActorOutput } from "../trotsky"
 
 /**
  * Represents a step that performs an actor block operation using the Bluesky API.
+ *
  * @typeParam P - Type of the parent step, extending {@link StepActor}.
  * @typeParam C - Type of the context object, extending {@link StepActorOutput}.
  * @typeParam O - Type of the output object.
+ *
+ * @example
+ * Block a specific actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("spammer.bsky.social")
+ *   .block()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Block actors posting spam content:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "spam content" })
+ *   .take(10)
+ *   .each()
+ *   .author()
+ *   .block()
+ *   .wait(1000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorBlock<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {

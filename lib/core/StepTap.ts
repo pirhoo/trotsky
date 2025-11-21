@@ -24,6 +24,33 @@ export type StepTapInterceptor =
  * which receives the current step as its argument. This is useful for debugging,
  * logging, or performing side effects without altering the main flow.
  *
+ * @example
+ * Log actor information:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("bsky.app")
+ *   .tap((step) => {
+ *     console.log(`Handle: ${step.context.handle}`)
+ *     console.log(`Followers: ${step.context.followersCount}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Debug post processing:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript" })
+ *   .take(10)
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`Processing post: ${step.context.uri}`)
+ *     console.log(`Likes: ${step.context.likeCount}`)
+ *   })
+ *   .like()
+ *   .run()
+ * ```
+ *
  * @see {@link Step}
  */
 export class StepTap<P = StepBuilder, C = unknown, O = null> extends Step<P, C, O> {

@@ -8,10 +8,33 @@ export type StepPostLikeOutput = { "uri": string; "cid": string }
 
 /**
  * Represents a step for liking a specific post.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.
  * @typeParam O - The output type, defaulting to {@link StepPostLikeOutput}.
+ *
+ * @example
+ * Like a specific post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")
+ *   .like()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Like posts from search results:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript" })
+ *   .take(10)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 5)
+ *   .like()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepPostLike<P = StepPost, C extends StepPostOutput = StepPostOutput, O extends StepPostLikeOutput = StepPostLikeOutput> extends Step<P, C, O> {

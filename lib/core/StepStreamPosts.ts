@@ -16,7 +16,30 @@ import { buildEventEmitter, JetstreamEventEmitter, JetstreamMessageCommit } from
  * This class allows for the streaming and processing of posts as they are
  * committed to the network. To achieve this, it utilizes the Bluesky Firehose
  * API to listen for post events and process them in real-time. The stream can
- * use a lot of bandwidth since it processes every post event. 
+ * use a lot of bandwidth since it processes every post event.
+ *
+ * @example
+ * Stream and like posts mentioning a keyword:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .streamPosts()
+ *   .each()
+ *   .when((step) => step?.context?.record?.text?.includes('typescript'))
+ *   .like()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Stream posts and log them:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .streamPosts()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`New post: ${step.context.record.text}`)
+ *   })
+ *   .run()
+ * ```
  *
  * @see {@link StepBuilderStream}
  */

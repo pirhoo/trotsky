@@ -6,6 +6,29 @@ import { Step, type StepActor, type StepActorOutput } from "../trotsky"
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context or child output type, defaulting to {@link StepActorOutput}.
  * @typeParam O - The output type produced by this step, defaulting to `null`.
+ *
+ * @example
+ * Unmute a specific actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("user.bsky.social")
+ *   .unmute()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Unmute all muted accounts:
+ * ```ts
+ * const { data: { mutes } } = await agent.app.bsky.graph.getMutes()
+ *
+ * await Trotsky.init(agent)
+ *   .actors(mutes.map(m => m.did))
+ *   .each()
+ *   .unmute()
+ *   .wait(1000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorUnmute<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {

@@ -20,12 +20,38 @@ export type StepActorsOutput = Partial<AppBskyActorDefs.ProfileView>[]
 
 /**
  * An abstract class that extends {@link StepBuilderList} to handle a list of actor profiles.
- * It defines a collection of steps dealing with actor entries (`StepActorsEntry`), 
+ * It defines a collection of steps dealing with actor entries (`StepActorsEntry`),
  * which can be appended via the `each()` method.
  *
  * @typeParam P - The parent step builder type, defaults to `StepBuilder`.
  * @typeParam C - The context type, defaults to `null`.
  * @typeParam O - The output type, extending {@link StepActorsOutput}, defaults to `StepActorsOutput`.
+ *
+ * @example
+ * Get profiles for multiple actors:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actors(["alice.bsky.social", "bob.bsky.social", "carol.bsky.social"])
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`${step.context.handle}: ${step.context.followersCount} followers`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Follow multiple accounts:
+ * ```ts
+ * const friends = ["alice.bsky.social", "bob.bsky.social"]
+ *
+ * await Trotsky.init(agent)
+ *   .actors(friends)
+ *   .each()
+ *   .follow()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActors<P = StepBuilder, C = null, O extends StepActorsOutput = StepActorsOutput> extends StepBuilderList<P, C, O> {

@@ -4,10 +4,33 @@ import { Step, type StepActor, type StepActorOutput } from "../trotsky"
 
 /**
  * Represents step that unblocks the current actor (if blocked).
- * 
+ *
  * @typeParam P - The parent step type, defaulting to {@link StepActor}.
  * @typeParam C - The context or child output type, defaulting to {@link StepActorOutput}.
  * @typeParam O - The output type produced by this step, defaulting to `null`.
+ *
+ * @example
+ * Unblock a specific actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("user.bsky.social")
+ *   .unblock()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Unblock all blocked accounts:
+ * ```ts
+ * const { data: { blocks } } = await agent.app.bsky.graph.getBlocks()
+ *
+ * await Trotsky.init(agent)
+ *   .actors(blocks.map(b => b.did))
+ *   .each()
+ *   .unblock()
+ *   .wait(1000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorUnblock<P = StepActor, C extends StepActorOutput = StepActorOutput, O = null> extends Step<P, C, O> {

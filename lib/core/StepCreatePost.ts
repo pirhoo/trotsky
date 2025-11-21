@@ -26,10 +26,39 @@ export type ResolvableStepCreatePostParams = Resolvable<StepCreatePostParams>
 
 /**
  * Represents step that creates a new post on Bluesky using the specified record parameters.
- * 
+ *
  * @typeParam P - The parent step type, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to {@link StepCreatePostOutput}.
+ *
+ * @example
+ * Create a simple text post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .createPost({ text: "Hello Bluesky! 👋" })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Create a post with dynamic content:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .createPost(() => ({
+ *     text: `Current time: ${new Date().toLocaleTimeString()}`
+ *   }))
+ *   .run()
+ * ```
+ *
+ * @example
+ * Schedule recurring posts:
+ * ```ts
+ * Trotsky.init(agent)
+ *   .createPost(() => ({
+ *     text: `Good morning! ${new Date().toDateString()}`
+ *   }))
+ *   .schedule('0 9 * * *') // Every day at 9 AM
+ * ```
+ *
  * @public
  */
 export class StepCreatePost<P = StepBuilder, C = null, O extends StepCreatePostOutput = StepCreatePostOutput> extends Step<P, C, O> {

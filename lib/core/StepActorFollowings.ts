@@ -27,9 +27,38 @@ export type StepActorFollowingsQueryParamsCursor = StepActorFollowingsQueryParam
 /**
  * Represents a step for retrieving an actor's followings using the Bluesky API.
  * Supports paginated retrieval of followings.
+ *
  * @typeParam P - Type of the parent step, extending {@link StepActor}.
  * @typeParam C - Type of the context object, extending {@link StepActorOutput}.
  * @typeParam O - Type of the output object, extending {@link StepActorFollowingsOutput}.
+ *
+ * @example
+ * Get and iterate through an actor's followings:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("bsky.app")
+ *   .followings()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`Following: ${step.context.handle}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Check which accounts follow you back:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("myhandle.bsky.social")
+ *   .followings()
+ *   .each()
+ *   .tap((step) => {
+ *     const mutual = step.context.viewer?.followedBy
+ *     console.log(`${step.context.handle}: ${mutual ? '✅' : '❌'}`)
+ *   })
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorFollowings<P = StepActor, C extends StepActorOutput = StepActorOutput, O extends StepActorFollowingsOutput = StepActorFollowingsOutput> extends StepActors<P, C, O> {

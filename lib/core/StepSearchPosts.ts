@@ -22,10 +22,38 @@ export type StepSearchPostsQueryParamsCursor = StepSearchPostsQueryParams["curso
 
 /**
  * Represents a step for searching posts on Bluesky, with support for pagination.
- * 
+ *
  * @typeParam P - The parent type of this step.
  * @typeParam C - The child context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to {@link StepSearchPostsOutput}.
+ *
+ * @example
+ * Search for posts and display them:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript" })
+ *   .take(10)
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(step.context.record.text)
+ *     console.log(`Likes: ${step.context.likeCount}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Like posts matching specific criteria:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "bluesky" })
+ *   .take(20)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 5)
+ *   .like()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepSearchPosts<P, C = null, O extends StepSearchPostsOutput = StepSearchPostsOutput> extends StepPosts<P, C, O> {

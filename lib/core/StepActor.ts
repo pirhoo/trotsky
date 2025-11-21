@@ -21,9 +21,32 @@ export type StepActorOutput = AppBskyActorGetProfile.OutputSchema
 
 /**
  * Represents a step for retrieving and handling an actor's profile using the Bluesky API.
+ *
  * @typeParam P - Type of the parent object.
  * @typeParam C - Type of the context object.
  * @typeParam O - Type of the output object, extending {@link StepActorOutput}.
+ *
+ * @example
+ * Get an actor's profile:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("bsky.app")
+ *   .tap((step) => {
+ *     console.log(step.context.displayName)
+ *     console.log(step.context.followersCount)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Follow an actor:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("alice.bsky.social")
+ *   .follow()
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActor<P = StepBuilder, C = null, O extends StepActorOutput = StepActorOutput> extends ActorMixins<P, C, O> {

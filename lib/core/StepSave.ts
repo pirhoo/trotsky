@@ -10,11 +10,34 @@ import { Step, type StepBuilder } from "../trotsky"
 export type StepSavePath = string | null
 
 /**
- * A step
- * 
+ * A step that saves the current output to a JSON file at the specified path.
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to `string`.
+ *
+ * @example
+ * Save search results to a file:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript tips" })
+ *   .take(20)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 10)
+ *   .save("typescript-tips.json")
+ *   .run()
+ * ```
+ *
+ * @example
+ * Save actor profiles:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actors(["alice.bsky.social", "bob.bsky.social", "carol.bsky.social"])
+ *   .each()
+ *   .save("profiles.json")
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepSave<P = StepBuilder, C = null, O = string> extends Step<P, C, O> {

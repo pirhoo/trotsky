@@ -30,10 +30,32 @@ export type StepPostOutput = {
 /**
  * Represents a step for retrieving a post by its URI.
  * Extends {@link PostMixins} for post-related operations.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to {@link StepPostOutput}.
+ *
+ * @example
+ * Get a specific post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")
+ *   .tap((step) => {
+ *     console.log(step.context.record.text)
+ *     console.log(`Likes: ${step.context.likeCount}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Like a specific post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")
+ *   .like()
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepPost<P = StepBuilder, C = null, O extends StepPostOutput = StepPostOutput> extends PostMixins<P, C, O> {

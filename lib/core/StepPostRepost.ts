@@ -8,10 +8,33 @@ export type StepPostRepostOutput = { "uri": string; "cid": string }
 
 /**
  * Represents a step for reposting a specific post.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.
  * @typeParam O - The output type, defaulting to {@link StepPostRepostOutput}.
+ *
+ * @example
+ * Repost a specific post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")
+ *   .repost()
+ *   .run()
+ * ```
+ *
+ * @example
+ * Repost popular posts from search:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "typescript tips" })
+ *   .take(5)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 20)
+ *   .repost()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepPostRepost<P = StepPost, C extends StepPostOutput = StepPostOutput, O extends StepPostRepostOutput = StepPostRepostOutput> extends Step<P, C, O> {

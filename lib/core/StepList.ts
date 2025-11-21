@@ -23,10 +23,36 @@ export type StepListOutput = AppBskyGraphDefs.ListView
 
 /**
  * Represents a step for retrieving a list by its URI.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepBuilder}.
  * @typeParam C - The child context type, defaulting to `null`.
  * @typeParam O - The output type, defaulting to {@link StepListOutput}.
+ *
+ * @example
+ * Get a specific list:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .list("at://did:plc:example/app.bsky.graph.list/listid")
+ *   .tap((step) => {
+ *     console.log(`List: ${step.context.name}`)
+ *     console.log(`Purpose: ${step.context.purpose}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Get members of a list:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .list("at://did:plc:example/app.bsky.graph.list/listid")
+ *   .members()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(step.context.handle)
+ *   })
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepList<P = StepBuilder, C = null, O extends StepListOutput = StepListOutput> extends ListMixins<P, C, O> {

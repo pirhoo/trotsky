@@ -21,11 +21,36 @@ export type StepListMembersQueryParamsCursor = StepListMembersQueryParams["curso
 
 /**
  * Represents step for retrieving the members of a specific list, extending the {@link StepActors} functionality.
- * 
+ *
  * @typeParam P - The parent step type, defaulting to {@link StepList}.
  * @typeParam C - The context type, defaulting to {@link StepListOutput}.
  * @typeParam O - The output type, defaulting to {@link StepListMembersOutput}.
- * 
+ *
+ * @example
+ * Get and display all members of a list:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .list("at://did:plc:example/app.bsky.graph.list/listid")
+ *   .members()
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(`${step.context.handle} - ${step.context.displayName}`)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Follow all members of a list:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .list("at://did:plc:example/app.bsky.graph.list/listid")
+ *   .members()
+ *   .each()
+ *   .follow()
+ *   .wait(2000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepListMembers<P = StepList, C extends StepListOutput = StepListOutput, O extends StepListMembersOutput = StepListMembersOutput> extends StepActors<P, C, O> {

@@ -28,9 +28,39 @@ export type StepActorPostsQueryParamsCursor = StepActorPostsQueryParams["cursor"
 /**
  * Represents a step for retrieving an actor's posts using the Bluesky API.
  * Supports paginated retrieval of posts.
+ *
  * @typeParam P - Type of the parent step, extending {@link StepActor}.
  * @typeParam C - Type of the context object, extending {@link StepActorOutput}.
  * @typeParam O - Type of the output object, extending {@link StepActorPostsOutput}.
+ *
+ * @example
+ * Get an actor's recent posts:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("bsky.app")
+ *   .posts()
+ *   .take(10)
+ *   .each()
+ *   .tap((step) => {
+ *     console.log(step.context.record.text)
+ *   })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Like an actor's popular posts:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .actor("alice.bsky.social")
+ *   .posts()
+ *   .take(50)
+ *   .each()
+ *   .when((step) => step?.context?.likeCount > 10)
+ *   .like()
+ *   .wait(1000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepActorPosts<P = StepActor, C extends StepActorOutput = StepActorOutput, O extends StepActorPostsOutput = StepActorPostsOutput> extends StepPosts<P, C, O> {

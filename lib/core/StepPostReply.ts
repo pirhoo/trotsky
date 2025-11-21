@@ -30,10 +30,32 @@ export type StepPostReplyOutput = StepPostReplyRecordRef
 
 /**
  * Represents a step for replying to a specific post.
- * 
+ *
  * @typeParam P - The parent type of this step, defaulting to {@link StepPost}.
  * @typeParam C - The context type, defaulting to {@link StepPostOutput}.
  * @typeParam O - The output type, defaulting to {@link StepPostReplyOutput}.
+ *
+ * @example
+ * Reply to a specific post:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l")
+ *   .reply({ text: "Great post! 👍" })
+ *   .run()
+ * ```
+ *
+ * @example
+ * Reply to posts mentioning pizza:
+ * ```ts
+ * await Trotsky.init(agent)
+ *   .searchPosts({ q: "pizza" })
+ *   .take(3)
+ *   .each()
+ *   .reply({ text: "🍕 Pizza party! 🍕" })
+ *   .wait(1000)
+ *   .run()
+ * ```
+ *
  * @public
  */
 export class StepPostReply<P = StepPost, C extends StepPostOutput = StepPostOutput, O extends StepPostReplyOutput = StepPostReplyOutput> extends Step<P, C, O> {
