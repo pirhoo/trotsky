@@ -1,4 +1,4 @@
-import type { Did, FollowRecord, LikeRecord, PostRecord } from "@atproto/api"
+import type { Did, AppBskyGraphFollowRecord, AppBskyFeedLikeRecord, AppBskyFeedPostRecord } from "@atproto/api"
 import WebSocket from "ws"
 import EventEmitter from "events"
 import { decompress } from "@skhaz/zstd"
@@ -24,7 +24,7 @@ export interface JetstreamMessageCommit extends JetstreamMessageBase {
     "collection": string;
     "rkey": string;
     "cid": string;
-    "record"?: Partial<PostRecord> | Partial<LikeRecord> | Partial<FollowRecord>;
+    "record"?: Partial<AppBskyFeedPostRecord> | Partial<AppBskyFeedLikeRecord> | Partial<AppBskyGraphFollowRecord>;
   };
 }
 
