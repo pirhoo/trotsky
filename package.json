@@ -1,6 +1,6 @@
 {
   "name": "trotsky",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "dist/trotsky.js",
   "typings": "dist/trotsky.d.ts",
   "author": "hello@pirhoo.com",
