@@ -1,14 +1,16 @@
 import {
-  Step, 
-  StepActorBlock, 
-  StepActorFollow, 
-  StepActorFollowers, 
-  StepActorFollowings, 
+  Step,
+  StepActorBlock,
+  StepActorFollow,
+  StepActorFollowers,
+  StepActorFollowings,
   StepActorLists,
-  StepActorLikes, 
-  StepActorPosts, 
-  StepActorUnblock, 
+  StepActorLikes,
+  StepActorMute,
+  StepActorPosts,
+  StepActorUnblock,
   StepActorUnfollow,
+  StepActorUnmute,
   StepActorStreamPosts
 } from "../../trotsky"
 
@@ -111,11 +113,31 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
 
   /**
    * Appends a step to unfollow the current actor.
-   * 
+   *
    * @returns The current instance for method chaining.
    */
   unfollow () {
     this.append(StepActorUnfollow<this>)
+    return this
+  }
+
+  /**
+   * Appends a step to mute the current actor.
+   *
+   * @returns The current instance for method chaining.
+   */
+  mute () {
+    this.append(StepActorMute<this>)
+    return this
+  }
+
+  /**
+   * Appends a step to unmute the current actor.
+   *
+   * @returns The current instance for method chaining.
+   */
+  unmute () {
+    this.append(StepActorUnmute<this>)
     return this
   }
 }

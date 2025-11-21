@@ -11,14 +11,14 @@ Trotsky is currently limited to the following features:
  **StepActorFollowings** | :white_check_mark: | Get an actor's followings | ```Trotsky.init(agent).actor('bsky.app').followings().each()``` 
  **StepActorLikes** | :white_check_mark: | Get an actor's likes. | ```Trotsky.init(agent).actor('bsky.app').likes().each()``` 
  **StepActorLists** | :white_check_mark: | Get an actor's lists. | ```Trotsky.init(agent).actor('bsky.app').lists().each()``` 
- **StepActorMute** | :x: | Mute an actor. |  
+ **StepActorMute** | :white_check_mark: | Mute an actor. | ```Trotsky.init(agent).actor('bsky.app').mute()```  
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
  **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. | ```Trotsky.init(agent).actors(['bsky.app', 'trotsky.pirhoo.com']).each()``` 
  **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
  **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPosts().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
  **StepActorUnfollow** | :white_check_mark: | Unfollow an actor. | ```Trotsky.init(agent).actor('bsky.app').unfollow()``` 
- **StepActorUnmute** | :x: | Unmute an actor. |  
+ **StepActorUnmute** | :white_check_mark: | Unmute an actor. | ```Trotsky.init(agent).actor('bsky.app').unmute()```  
  **StepCreatePost** | :white_check_mark: | Create a post. | ```Trotsky.init(agent).post({ text: "Mapo Tofu is spicy 🌶️" })``` 
  **StepList** | :white_check_mark: | Get a list by its URI. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m")``` 
  **StepListMembers** | :white_check_mark: | Get a list's members. | ```Trotsky.init(agent).list("at://did:plc:4cs4fudwvazeed2f4b6zjkj5/app.bsky.graph.list/3lbmn7qvjfr2m").members().each()``` 

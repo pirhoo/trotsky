@@ -78,10 +78,12 @@ export * from "./core/StepActorFollowers"
 export * from "./core/StepActorFollowings"
 export * from "./core/StepActorLikes"
 export * from "./core/StepActorLists"
+export * from "./core/StepActorMute"
 export * from "./core/StepActorPosts"
 export * from "./core/StepActorStreamPosts"
 export * from "./core/StepActorUnblock"
 export * from "./core/StepActorUnfollow"
+export * from "./core/StepActorUnmute"
 
 // Single post
 export * from "./core/StepCreatePost"
