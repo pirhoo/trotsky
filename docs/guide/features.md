@@ -15,7 +15,7 @@ Trotsky is currently limited to the following features:
  **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
  **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. | ```Trotsky.init(agent).actors(['bsky.app', 'trotsky.pirhoo.com']).each()``` 
  **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
- **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPost().each()``` 
+ **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPosts().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
  **StepActorUnfollow** | :white_check_mark: | Unfollow an actor. | ```Trotsky.init(agent).actor('bsky.app').unfollow()``` 
  **StepActorUnmute** | :x: | Unmute an actor. |  
@@ -33,7 +33,7 @@ Trotsky is currently limited to the following features:
  **StepSearchStarterPacks** | :x: | Search starter packs. |
  **StepStarterPack** | :x: | Get a start pack by its URI. | 
  **StepStarterPacks** | :x: | Get a list of starter packs by their URIs. |
- **StepStreamPosts** | :test_tube: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPost().each()```
+ **StepStreamPosts** | :test_tube: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPosts().each()```
  **StepTimeline** | :x: | Get the timeline. |  
 
  <small>:x: Not implemented :white_check_mark: Implemented :test_tube: Experimental</small>

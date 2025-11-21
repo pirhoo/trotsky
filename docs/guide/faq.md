@@ -33,7 +33,7 @@ To avoid your account being blocked, follow these guidelines:
 
 ## Who are we?
 
-Trotsky was developed me, Pierre Romera Zhang, a fullstack developer. My initial motivation to create Trotsky was to have a project to learn Typescript and play with the ATProto API.
+Trotsky was developed by me, Pierre Romera Zhang, a fullstack developer. My initial motivation to create Trotsky was to have a project to learn Typescript and play with the ATProto API.
 
 ## Can we contribute?
 
@@ -41,5 +41,5 @@ Yes! Contributions are welcome. You can:
 
 - Submit [bug reports](https://github.com/pirhoo/trotsky/issues) or feature requests.
 - Fork the [repository](https://github.com/pirhoo/trotsky) and submit pull requests.
-- Help use to improve the documentation.
+- Help us to improve the documentation.
 

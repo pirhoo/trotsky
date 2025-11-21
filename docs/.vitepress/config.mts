@@ -59,8 +59,8 @@ export default defineConfig({
         ]
       },
       {
-        text: `API <spann class="VPBadge info">${version}</span>`,
-        
+        text: `API <span class="VPBadge info">${version}</span>`,
+
         items: [
           { text: 'Reference', link: '/api/reference' },
         ]
