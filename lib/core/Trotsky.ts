@@ -9,6 +9,7 @@ import type { StepWhenPredicate } from "./StepWhen"
 import type { StepTapInterceptor } from "./StepTap"
 import type { Resolvable } from "./utils/resolvable"
 import type { StepStarterPackUri } from "./StepStarterPack"
+import type { StepStarterPacksUris } from "./StepStarterPacks"
 
 import {
   StepActor,
@@ -19,6 +20,7 @@ import {
   StepList,
   StepListUri,
   StepStarterPack,
+  StepStarterPacks,
   StepSearchPosts,
   StepStreamPosts,
   StepTap,
@@ -100,6 +102,15 @@ export class Trotsky extends StepBuilder  {
    */
   starterPack (uri: Resolvable<StepStarterPackUri>) {
     return this.append(StepStarterPack, uri)
+  }
+
+  /**
+   * Adds a {@link StepStarterPacks} step.
+   * @param uris - The starter pack URIs.
+   * @returns The new {@link StepStarterPacks} instance.
+   */
+  starterPacks (uris: Resolvable<StepStarterPacksUris>): StepStarterPacks<this> {
+    return this.append(StepStarterPacks<this>, uris)
   }
 
   /**
