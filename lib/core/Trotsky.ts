@@ -8,19 +8,21 @@ import type { StepCreatePostParams } from "./StepCreatePost"
 import type { StepWhenPredicate } from "./StepWhen"
 import type { StepTapInterceptor } from "./StepTap"
 import type { Resolvable } from "./utils/resolvable"
+import type { StepStarterPackUri } from "./StepStarterPack"
 
-import { 
-  StepActor, 
+import {
+  StepActor,
   StepActors,
-  StepWait, 
+  StepWait,
   StepPost,
-  StepCreatePost, 
-  StepList, 
+  StepCreatePost,
+  StepList,
   StepListUri,
-  StepSearchPosts, 
-  StepStreamPosts, 
-  StepTap, 
-  StepWhen, 
+  StepStarterPack,
+  StepSearchPosts,
+  StepStreamPosts,
+  StepTap,
+  StepWhen,
   StepBuilder,
   StepActorsParam,
   StepPosts,
@@ -89,6 +91,15 @@ export class Trotsky extends StepBuilder  {
    */
   list (uri: Resolvable<StepListUri>) {
     return this.append(StepList, uri)
+  }
+
+  /**
+   * Adds a {@link StepStarterPack} step.
+   * @param uri - The starter pack URI.
+   * @returns The new {@link StepStarterPack} instance.
+   */
+  starterPack (uri: Resolvable<StepStarterPackUri>) {
+    return this.append(StepStarterPack, uri)
   }
 
   /**

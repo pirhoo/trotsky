@@ -97,6 +97,9 @@ export * from "./core/StepPostRepost"
 export * from "./core/StepList"
 export * from "./core/StepListMembers"
 
+// Single starter pack
+export * from "./core/StepStarterPack"
+
 // Utils
 export * from "./core/StepTap"
 export * from "./core/StepWait"
