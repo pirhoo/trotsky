@@ -100,6 +100,10 @@ export * from "./core/StepListMembers"
 // Single starter pack
 export * from "./core/StepStarterPack"
 
+// List of starter packs
+export * from "./core/StepStarterPacks"
+export * from "./core/StepStarterPacksEntry"
+
 // Utils
 export * from "./core/StepTap"
 export * from "./core/StepWait"
