@@ -11,3 +11,4 @@ coverage/
 temp/
 cache/
 /docs/api/
+/examples/
