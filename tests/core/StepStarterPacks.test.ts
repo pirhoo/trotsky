@@ -97,12 +97,9 @@ describe("StepStarterPacks", () => {
     expect(pack1).toBeDefined()
     expect(pack2).toBeDefined()
     // The count may or may not be populated depending on the test environment
-    if (pack1?.listItemCount !== undefined) {
-      expect(pack1.listItemCount).toBeGreaterThanOrEqual(0)
-    }
-    if (pack2?.listItemCount !== undefined) {
-      expect(pack2.listItemCount).toBeGreaterThanOrEqual(0)
-    }
+    // If available, it should be a non-negative number
+    expect(pack1?.listItemCount === undefined || pack1.listItemCount >= 0).toBe(true)
+    expect(pack2?.listItemCount === undefined || pack2.listItemCount >= 0).toBe(true)
   })
 
   test("should iterate through each starter pack", async () => {

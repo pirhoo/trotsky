@@ -116,7 +116,7 @@ export class StepStarterPacks<P = StepBuilder, C = null, O extends StepStarterPa
 
     // If no URIs provided, return empty array
     if (uris.length === 0) {
-      this.output = [] as O
+      this.output = [] as unknown as O
       return
     }
 

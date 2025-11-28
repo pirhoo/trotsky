@@ -10,6 +10,7 @@ import type { StepTapInterceptor } from "./StepTap"
 import type { Resolvable } from "./utils/resolvable"
 import type { StepStarterPackUri } from "./StepStarterPack"
 import type { StepStarterPacksUris } from "./StepStarterPacks"
+import type { StepSearchStarterPacksQueryParams } from "./StepSearchStarterPacks"
 
 import {
   StepActor,
@@ -22,6 +23,7 @@ import {
   StepStarterPack,
   StepStarterPacks,
   StepSearchPosts,
+  StepSearchStarterPacks,
   StepStreamPosts,
   StepTap,
   StepWhen,
@@ -120,6 +122,15 @@ export class Trotsky extends StepBuilder  {
    */
   searchPosts (queryParams: QueryParams): StepSearchPosts<this> {
     return this.append(StepSearchPosts<this>, queryParams)
+  }
+
+  /**
+   * Adds a {@link StepSearchStarterPacks} step.
+   * @param queryParams - Search parameters.
+   * @returns The new {@link StepSearchStarterPacks} instance.
+   */
+  searchStarterPacks (queryParams: StepSearchStarterPacksQueryParams): StepSearchStarterPacks<this> {
+    return this.append(StepSearchStarterPacks<this>, queryParams)
   }
 
   /**
