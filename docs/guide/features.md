@@ -12,9 +12,9 @@ Trotsky is currently limited to the following features:
  **StepActorLikes** | :white_check_mark: | Get an actor's likes. | ```Trotsky.init(agent).actor('bsky.app').likes().each()``` 
  **StepActorLists** | :white_check_mark: | Get an actor's lists. | ```Trotsky.init(agent).actor('bsky.app').lists().each()``` 
  **StepActorMute** | :white_check_mark: | Mute an actor. | ```Trotsky.init(agent).actor('bsky.app').mute()```  
- **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()``` 
- **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. | ```Trotsky.init(agent).actors(['bsky.app', 'trotsky.pirhoo.com']).each()``` 
- **StepActorStarterPacks** | :x: | Get an actor starter packs. | 
+ **StepActorPosts** | :white_check_mark: | Get an actor's posts | ```Trotsky.init(agent).actor('bsky.app').posts().each()```
+ **StepActors** | :white_check_mark: | Get a list of actors by their DIDs or handles. | ```Trotsky.init(agent).actors(['bsky.app', 'trotsky.pirhoo.com']).each()```
+ **StepActorStarterPacks** | :white_check_mark: | Get an actor's starter packs. | ```Trotsky.init(agent).actor('bsky.app').starterPacks().each()``` 
  **StepActorStreamPosts** | :test_tube: | Stream an actor's posts. | ```Trotsky.init(agent).actor('bsky.app').streamPosts().each()``` 
  **StepActorUnblock** | :white_check_mark: | Unblock an actor. | ```Trotsky.init(agent).actor('bsky.app').unblock()``` 
  **StepActorUnfollow** | :white_check_mark: | Unfollow an actor. | ```Trotsky.init(agent).actor('bsky.app').unfollow()``` 
