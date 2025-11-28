@@ -19,6 +19,7 @@
 import { TrotskyError } from "./TrotskyError"
 
 export class AuthenticationError extends TrotskyError {
+
   /**
    * Creates a new AuthenticationError.
    *
@@ -44,14 +45,19 @@ export class AuthenticationError extends TrotskyError {
  * @public
  */
 export const AuthenticationErrorCode = {
+
   /** Authentication is required but not provided */
-  AUTH_REQUIRED: "AUTH_REQUIRED",
+  "AUTH_REQUIRED": "AUTH_REQUIRED",
+
   /** Provided credentials are invalid */
-  INVALID_CREDENTIALS: "INVALID_CREDENTIALS",
+  "INVALID_CREDENTIALS": "INVALID_CREDENTIALS",
+
   /** Session has expired */
-  SESSION_EXPIRED: "SESSION_EXPIRED",
+  "SESSION_EXPIRED": "SESSION_EXPIRED",
+
   /** User lacks permission for this operation */
-  FORBIDDEN: "FORBIDDEN",
+  "FORBIDDEN": "FORBIDDEN",
+
   /** Agent is not authenticated */
-  NOT_AUTHENTICATED: "NOT_AUTHENTICATED"
+  "NOT_AUTHENTICATED": "NOT_AUTHENTICATED"
 } as const

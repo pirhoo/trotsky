@@ -16,6 +16,7 @@
  * @public
  */
 export class TrotskyError extends Error {
+
   /**
    * Error code for programmatic handling.
    */

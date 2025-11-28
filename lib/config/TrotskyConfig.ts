@@ -13,12 +13,15 @@
  * @public
  */
 export interface LoggingConfig {
+
   /** Enable or disable logging */
-  enabled: boolean
+  "enabled": boolean;
+
   /** Minimum log level to output */
-  level: "debug" | "info" | "warn" | "error"
+  "level": "debug" | "info" | "warn" | "error";
+
   /** Custom logger function (optional) */
-  logger?: (level: string, message: string, meta?: Record<string, unknown>) => void
+  "logger"?: (level: string, message: string, meta?: Record<string, unknown>) => void;
 }
 
 /**
@@ -27,12 +30,15 @@ export interface LoggingConfig {
  * @public
  */
 export interface PaginationConfig {
+
   /** Default page size for paginated requests */
-  defaultLimit: number
+  "defaultLimit": number;
+
   /** Maximum page size allowed */
-  maxLimit: number
+  "maxLimit": number;
+
   /** Enable automatic pagination */
-  autoPaginate: boolean
+  "autoPaginate": boolean;
 }
 
 /**
@@ -41,18 +47,24 @@ export interface PaginationConfig {
  * @public
  */
 export interface RetryConfig {
+
   /** Enable automatic retries on failure */
-  enabled: boolean
+  "enabled": boolean;
+
   /** Maximum number of retry attempts */
-  maxAttempts: number
+  "maxAttempts": number;
+
   /** Backoff strategy for retries */
-  backoff: "linear" | "exponential"
+  "backoff": "linear" | "exponential";
+
   /** Initial delay between retries (milliseconds) */
-  initialDelay: number
+  "initialDelay": number;
+
   /** Maximum delay between retries (milliseconds) */
-  maxDelay: number
+  "maxDelay": number;
+
   /** HTTP status codes that should trigger a retry */
-  retryableStatusCodes: number[]
+  "retryableStatusCodes": number[];
 }
 
 /**
@@ -61,14 +73,18 @@ export interface RetryConfig {
  * @public
  */
 export interface RateLimitConfig {
+
   /** Enable built-in rate limiting */
-  enabled: boolean
+  "enabled": boolean;
+
   /** Maximum requests per minute */
-  requestsPerMinute: number
+  "requestsPerMinute": number;
+
   /** Maximum concurrent requests */
-  concurrentRequests: number
+  "concurrentRequests": number;
+
   /** Behavior when rate limit is hit */
-  onLimitReached: "throw" | "queue" | "drop"
+  "onLimitReached": "throw" | "queue" | "drop";
 }
 
 /**
@@ -77,14 +93,18 @@ export interface RateLimitConfig {
  * @public
  */
 export interface CacheConfig {
+
   /** Enable caching */
-  enabled: boolean
+  "enabled": boolean;
+
   /** Default cache TTL in milliseconds */
-  defaultTTL: number
+  "defaultTTL": number;
+
   /** Maximum cache size (number of entries) */
-  maxSize: number
+  "maxSize": number;
+
   /** Cache key prefix */
-  keyPrefix: string
+  "keyPrefix": string;
 }
 
 /**
@@ -93,16 +113,21 @@ export interface CacheConfig {
  * @public
  */
 export interface TrotskyConfig {
+
   /** Logging configuration */
-  logging: LoggingConfig
+  "logging": LoggingConfig;
+
   /** Pagination configuration */
-  pagination: PaginationConfig
+  "pagination": PaginationConfig;
+
   /** Retry configuration */
-  retry: RetryConfig
+  "retry": RetryConfig;
+
   /** Rate limiting configuration */
-  rateLimit: RateLimitConfig
+  "rateLimit": RateLimitConfig;
+
   /** Caching configuration */
-  cache: CacheConfig
+  "cache": CacheConfig;
 }
 
 /**
@@ -122,34 +147,34 @@ export type PartialTrotskyConfig = {
  * @public
  */
 export const defaultConfig: TrotskyConfig = {
-  logging: {
-    enabled: false,
-    level: "info"
+  "logging": {
+    "enabled": false,
+    "level": "info"
   },
-  pagination: {
-    defaultLimit: 50,
-    maxLimit: 100,
-    autoPaginate: true
+  "pagination": {
+    "defaultLimit": 50,
+    "maxLimit": 100,
+    "autoPaginate": true
   },
-  retry: {
-    enabled: true,
-    maxAttempts: 3,
-    backoff: "exponential",
-    initialDelay: 1000,
-    maxDelay: 30000,
-    retryableStatusCodes: [408, 429, 500, 502, 503, 504]
+  "retry": {
+    "enabled": true,
+    "maxAttempts": 3,
+    "backoff": "exponential",
+    "initialDelay": 1000,
+    "maxDelay": 30000,
+    "retryableStatusCodes": [408, 429, 500, 502, 503, 504]
   },
-  rateLimit: {
-    enabled: false,
-    requestsPerMinute: 60,
-    concurrentRequests: 10,
-    onLimitReached: "queue"
+  "rateLimit": {
+    "enabled": false,
+    "requestsPerMinute": 60,
+    "concurrentRequests": 10,
+    "onLimitReached": "queue"
   },
-  cache: {
-    enabled: false,
-    defaultTTL: 60000, // 1 minute
-    maxSize: 1000,
-    keyPrefix: "trotsky:"
+  "cache": {
+    "enabled": false,
+    "defaultTTL": 60000, // 1 minute
+    "maxSize": 1000,
+    "keyPrefix": "trotsky:"
   }
 }
 
@@ -174,10 +199,10 @@ export function mergeConfig (config?: PartialTrotskyConfig): TrotskyConfig {
   }
 
   return {
-    logging: { ...defaultConfig.logging, ...config.logging },
-    pagination: { ...defaultConfig.pagination, ...config.pagination },
-    retry: { ...defaultConfig.retry, ...config.retry },
-    rateLimit: { ...defaultConfig.rateLimit, ...config.rateLimit },
-    cache: { ...defaultConfig.cache, ...config.cache }
+    "logging": { ...defaultConfig.logging, ...config.logging },
+    "pagination": { ...defaultConfig.pagination, ...config.pagination },
+    "retry": { ...defaultConfig.retry, ...config.retry },
+    "rateLimit": { ...defaultConfig.rateLimit, ...config.rateLimit },
+    "cache": { ...defaultConfig.cache, ...config.cache }
   }
 }

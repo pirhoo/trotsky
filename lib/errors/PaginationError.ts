@@ -19,6 +19,7 @@
 import { TrotskyError } from "./TrotskyError"
 
 export class PaginationError extends TrotskyError {
+
   /**
    * Creates a new PaginationError.
    *
@@ -44,14 +45,19 @@ export class PaginationError extends TrotskyError {
  * @public
  */
 export const PaginationErrorCode = {
+
   /** Cursor is invalid or malformed */
-  INVALID_CURSOR: "INVALID_CURSOR",
+  "INVALID_CURSOR": "INVALID_CURSOR",
+
   /** Cursor has expired */
-  CURSOR_EXPIRED: "CURSOR_EXPIRED",
+  "CURSOR_EXPIRED": "CURSOR_EXPIRED",
+
   /** Failed to fetch next page */
-  FETCH_FAILED: "FETCH_FAILED",
+  "FETCH_FAILED": "FETCH_FAILED",
+
   /** Limit parameter is invalid */
-  INVALID_LIMIT: "INVALID_LIMIT",
+  "INVALID_LIMIT": "INVALID_LIMIT",
+
   /** No more pages available */
-  NO_MORE_PAGES: "NO_MORE_PAGES"
+  "NO_MORE_PAGES": "NO_MORE_PAGES"
 } as const

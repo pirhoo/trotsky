@@ -20,6 +20,7 @@
 import { TrotskyError } from "./TrotskyError"
 
 export class ValidationError extends TrotskyError {
+
   /**
    * Additional validation details (field names, values, etc.).
    */
@@ -65,16 +66,22 @@ export class ValidationError extends TrotskyError {
  * @public
  */
 export const ValidationErrorCode = {
+
   /** URI is invalid or malformed */
-  INVALID_URI: "INVALID_URI",
+  "INVALID_URI": "INVALID_URI",
+
   /** Parameter is missing */
-  MISSING_PARAM: "MISSING_PARAM",
+  "MISSING_PARAM": "MISSING_PARAM",
+
   /** Parameter value is invalid */
-  INVALID_PARAM: "INVALID_PARAM",
+  "INVALID_PARAM": "INVALID_PARAM",
+
   /** Parameter type is incorrect */
-  INVALID_TYPE: "INVALID_TYPE",
+  "INVALID_TYPE": "INVALID_TYPE",
+
   /** Parameter value is out of range */
-  OUT_OF_RANGE: "OUT_OF_RANGE",
+  "OUT_OF_RANGE": "OUT_OF_RANGE",
+
   /** Required field is missing */
-  REQUIRED_FIELD: "REQUIRED_FIELD"
+  "REQUIRED_FIELD": "REQUIRED_FIELD"
 } as const
