@@ -7,6 +7,7 @@ import type { StepPostsUris } from "./StepPosts"
 import type { StepCreatePostParams } from "./StepCreatePost"
 import type { StepWhenPredicate } from "./StepWhen"
 import type { StepTapInterceptor } from "./StepTap"
+import type { StepTimelineQueryParams } from "./StepTimeline"
 import type { Resolvable } from "./utils/resolvable"
 import type { StepStarterPackUri } from "./StepStarterPack"
 import type { StepStarterPacksUris } from "./StepStarterPacks"
@@ -31,7 +32,8 @@ import {
   StepActorsParam,
   StepPosts,
   StepSave,
-  StepSavePath
+  StepSavePath,
+  StepTimeline
 } from "../trotsky"
 
 /**
@@ -139,6 +141,15 @@ export class Trotsky extends StepBuilder  {
    */
   streamPosts<T = StepStreamPosts<this>>(): T {
     return this.append(StepStreamPosts<this>) as T
+  }
+
+  /**
+   * Adds a {@link StepTimeline} step.
+   * @param queryParams - Optional query parameters for the timeline.
+   * @returns The new {@link StepTimeline} instance.
+   */
+  timeline (queryParams: StepTimelineQueryParams = {}): StepTimeline<this> {
+    return this.append(StepTimeline<this>, queryParams)
   }
 
   /**

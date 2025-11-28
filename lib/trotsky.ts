@@ -65,6 +65,7 @@ export * from "./core/StepActorsEntry"
 export * from "./core/StepPosts"
 export * from "./core/StepPostsEntry"
 export * from "./core/StepSearchPosts"
+export * from "./core/StepTimeline"
 
 // List of lists
 export * from "./core/StepLists"

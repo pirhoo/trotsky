@@ -36,7 +36,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepStarterPack** | :white_check_mark: | Get a starter pack by its URI. | ```Trotsky.init(agent).starterPack("at://...").run()```
  **StepStarterPacks** | :white_check_mark: | Get a list of starter packs by their URIs. | ```Trotsky.init(agent).starterPacks([uri1, uri2]).each()```
  **StepStreamPosts** | :test_tube: | Stream posts from the firehose. | ```Trotsky.init(agent).streamPosts().each()```
- **StepTimeline** | :x: | Get the authenticated user's timeline. | ```Trotsky.init(agent).timeline().take(20).each()```
+ **StepTimeline** | :white_check_mark: | Get the authenticated user's timeline. | ```Trotsky.init(agent).timeline().take(20).each()```
 
 ## Planned Features
 
