@@ -8,6 +8,7 @@ import {
   StepActorLikes,
   StepActorMute,
   StepActorPosts,
+  StepActorStarterPacks,
   StepActorUnblock,
   StepActorUnfollow,
   StepActorUnmute,
@@ -64,7 +65,7 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
 
   /**
    * Appends a step to fetch the posts of the current actor.
-   * 
+   *
    * @returns The appended {@link StepActorPosts} instance.
    */
   posts (): StepActorPosts<this> {
@@ -72,8 +73,17 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
   }
 
   /**
+   * Appends a step to fetch the starter packs of the current actor.
+   *
+   * @returns The appended {@link StepActorStarterPacks} instance.
+   */
+  starterPacks (): StepActorStarterPacks<this> {
+    return this.append(StepActorStarterPacks<this>)
+  }
+
+  /**
    * Appends a step to stream the posts of the current actor.
-   * 
+   *
    * @typeParam T - The type of the stream posts step, defaulting to {@link StepActorStreamPosts}.
    * @returns The appended {@link StepActorStreamPosts} instance.
    */
