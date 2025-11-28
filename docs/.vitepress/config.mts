@@ -49,6 +49,7 @@ export default defineConfig({
           { text: 'Why Trotsky', link: '/guide/why' },
           { text: 'Features', link: '/guide/features' },
           { text: 'Code of Conduct', link: '/guide/code-of-conduct' },
+          { text: 'Architecture', link: '/guide/architecture' },
           { text: 'FAQ', link: '/guide/faq' },
         ]
       },
