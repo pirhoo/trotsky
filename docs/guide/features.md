@@ -29,10 +29,10 @@ Trotsky is currently limited to the following features:
  **StepPostReply** | :white_check_mark: | Reply to a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").reply({ text: "Well done!" })``` 
  **StepPostRepost** | :white_check_mark: | Repost a post. | ```Trotsky.init(agent).post("at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l").repost()``` 
  **StepPosts** | :white_check_mark: | Get a list of post by their URIs. |  ```Trotsky.init(agent).posts(["at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.post/3l6oveex3ii2l"]).each()``` 
- **StepSearchPosts** | :white_check_mark: | Search posts. | ```Trotsky.init(agent).searchPosts({ q: "Mapo Tofu" }).each()``` 
- **StepSearchStarterPacks** | :x: | Search starter packs. |
+ **StepSearchPosts** | :white_check_mark: | Search posts. | ```Trotsky.init(agent).searchPosts({ q: "Mapo Tofu" }).each()```
+ **StepSearchStarterPacks** | :white_check_mark: | Search starter packs. | ```Trotsky.init(agent).searchStarterPacks({ q: "tech" }).each()```
  **StepStarterPack** | :white_check_mark: | Get a starter pack by its URI. | ```Trotsky.init(agent).starterPack("at://did:plc:example/app.bsky.graph.starterpack/packid")```
- **StepStarterPacks** | :x: | Get a list of starter packs by their URIs. |
+ **StepStarterPacks** | :white_check_mark: | Get a list of starter packs by their URIs. | ```Trotsky.init(agent).starterPacks([uri1, uri2]).each()```
  **StepStreamPosts** | :test_tube: | Use the firehose to stream posts. | ```Trotsky.init(agent).streamPosts().each()```
  **StepTimeline** | :x: | Get the timeline. |  
 
