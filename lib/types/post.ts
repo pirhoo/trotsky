@@ -52,22 +52,30 @@ export type PostRecord = AppBskyFeedPost.Record
  * @public
  */
 export interface CreatePostParams {
+
   /** The text content of the post */
-  text: string
+  "text": string;
+
   /** Optional facets for rich text (links, mentions, etc.) */
-  facets?: AppBskyFeedPost.Record["facets"]
+  "facets"?: AppBskyFeedPost.Record["facets"];
+
   /** Optional reply reference */
-  reply?: AppBskyFeedPost.Record["reply"]
+  "reply"?: AppBskyFeedPost.Record["reply"];
+
   /** Optional embed (images, external links, etc.) */
-  embed?: AppBskyFeedPost.Record["embed"]
+  "embed"?: AppBskyFeedPost.Record["embed"];
+
   /** Optional language tags */
-  langs?: string[]
+  "langs"?: string[];
+
   /** Optional labels */
-  labels?: AppBskyFeedPost.Record["labels"]
+  "labels"?: AppBskyFeedPost.Record["labels"];
+
   /** Optional tags */
-  tags?: string[]
+  "tags"?: string[];
+
   /** Creation timestamp (defaults to now) */
-  createdAt?: string
+  "createdAt"?: string;
 }
 
 /**
@@ -76,12 +84,16 @@ export interface CreatePostParams {
  * @public
  */
 export interface ReplyParams {
+
   /** The text content of the reply */
-  text: string
+  "text": string;
+
   /** Optional facets for rich text */
-  facets?: AppBskyFeedPost.Record["facets"]
+  "facets"?: AppBskyFeedPost.Record["facets"];
+
   /** Optional embed */
-  embed?: AppBskyFeedPost.Record["embed"]
+  "embed"?: AppBskyFeedPost.Record["embed"];
+
   /** Optional language tags */
-  langs?: string[]
+  "langs"?: string[];
 }

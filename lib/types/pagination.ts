@@ -9,10 +9,12 @@
  * @public
  */
 export interface PaginationParams {
+
   /** Maximum number of items to return per page */
-  limit?: number
+  "limit"?: number;
+
   /** Cursor for pagination (opaque string from previous response) */
-  cursor?: string
+  "cursor"?: string;
 }
 
 /**
@@ -22,10 +24,12 @@ export interface PaginationParams {
  * @public
  */
 export interface PaginatedResponse<T> {
+
   /** Array of items for this page */
-  items: T[]
+  "items": T[];
+
   /** Cursor for fetching the next page (undefined if no more pages) */
-  cursor?: string
+  "cursor"?: string;
 }
 
 /**

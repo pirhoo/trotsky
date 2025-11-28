@@ -47,6 +47,11 @@ export {
   ValidationErrorCode
 } from "./ValidationError"
 
+// Import for use in fromXRPCError function
+import { TrotskyError as TrotskyErrorClass } from "./TrotskyError"
+import { AuthenticationError as AuthenticationErrorClass } from "./AuthenticationError"
+import { RateLimitError as RateLimitErrorClass } from "./RateLimitError"
+
 /**
  * Type guard to check if an error is a Trotsky error.
  *
@@ -84,40 +89,44 @@ export function isTrotskyError (error: unknown): error is import("./TrotskyError
  *
  * @public
  */
-export function fromXRPCError (error: any, step?: string): import("./TrotskyError").TrotskyError {
-  const { TrotskyError } = require("./TrotskyError")
-  const { AuthenticationError } = require("./AuthenticationError")
-  const { RateLimitError } = require("./RateLimitError")
+export function fromXRPCError (error: unknown, step?: string): import("./TrotskyError").TrotskyError {
+  // Type guard to check if error has expected properties
+  const err = error as {
+    "status"?: number;
+    "message"?: string;
+    "error"?: string;
+    "headers"?: Record<string, string>;
+  }
 
   // Check for common XRPC error statuses
-  if (error.status === 401 || error.status === 403) {
-    return new AuthenticationError(
-      error.message || "Authentication failed",
-      error.status === 401 ? "NOT_AUTHENTICATED" : "FORBIDDEN",
+  if (err.status === 401 || err.status === 403) {
+    return new AuthenticationErrorClass(
+      err.message || "Authentication failed",
+      err.status === 401 ? "NOT_AUTHENTICATED" : "FORBIDDEN",
       step,
-      error
+      error instanceof Error ? error : undefined
     )
   }
 
-  if (error.status === 429) {
-    const retryAfter = error.headers?.["retry-after"]
-      ? parseInt(error.headers["retry-after"], 10)
+  if (err.status === 429) {
+    const retryAfter = err.headers?.["retry-after"]
+      ? parseInt(err.headers["retry-after"], 10)
       : undefined
 
-    return new RateLimitError(
-      error.message || "Rate limit exceeded",
+    return new RateLimitErrorClass(
+      err.message || "Rate limit exceeded",
       "RATE_LIMIT_EXCEEDED",
       step,
       retryAfter,
-      error
+      error instanceof Error ? error : undefined
     )
   }
 
   // Default to generic TrotskyError
-  return new TrotskyError(
-    error.message || "Unknown error",
-    error.error || "UNKNOWN_ERROR",
+  return new TrotskyErrorClass(
+    err.message || "Unknown error",
+    err.error || "UNKNOWN_ERROR",
     step,
-    error
+    error instanceof Error ? error : undefined
   )
 }

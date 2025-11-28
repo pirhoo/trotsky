@@ -20,6 +20,7 @@
 import { TrotskyError } from "./TrotskyError"
 
 export class RateLimitError extends TrotskyError {
+
   /**
    * Number of seconds until rate limit resets (if known).
    */
@@ -65,12 +66,16 @@ export class RateLimitError extends TrotskyError {
  * @public
  */
 export const RateLimitErrorCode = {
+
   /** API rate limit exceeded */
-  RATE_LIMIT_EXCEEDED: "RATE_LIMIT_EXCEEDED",
+  "RATE_LIMIT_EXCEEDED": "RATE_LIMIT_EXCEEDED",
+
   /** Too many requests */
-  TOO_MANY_REQUESTS: "TOO_MANY_REQUESTS",
+  "TOO_MANY_REQUESTS": "TOO_MANY_REQUESTS",
+
   /** Daily quota exceeded */
-  QUOTA_EXCEEDED: "QUOTA_EXCEEDED",
+  "QUOTA_EXCEEDED": "QUOTA_EXCEEDED",
+
   /** Concurrent request limit exceeded */
-  CONCURRENT_LIMIT: "CONCURRENT_LIMIT"
+  "CONCURRENT_LIMIT": "CONCURRENT_LIMIT"
 } as const
