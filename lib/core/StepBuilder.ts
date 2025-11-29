@@ -2,6 +2,7 @@ import type AtpAgent from "@atproto/api"
 import cron from "node-cron"
 
 import Trotsky, { Step } from "../trotsky"
+import type { BeforeStepHook, AfterStepHook, StepExecutionResult } from "../types"
 
 /**
  * Represents the configuration object for a {@link StepBuilder} instance.
@@ -22,6 +23,12 @@ export abstract class StepBuilder {
 
   /** @internal */
   _config: StepBuilderConfig = {}
+
+  /** @internal */
+  _beforeStepHooks: BeforeStepHook[] = []
+
+  /** @internal */
+  _afterStepHooks: AfterStepHook[] = []
 
   /**
    * Initializes a new {@link StepBuilder} instance.
@@ -183,11 +190,54 @@ export abstract class StepBuilder {
   }
 
   /**
+   * Registers a hook to execute before each step.
+   * @param hook - The hook function to register.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  beforeStep (hook: BeforeStepHook) {
+    this._beforeStepHooks.push(hook)
+    return this
+  }
+
+  /**
+   * Registers a hook to execute after each step.
+   * @param hook - The hook function to register.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  afterStep (hook: AfterStepHook) {
+    this._afterStepHooks.push(hook)
+    return this
+  }
+
+  /**
+   * Clears all registered hooks.
+   * @returns The current {@link StepBuilder} instance.
+   */
+  clearHooks () {
+    this._beforeStepHooks = []
+    this._afterStepHooks = []
+    return this
+  }
+
+  /**
    * Applies all steps in the sequence.
    */
   async applyAll () {
     for (const step of this.steps) {
-      await step.apply()
+      // Execute beforeStep hooks
+      await this._executeBeforeStepHooks(step)
+
+      // Execute the step and capture result
+      const result = await this._executeStepWithResult(step)
+
+      // Execute afterStep hooks (even if step failed)
+      await this._executeAfterStepHooks(step, result)
+
+      // Re-throw error after hooks have executed
+      if (!result.success && result.error) {
+        throw result.error
+      }
+
       // Skip the rest of the steps if the current step is a StepWhen and its output is falsy
       if (step.isStepWhen && !step.output) break
 
@@ -195,6 +245,88 @@ export abstract class StepBuilder {
         await step.applyAll()
       }
     }
+  }
+
+  /**
+   * Executes all beforeStep hooks for a given step.
+   * @param step - The step about to be executed.
+   */
+  private async _executeBeforeStepHooks (step: Step) {
+    const hooks = this._getInheritedBeforeStepHooks()
+    for (const hook of hooks) {
+      await hook(step, step.context)
+    }
+  }
+
+  /**
+   * Executes all afterStep hooks for a given step.
+   * @param step - The step that was executed.
+   * @param result - The execution result.
+   */
+  private async _executeAfterStepHooks (step: Step, result: StepExecutionResult) {
+    const hooks = this._getInheritedAfterStepHooks()
+    for (const hook of hooks) {
+      await hook(step, step.context, result)
+    }
+  }
+
+  /**
+   * Executes a step and returns detailed result information.
+   * @param step - The step to execute.
+   * @returns The execution result.
+   */
+  private async _executeStepWithResult (step: Step): Promise<StepExecutionResult> {
+    const startTime = Date.now()
+    const result: StepExecutionResult = {
+      "success": false,
+      "executionTime": 0,
+      "output": undefined,
+      "error": undefined
+    }
+
+    try {
+      await step.apply()
+      result.success = true
+      result.output = step.output
+    } catch (error) {
+      result.success = false
+      result.error = error instanceof Error ? error : new Error(String(error))
+      // Don't re-throw here - let applyAll handle it after afterStep hooks run
+    } finally {
+      result.executionTime = Date.now() - startTime
+    }
+
+    return result
+  }
+
+  /**
+   * Gets all beforeStep hooks including inherited ones from parent steps.
+   * @returns Array of beforeStep hooks.
+   */
+  private _getInheritedBeforeStepHooks (): BeforeStepHook[] {
+    if (this.isTrotsky) {
+      return this._beforeStepHooks
+    }
+    // For nested steps, inherit hooks from parent
+    const parentHooks = (this as unknown as Step)._parent instanceof StepBuilder
+      ? ((this as unknown as Step)._parent as StepBuilder)._getInheritedBeforeStepHooks()
+      : []
+    return [...parentHooks, ...this._beforeStepHooks]
+  }
+
+  /**
+   * Gets all afterStep hooks including inherited ones from parent steps.
+   * @returns Array of afterStep hooks.
+   */
+  private _getInheritedAfterStepHooks (): AfterStepHook[] {
+    if (this.isTrotsky) {
+      return this._afterStepHooks
+    }
+    // For nested steps, inherit hooks from parent
+    const parentHooks = (this as unknown as Step)._parent instanceof StepBuilder
+      ? ((this as unknown as Step)._parent as StepBuilder)._getInheritedAfterStepHooks()
+      : []
+    return [...parentHooks, ...this._afterStepHooks]
   }
 
   /**
