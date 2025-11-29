@@ -45,3 +45,11 @@ export type {
   PaginatedResponse,
   PaginatedQueryParams
 } from "./pagination"
+
+// Hook types
+export type {
+  BeforeStepHook,
+  AfterStepHook,
+  StepHooks,
+  StepExecutionResult
+} from "./hooks"
