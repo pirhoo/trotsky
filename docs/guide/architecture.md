@@ -365,41 +365,6 @@ describe('StepActor', () => {
 })
 ```
 
-## Future Architecture Plans
-
-### 1. Plugin System
-
-Support for custom plugins:
-
-```typescript
-Trotsky.init(agent)
-  .use(new AnalyticsPlugin())
-  .use(new CachePlugin())
-```
-
-### 2. Middleware
-
-Request/response interceptors:
-
-```typescript
-Trotsky.init(agent)
-  .beforeStep((step) => console.log(`Executing: ${step.name}`))
-  .afterStep((step) => console.log(`Completed: ${step.name}`))
-```
-
-### 3. Advanced Caching
-
-Built-in caching layer for frequently accessed data:
-
-```typescript
-Trotsky.init(agent, {
-  cache: {
-    enabled: true,
-    ttl: 60000
-  }
-})
-```
-
 ## Best Practices
 
 1. **Use Type Inference**: Let TypeScript infer types instead of explicit annotations
