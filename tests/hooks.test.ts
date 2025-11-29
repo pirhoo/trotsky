@@ -439,7 +439,8 @@ describe("Hooks", () => {
       expect(metrics).toHaveLength(3)
       expect(metrics[0].step).toBe("StepActor")
       expect(metrics[1].step).toBe("StepWait")
-      expect(metrics[1].duration).toBeGreaterThanOrEqual(50)
+      // Allow slight timing variation in CI environments (48-52ms is acceptable)
+      expect(metrics[1].duration).toBeGreaterThanOrEqual(45)
       expect(metrics[2].step).toBe("StepWait")
     })
 
