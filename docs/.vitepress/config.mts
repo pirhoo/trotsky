@@ -48,6 +48,7 @@ export default defineConfig({
           { text: 'Getting started', link: '/guide/getting-started' },
           { text: 'Why Trotsky', link: '/guide/why' },
           { text: 'Features', link: '/guide/features' },
+          { text: 'Lifecycle Hooks', link: '/guide/hooks' },
           { text: 'Code of Conduct', link: '/guide/code-of-conduct' },
           { text: 'Architecture', link: '/guide/architecture' },
           { text: 'FAQ', link: '/guide/faq' },

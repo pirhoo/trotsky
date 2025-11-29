@@ -24,6 +24,7 @@
 * **Builder Pattern**: Easily create our automation with an intuitive DSL.
 * **Reduce Complexity**: Design advanced scenarios with a single expression in minutes.
 * **Type-safety**: Benefit from type-safety and autocompletion for a robut development experience.
+* **Lifecycle Hooks**: Extend scenarios with beforeStep and afterStep hooks for logging, monitoring, validation, and more.
 * **Discover**: Find inspirations with a curated list of Trotsky implementations.
 
 ## Quickstart
@@ -56,6 +57,37 @@ async function main() {
 
 main()
 ```
+
+## Lifecycle Hooks
+
+Extend your scenarios with `beforeStep` and `afterStep` hooks for logging, monitoring, validation, and more:
+
+```ts
+import { Trotsky } from "trotsky"
+
+const trotsky = new Trotsky(agent)
+
+// Log when steps start
+trotsky.beforeStep((step, context) => {
+  console.log(`Starting: ${step.constructor.name}`)
+})
+
+// Track performance after each step
+trotsky.afterStep((step, context, result) => {
+  console.log(`Completed: ${step.constructor.name} (${result.executionTime}ms)`)
+
+  if (result.executionTime > 1000) {
+    console.warn('Slow step detected!')
+  }
+})
+
+await trotsky
+  .actor('alice.bsky.social')
+  .createPost('Hello world!')
+  .run()
+```
+
+See the [Hooks Documentation](https://trotsky.pirhoo.com/guide/hooks.html) for comprehensive guides and examples.
 
 ## Next Steps
 
