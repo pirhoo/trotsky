@@ -64,6 +64,7 @@ export * from "./core/StepSearchActors"
 
 // List of posts
 export * from "./core/StepFeed"
+export * from "./core/StepFeedGenerator"
 export * from "./core/StepPosts"
 export * from "./core/StepPostsEntry"
 export * from "./core/StepSearchPosts"
