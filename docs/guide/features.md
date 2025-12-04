@@ -38,6 +38,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepStreamPosts** | :test_tube: | Stream posts from the firehose. | ```Trotsky.init(agent).streamPosts().each()```
  **StepTimeline** | :white_check_mark: | Get the authenticated user's timeline. | ```Trotsky.init(agent).timeline().take(20).each()```
  **StepSearchActors** | :white_check_mark: | Search for actors by name/handle. | ```Trotsky.init(agent).searchActors({ q: "typescript" }).each()```
+ **StepPostLikers** | :white_check_mark: | Get actors who liked a post. | ```Trotsky.init(agent).post("at://...").likers().each()```
 
 ## Planned Features
 
@@ -60,7 +61,6 @@ The following features are planned for future implementation:
  **StepNotifications** | :construction: | Get user notifications. | `app.bsky.notification.listNotifications`
  **StepNotificationsUnreadCount** | :construction: | Get unread notification count. | `app.bsky.notification.getUnreadCount`
  **StepNotificationsUpdateSeen** | :construction: | Mark notifications as seen. | `app.bsky.notification.updateSeen`
- **StepPostLikers** | :construction: | Get actors who liked a post. | `app.bsky.feed.getLikes`
  **StepPostQuotes** | :construction: | Get quote posts of a post. | `app.bsky.feed.getQuotes`
  **StepPostReposters** | :construction: | Get actors who reposted a post. | `app.bsky.feed.getRepostedBy`
  **StepPostThread** | :construction: | Get a full post thread with replies. | `app.bsky.feed.getPostThread`

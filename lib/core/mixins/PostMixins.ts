@@ -1,7 +1,7 @@
 import type { AppBskyFeedPost } from "@atproto/api"
 
 import type { Resolvable } from "../utils/resolvable"
-import { Step, StepPostAuthor, StepPostLike, StepPostReply, StepPostRepost } from "../../trotsky"
+import { Step, StepPostAuthor, StepPostLike, StepPostLikers, StepPostReply, StepPostRepost } from "../../trotsky"
 
 /**
  * Type representing the parameters for a post reply, including text and optional additional metadata.
@@ -56,10 +56,19 @@ export abstract class PostMixins<P, C, O> extends Step<P, C, O> {
 
   /**
    * Appends a step to retrieve the author of the current post.
-   * 
+   *
    * @returns The appended {@link StepPostAuthor} instance.
    */
   author (): StepPostAuthor<this> {
     return this.append(StepPostAuthor<this>)
+  }
+
+  /**
+   * Appends a step to retrieve the actors who liked the current post.
+   *
+   * @returns The appended {@link StepPostLikers} instance.
+   */
+  likers (): StepPostLikers<this> {
+    return this.append(StepPostLikers<this>)
   }
 }
