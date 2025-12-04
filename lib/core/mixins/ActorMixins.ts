@@ -4,6 +4,7 @@ import {
   StepActorFollow,
   StepActorFollowers,
   StepActorFollowings,
+  StepActorKnownFollowers,
   StepActorLists,
   StepActorLikes,
   StepActorMute,
@@ -38,11 +39,20 @@ export abstract class ActorMixins<P, C, O> extends Step<P, C, O> {
 
   /**
    * Appends a step to fetch the followings of the current actor.
-   * 
+   *
    * @returns The appended {@link StepActorFollowings} instance.
    */
   followings (): StepActorFollowings<this> {
     return this.append(StepActorFollowings<this>)
+  }
+
+  /**
+   * Appends a step to fetch the known followers (mutual connections) of the current actor.
+   *
+   * @returns The appended {@link StepActorKnownFollowers} instance.
+   */
+  knownFollowers (): StepActorKnownFollowers<this> {
+    return this.append(StepActorKnownFollowers<this>)
   }
 
   /**

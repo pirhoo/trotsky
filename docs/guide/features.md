@@ -47,6 +47,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepDeletePost** | :white_check_mark: | Delete a post. | ```Trotsky.init(agent).post("at://...").delete()```
  **StepActorBlocks** | :white_check_mark: | Get all actors blocked by the user. | ```Trotsky.init(agent).blocks().each()```
  **StepActorMutes** | :white_check_mark: | Get all actors muted by the user. | ```Trotsky.init(agent).mutes().each()```
+ **StepActorKnownFollowers** | :white_check_mark: | Get known followers (mutual connections). | ```Trotsky.init(agent).actor('bsky.app').knownFollowers().each()```
 
 ## Planned Features
 
@@ -54,7 +55,6 @@ The following features are planned for future implementation:
 
  **Name** | **Status** | **Description** | **Potential API**
 ---|---|---|---
- **StepActorKnownFollowers** | :construction: | Get known followers (mutual connections). | `app.bsky.graph.getKnownFollowers`
  **StepActorSuggestions** | :construction: | Get suggested actors to follow. | `app.bsky.actor.getSuggestions`
  **StepFeed** | :construction: | Get posts from a custom feed. | `app.bsky.feed.getFeed`
  **StepFeedGenerator** | :construction: | Get a custom feed generator. | `app.bsky.feed.getFeedGenerator`
