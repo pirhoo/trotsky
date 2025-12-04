@@ -90,6 +90,7 @@ export * from "./core/StepActorUnmute"
 
 // Single post
 export * from "./core/StepCreatePost"
+export * from "./core/StepDeletePost"
 export * from "./core/StepPost"
 export * from "./core/StepPostAuthor"
 export * from "./core/StepPostLike"
