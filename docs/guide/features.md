@@ -52,6 +52,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepFeed** | :white_check_mark: | Get posts from a custom feed. | ```Trotsky.init(agent).feed("at://...").each()```
  **StepFeedGenerator** | :white_check_mark: | Get a custom feed generator. | ```Trotsky.init(agent).feedGenerator("at://...")```
  **StepSuggestedFeeds** | :white_check_mark: | Get suggested custom feeds. | ```Trotsky.init(agent).suggestedFeeds().take(10)```
+ **StepListFeed** | :white_check_mark: | Get posts from a list feed. | ```Trotsky.init(agent).list("at://...").feed().each()```
 
 ## Planned Features
 
@@ -60,7 +61,6 @@ The following features are planned for future implementation:
  **Name** | **Status** | **Description** | **Potential API**
 ---|---|---|---
  **StepListBlock** | :construction: | Block a list. | `app.bsky.graph.listblock`
- **StepListFeed** | :construction: | Get posts from a list feed. | `app.bsky.feed.getListFeed`
  **StepListMute** | :construction: | Mute a list. | `app.bsky.graph.muteActorList`
  **StepListUnblock** | :construction: | Unblock a list. | Delete listblock record
  **StepListUnmute** | :construction: | Unmute a list. | `app.bsky.graph.unmuteActorList`

@@ -112,6 +112,7 @@ export * from "./core/StepPostUnrepost"
 
 // Single lists
 export * from "./core/StepList"
+export * from "./core/StepListFeed"
 export * from "./core/StepListMembers"
 
 // Single starter pack
