@@ -18,6 +18,7 @@ import {
   StepActor,
   StepActorBlocks,
   StepActorMutes,
+  StepActorSuggestions,
   StepActors,
   StepWait,
   StepPost,
@@ -81,6 +82,14 @@ export class Trotsky extends StepBuilder  {
    */
   mutes (): StepActorMutes<this> {
     return this.append(StepActorMutes<this>)
+  }
+
+  /**
+   * Adds a {@link StepActorSuggestions} step.
+   * @returns The new {@link StepActorSuggestions} instance.
+   */
+  suggestions (): StepActorSuggestions<this> {
+    return this.append(StepActorSuggestions<this>)
   }
 
   /**
