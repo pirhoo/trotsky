@@ -75,6 +75,7 @@ export * from "./core/StepListsEntry"
 // Single actor
 export * from "./core/StepActor"
 export * from "./core/StepActorBlock"
+export * from "./core/StepActorBlocks"
 export * from "./core/StepActorFollow"
 export * from "./core/StepActorFollowers"
 export * from "./core/StepActorFollowings"
