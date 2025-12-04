@@ -14,6 +14,7 @@ import type { StepStarterPacksUris } from "./StepStarterPacks"
 import type { StepSearchStarterPacksQueryParams } from "./StepSearchStarterPacks"
 import type { StepSearchActorsQueryParams } from "./StepSearchActors"
 import type { StepFeedUri } from "./StepFeed"
+import type { StepFeedGeneratorUri } from "./StepFeedGenerator"
 
 import {
   StepActor,
@@ -25,6 +26,7 @@ import {
   StepPost,
   StepCreatePost,
   StepFeed,
+  StepFeedGenerator,
   StepList,
   StepListUri,
   StepStarterPack,
@@ -101,6 +103,15 @@ export class Trotsky extends StepBuilder  {
    */
   feed (uri: Resolvable<StepFeedUri>): StepFeed<this> {
     return this.append(StepFeed<this>, uri)
+  }
+
+  /**
+   * Adds a {@link StepFeedGenerator} step.
+   * @param uri - The feed generator URI.
+   * @returns The new {@link StepFeedGenerator} instance.
+   */
+  feedGenerator (uri: Resolvable<StepFeedGeneratorUri>): StepFeedGenerator<this> {
+    return this.append(StepFeedGenerator<this>, uri)
   }
 
   /**

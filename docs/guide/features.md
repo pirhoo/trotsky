@@ -50,6 +50,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepActorKnownFollowers** | :white_check_mark: | Get known followers (mutual connections). | ```Trotsky.init(agent).actor('bsky.app').knownFollowers().each()```
  **StepActorSuggestions** | :white_check_mark: | Get suggested actors to follow. | ```Trotsky.init(agent).suggestions().each()```
  **StepFeed** | :white_check_mark: | Get posts from a custom feed. | ```Trotsky.init(agent).feed("at://...").each()```
+ **StepFeedGenerator** | :white_check_mark: | Get a custom feed generator. | ```Trotsky.init(agent).feedGenerator("at://...")```
 
 ## Planned Features
 
@@ -57,7 +58,6 @@ The following features are planned for future implementation:
 
  **Name** | **Status** | **Description** | **Potential API**
 ---|---|---|---
- **StepFeedGenerator** | :construction: | Get a custom feed generator. | `app.bsky.feed.getFeedGenerator`
  **StepListBlock** | :construction: | Block a list. | `app.bsky.graph.listblock`
  **StepListFeed** | :construction: | Get posts from a list feed. | `app.bsky.feed.getListFeed`
  **StepListMute** | :construction: | Mute a list. | `app.bsky.graph.muteActorList`
