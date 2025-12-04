@@ -16,6 +16,7 @@ import type { StepSearchActorsQueryParams } from "./StepSearchActors"
 
 import {
   StepActor,
+  StepActorBlocks,
   StepActors,
   StepWait,
   StepPost,
@@ -63,6 +64,14 @@ export class Trotsky extends StepBuilder  {
    */
   actors (param: Resolvable<StepActorsParam>): StepActors<this> {
     return this.append(StepActors<this>, param)
+  }
+
+  /**
+   * Adds a {@link StepActorBlocks} step.
+   * @returns The new {@link StepActorBlocks} instance.
+   */
+  blocks (): StepActorBlocks<this> {
+    return this.append(StepActorBlocks<this>)
   }
 
   /**
