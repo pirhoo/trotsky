@@ -42,6 +42,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepPostReposters** | :white_check_mark: | Get actors who reposted a post. | ```Trotsky.init(agent).post("at://...").reposters().each()```
  **StepPostQuotes** | :white_check_mark: | Get quote posts of a post. | ```Trotsky.init(agent).post("at://...").quotes().each()```
  **StepPostThread** | :white_check_mark: | Get a full post thread with replies. | ```Trotsky.init(agent).post("at://...").thread()```
+ **StepPostUnlike** | :white_check_mark: | Unlike a post. | ```Trotsky.init(agent).post("at://...").unlike()```
 
 ## Planned Features
 
@@ -64,7 +65,6 @@ The following features are planned for future implementation:
  **StepNotifications** | :construction: | Get user notifications. | `app.bsky.notification.listNotifications`
  **StepNotificationsUnreadCount** | :construction: | Get unread notification count. | `app.bsky.notification.getUnreadCount`
  **StepNotificationsUpdateSeen** | :construction: | Mark notifications as seen. | `app.bsky.notification.updateSeen`
- **StepPostUnlike** | :construction: | Unlike a post. | Delete like record
  **StepPostUnrepost** | :construction: | Unrepost a post. | Delete repost record
  **StepSuggestedFeeds** | :construction: | Get suggested custom feeds. | `app.bsky.feed.getSuggestedFeeds`
  **StepThreadMute** | :construction: | Mute a thread. | `app.bsky.graph.muteThread`
