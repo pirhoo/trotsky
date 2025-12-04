@@ -37,6 +37,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepStarterPacks** | :white_check_mark: | Get a list of starter packs by their URIs. | ```Trotsky.init(agent).starterPacks([uri1, uri2]).each()```
  **StepStreamPosts** | :test_tube: | Stream posts from the firehose. | ```Trotsky.init(agent).streamPosts().each()```
  **StepTimeline** | :white_check_mark: | Get the authenticated user's timeline. | ```Trotsky.init(agent).timeline().take(20).each()```
+ **StepSearchActors** | :white_check_mark: | Search for actors by name/handle. | ```Trotsky.init(agent).searchActors({ q: "typescript" }).each()```
 
 ## Planned Features
 
@@ -65,7 +66,6 @@ The following features are planned for future implementation:
  **StepPostThread** | :construction: | Get a full post thread with replies. | `app.bsky.feed.getPostThread`
  **StepPostUnlike** | :construction: | Unlike a post. | Delete like record
  **StepPostUnrepost** | :construction: | Unrepost a post. | Delete repost record
- **StepSearchActors** | :construction: | Search for actors by name/handle. | `app.bsky.actor.searchActors`
  **StepSuggestedFeeds** | :construction: | Get suggested custom feeds. | `app.bsky.feed.getSuggestedFeeds`
  **StepThreadMute** | :construction: | Mute a thread. | `app.bsky.graph.muteThread`
  **StepThreadUnmute** | :construction: | Unmute a thread. | `app.bsky.graph.unmuteThread`

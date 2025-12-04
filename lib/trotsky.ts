@@ -60,6 +60,7 @@ export * from "./core/StepStreamPosts"
 // List of actors
 export * from "./core/StepActors"
 export * from "./core/StepActorsEntry"
+export * from "./core/StepSearchActors"
 
 // List of posts
 export * from "./core/StepPosts"
