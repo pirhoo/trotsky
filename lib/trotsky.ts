@@ -96,6 +96,7 @@ export * from "./core/StepPostLike"
 export * from "./core/StepPostLikers"
 export * from "./core/StepPostReply"
 export * from "./core/StepPostRepost"
+export * from "./core/StepPostReposters"
 
 // Single lists
 export * from "./core/StepList"
