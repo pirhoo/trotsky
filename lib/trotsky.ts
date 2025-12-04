@@ -115,6 +115,7 @@ export * from "./core/StepList"
 export * from "./core/StepListBlock"
 export * from "./core/StepListFeed"
 export * from "./core/StepListMembers"
+export * from "./core/StepListUnblock"
 
 // Single starter pack
 export * from "./core/StepStarterPack"
