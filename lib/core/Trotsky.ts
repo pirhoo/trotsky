@@ -27,6 +27,7 @@ import {
   StepCreatePost,
   StepFeed,
   StepFeedGenerator,
+  StepSuggestedFeeds,
   StepList,
   StepListUri,
   StepStarterPack,
@@ -112,6 +113,14 @@ export class Trotsky extends StepBuilder  {
    */
   feedGenerator (uri: Resolvable<StepFeedGeneratorUri>): StepFeedGenerator<this> {
     return this.append(StepFeedGenerator<this>, uri)
+  }
+
+  /**
+   * Adds a {@link StepSuggestedFeeds} step.
+   * @returns The new {@link StepSuggestedFeeds} instance.
+   */
+  suggestedFeeds (): StepSuggestedFeeds<this> {
+    return this.append(StepSuggestedFeeds<this>)
   }
 
   /**

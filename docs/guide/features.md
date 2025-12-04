@@ -51,6 +51,7 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepActorSuggestions** | :white_check_mark: | Get suggested actors to follow. | ```Trotsky.init(agent).suggestions().each()```
  **StepFeed** | :white_check_mark: | Get posts from a custom feed. | ```Trotsky.init(agent).feed("at://...").each()```
  **StepFeedGenerator** | :white_check_mark: | Get a custom feed generator. | ```Trotsky.init(agent).feedGenerator("at://...")```
+ **StepSuggestedFeeds** | :white_check_mark: | Get suggested custom feeds. | ```Trotsky.init(agent).suggestedFeeds().take(10)```
 
 ## Planned Features
 
@@ -66,7 +67,6 @@ The following features are planned for future implementation:
  **StepNotifications** | :construction: | Get user notifications. | `app.bsky.notification.listNotifications`
  **StepNotificationsUnreadCount** | :construction: | Get unread notification count. | `app.bsky.notification.getUnreadCount`
  **StepNotificationsUpdateSeen** | :construction: | Mark notifications as seen. | `app.bsky.notification.updateSeen`
- **StepSuggestedFeeds** | :construction: | Get suggested custom feeds. | `app.bsky.feed.getSuggestedFeeds`
  **StepThreadMute** | :construction: | Mute a thread. | `app.bsky.graph.muteThread`
  **StepThreadUnmute** | :construction: | Unmute a thread. | `app.bsky.graph.unmuteThread`
 
