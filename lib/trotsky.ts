@@ -129,6 +129,8 @@ export * from "./core/StepSearchStarterPacks"
 
 // Notifications
 export * from "./core/StepNotifications"
+export * from "./core/StepNotificationsUnreadCount"
+export * from "./core/StepNotificationsUpdateSeen"
 
 // Utils
 export * from "./core/StepTap"
