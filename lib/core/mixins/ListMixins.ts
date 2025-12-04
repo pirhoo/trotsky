@@ -1,4 +1,4 @@
-import { Step, StepListBlock, StepListFeed, StepListMembers } from "../../trotsky"
+import { Step, StepListBlock, StepListFeed, StepListMembers, StepListUnblock } from "../../trotsky"
 
 /**
  * A mixin class providing reusable list-related methods to extend step functionality.
@@ -37,6 +37,16 @@ export abstract class ListMixins<P, C, O> extends Step<P, C, O> {
    */
   block () {
     this.append(StepListBlock<this>)
+    return this
+  }
+
+  /**
+   * Appends a step to unblock the current list.
+   *
+   * @returns The current instance for method chaining.
+   */
+  unblock () {
+    this.append(StepListUnblock<this>)
     return this
   }
 }
