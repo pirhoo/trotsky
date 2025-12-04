@@ -109,6 +109,8 @@ export * from "./core/StepPostReposters"
 export * from "./core/StepPostThread"
 export * from "./core/StepPostUnlike"
 export * from "./core/StepPostUnrepost"
+export * from "./core/StepThreadMute"
+export * from "./core/StepThreadUnmute"
 
 // Single lists
 export * from "./core/StepList"

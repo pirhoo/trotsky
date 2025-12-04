@@ -60,17 +60,10 @@ Trotsky provides comprehensive support for the Bluesky AT Protocol. Below is a l
  **StepNotifications** | :white_check_mark: | Get user notifications. | ```Trotsky.init(agent).notifications().take(20)```
  **StepNotificationsUnreadCount** | :white_check_mark: | Get unread notification count. | ```Trotsky.init(agent).notificationsUnreadCount()```
  **StepNotificationsUpdateSeen** | :white_check_mark: | Mark notifications as seen. | ```Trotsky.init(agent).notificationsUpdateSeen()```
+ **StepThreadMute** | :white_check_mark: | Mute a thread. | ```Trotsky.init(agent).post("at://...").threadMute()```
+ **StepThreadUnmute** | :white_check_mark: | Unmute a thread. | ```Trotsky.init(agent).post("at://...").threadUnmute()```
 
-## Planned Features
-
-The following features are planned for future implementation:
-
- **Name** | **Status** | **Description** | **Potential API**
----|---|---|---
- **StepThreadMute** | :construction: | Mute a thread. | `app.bsky.graph.muteThread`
- **StepThreadUnmute** | :construction: | Unmute a thread. | `app.bsky.graph.unmuteThread`
-
- <small>:white_check_mark: Implemented • :test_tube: Experimental • :x: In PR/Review • :construction: Planned</small>
+ <small>:white_check_mark: Implemented • :test_tube: Experimental</small>
 
 <style scoped>
 .vp-doc table {
