@@ -27,6 +27,7 @@ import {
   StepCreatePost,
   StepFeed,
   StepFeedGenerator,
+  StepNotifications,
   StepSuggestedFeeds,
   StepList,
   StepListUri,
@@ -121,6 +122,14 @@ export class Trotsky extends StepBuilder  {
    */
   suggestedFeeds (): StepSuggestedFeeds<this> {
     return this.append(StepSuggestedFeeds<this>)
+  }
+
+  /**
+   * Adds a {@link StepNotifications} step.
+   * @returns The new {@link StepNotifications} instance.
+   */
+  notifications (): StepNotifications<this> {
+    return this.append(StepNotifications<this>)
   }
 
   /**

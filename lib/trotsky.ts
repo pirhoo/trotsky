@@ -127,6 +127,9 @@ export * from "./core/StepStarterPacks"
 export * from "./core/StepStarterPacksEntry"
 export * from "./core/StepSearchStarterPacks"
 
+// Notifications
+export * from "./core/StepNotifications"
+
 // Utils
 export * from "./core/StepTap"
 export * from "./core/StepWait"
