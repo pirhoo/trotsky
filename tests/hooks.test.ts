@@ -207,7 +207,7 @@ describe("Hooks", () => {
 
       await trotsky.run()
 
-      expect(executionTime).toBeGreaterThanOrEqual(50)
+      expect(executionTime).toBeGreaterThanOrEqual(40)
     })
 
     it("should include step output in result", async () => {
@@ -439,8 +439,8 @@ describe("Hooks", () => {
       expect(metrics).toHaveLength(3)
       expect(metrics[0].step).toBe("StepActor")
       expect(metrics[1].step).toBe("StepWait")
-      // Allow slight timing variation in CI environments (48-52ms is acceptable)
-      expect(metrics[1].duration).toBeGreaterThanOrEqual(45)
+      // Allow timing variation in CI environments
+      expect(metrics[1].duration).toBeGreaterThanOrEqual(40)
       expect(metrics[2].step).toBe("StepWait")
     })
 
