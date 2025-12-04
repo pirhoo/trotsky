@@ -1,4 +1,4 @@
-import { Step, StepListBlock, StepListFeed, StepListMembers, StepListUnblock } from "../../trotsky"
+import { Step, StepListBlock, StepListFeed, StepListMembers, StepListMute, StepListUnblock, StepListUnmute } from "../../trotsky"
 
 /**
  * A mixin class providing reusable list-related methods to extend step functionality.
@@ -47,6 +47,26 @@ export abstract class ListMixins<P, C, O> extends Step<P, C, O> {
    */
   unblock () {
     this.append(StepListUnblock<this>)
+    return this
+  }
+
+  /**
+   * Appends a step to mute the current list.
+   *
+   * @returns The current instance for method chaining.
+   */
+  mute () {
+    this.append(StepListMute<this>)
+    return this
+  }
+
+  /**
+   * Appends a step to unmute the current list.
+   *
+   * @returns The current instance for method chaining.
+   */
+  unmute () {
+    this.append(StepListUnmute<this>)
     return this
   }
 }
