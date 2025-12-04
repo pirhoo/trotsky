@@ -98,6 +98,7 @@ export * from "./core/StepPostQuotes"
 export * from "./core/StepPostReply"
 export * from "./core/StepPostRepost"
 export * from "./core/StepPostReposters"
+export * from "./core/StepPostThread"
 
 // Single lists
 export * from "./core/StepList"
