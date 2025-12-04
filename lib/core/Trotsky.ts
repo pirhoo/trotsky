@@ -28,6 +28,8 @@ import {
   StepFeed,
   StepFeedGenerator,
   StepNotifications,
+  StepNotificationsUnreadCount,
+  StepNotificationsUpdateSeen,
   StepSuggestedFeeds,
   StepList,
   StepListUri,
@@ -130,6 +132,23 @@ export class Trotsky extends StepBuilder  {
    */
   notifications (): StepNotifications<this> {
     return this.append(StepNotifications<this>)
+  }
+
+  /**
+   * Adds a {@link StepNotificationsUnreadCount} step.
+   * @returns The new {@link StepNotificationsUnreadCount} instance.
+   */
+  notificationsUnreadCount (): StepNotificationsUnreadCount<this> {
+    return this.append(StepNotificationsUnreadCount<this>)
+  }
+
+  /**
+   * Adds a {@link StepNotificationsUpdateSeen} step.
+   * @returns The current {@link Trotsky} instance.
+   */
+  notificationsUpdateSeen () {
+    this.append(StepNotificationsUpdateSeen<this>)
+    return this
   }
 
   /**
